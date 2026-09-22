@@ -9,8 +9,8 @@
   --accent: #1672e8;
   --accent-soft: #e8f1ff;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --display: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display: 'Instrument Serif', Georgia, serif;
   font-family: var(--sans);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,7 +29,11 @@ a { color: inherit; text-decoration: none; }
 ::selection { color: #10284a; background: #d7e8ff; }
 :focus-visible { outline: 3px solid rgba(22, 114, 232, .62); outline-offset: 4px; }
 
-.app { min-height: 100vh; overflow: clip; background: #fff; }
+.app { position: relative; isolation: isolate; min-height: 100vh; overflow: clip; background: #fff; }
+.ambient-background { position: fixed; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.ambient-floating-lines { position: absolute !important; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ambient-floating-lines canvas { display: block; width: 100%; height: 100%; pointer-events: none; }
+main, footer { position: relative; z-index: 1; }
 .section-shell { width: min(1220px, calc(100% - 64px)); margin-inline: auto; }
 .section-pad { padding: 116px 0 136px; }
 
@@ -51,9 +55,8 @@ a { color: inherit; text-decoration: none; }
 
 .hero { position: relative; min-height: min(820px, 100dvh); padding-top: 78px; display: grid; align-items: center; isolation: isolate; }
 .hero::before { content: ''; position: absolute; z-index: 0; width: 410px; height: 410px; top: 18%; right: 14%; border-radius: 50%; background: rgba(215, 231, 251, .55); filter: blur(84px); pointer-events: none; }
-.hero-effects { position: absolute; z-index: 0; inset: 0; overflow: hidden; border-radius: 36px; pointer-events: none; }
-.hero-floating-lines, .hero-glow-cursor { position: absolute !important; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.hero-floating-lines canvas { pointer-events: none; }
+.hero-effects { position: absolute; z-index: 3; inset: 0; overflow: hidden; pointer-events: none; }
+.hero-glow-cursor { position: absolute !important; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .hero-glow-cursor { z-index: 3; }
 .hero-glow-cursor .glow-cursor__canvas { pointer-events: none; }
 .hero-marquee { position: absolute; z-index: 1; inset: 24% 0 auto; overflow: hidden; pointer-events: none; }
@@ -65,12 +68,12 @@ a { color: inherit; text-decoration: none; }
 .hero-copy { min-width: 0; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #5e6f84; font-size: 11px; font-weight: 600; letter-spacing: .025em; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #35a978; box-shadow: 0 0 0 4px rgba(53, 169, 120, .12); }
-.hero-title { margin: 17px 0 12px; font: 800 clamp(52px, 6.5vw, 84px)/.99 var(--display); letter-spacing: -.075em; text-wrap: balance; }
-.hero-title span { display: block; color: #6a7788; }
+.hero-title { margin: 17px 0 12px; font: 400 clamp(66px, 8.4vw, 108px)/.91 var(--display); letter-spacing: -.055em; text-wrap: balance; animation: fade-rise .8s ease-out both; }
+.hero-title span { display: block; color: #54718e; font-style: italic; }
 .hero-role { margin: 0 0 10px; color: var(--accent); font-size: 14px; font-weight: 700; }
-.hero-headline { max-width: 470px; margin: 0 0 15px; color: #334155; font: 600 clamp(19px, 2vw, 24px)/1.4 var(--display); letter-spacing: -.035em; text-wrap: pretty; }
+.hero-headline { max-width: 470px; margin: 0 0 15px; color: #334155; font: 500 clamp(19px, 2vw, 23px)/1.4 var(--sans); letter-spacing: -.025em; text-wrap: pretty; animation: fade-rise .8s .2s ease-out both; }
 .hero-bio { max-width: 500px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
-.hero-actions { display: flex; align-items: center; gap: 12px; margin-top: 26px; }
+.hero-actions { display: flex; align-items: center; gap: 12px; margin-top: 26px; animation: fade-rise .8s .4s ease-out both; }
 .primary-btn, .ghost-btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border-radius: 999px; cursor: pointer; font-size: 12px; font-weight: 700; transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease; }
 .primary-btn { border: 1px solid var(--accent); background: var(--accent); color: white; box-shadow: 0 8px 18px rgba(22, 114, 232, .16); }
 .primary-btn:hover { background: #0f62cb; box-shadow: 0 10px 24px rgba(22, 114, 232, .22); }
@@ -247,7 +250,7 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 @media (max-width: 980px) {
   .hero { min-height: auto; padding-top: 74px; }
   .hero-grid { grid-template-columns: 1fr .82fr; gap: 35px; }
-  .hero-title { font-size: clamp(49px, 7vw, 69px); }
+  .hero-title { font-size: clamp(60px, 8vw, 83px); }
   .hero-visual { height: 480px; min-height: 380px; }
   .about-grid { grid-template-columns: 1fr; }
   .stack-bottom { grid-template-columns: 1fr; }
@@ -279,7 +282,7 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .hero-content { padding: 34px 0 48px; }
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .hero-copy { text-align: left; }
-  .hero-title { margin-top: 20px; font-size: clamp(51px, 14vw, 76px); }
+  .hero-title { margin-top: 20px; font-size: clamp(58px, 15vw, 82px); }
   .hero-title span { display: inline; }
   .hero-headline { max-width: 410px; font-size: 21px; }
   .hero-bio { max-width: 500px; font-size: 13px; }
@@ -289,7 +292,6 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .featured-social { padding: 7px 8px; }
   .social-arrow { margin-right: 5px; }
   .hero-visual { width: 100%; height: 430px; min-height: 0; }
-  .hero-effects { border-radius: 25px; }
   .hero-glow-cursor { display: none; }
   .hero-scroll { right: 0; bottom: 24px; }
   .about { padding-top: 32px; }
@@ -337,7 +339,8 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 }
 
 @media (hover: none), (prefers-reduced-motion: reduce) {
-  .hero-floating-lines, .hero-glow-cursor { display: none; }
+  .hero-glow-cursor { display: none; }
 }
 
+@keyframes fade-rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }

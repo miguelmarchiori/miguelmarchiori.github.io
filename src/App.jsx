@@ -62,8 +62,13 @@ export default function App() {
 
   return (
     <div className="app">
+      <div className="ambient-background" aria-hidden="true">
+        {effectsEnabled && <Suspense fallback={null}>
+          <FloatingLines className="ambient-floating-lines" enabledWaves={['top', 'middle', 'bottom']} lineCount={[4, 7, 4]} lineDistance={[8, 6, 5]} animationSpeed={0.38} interactive bendRadius={4.5} bendStrength={-0.28} mouseDamping={0.045} parallax parallaxStrength={0.1} linesGradient={['#c9e4fb', '#c6e9df', '#d7dcf8']} mixBlendMode="normal" backgroundColor="#ffffff" lightMode />
+        </Suspense>}
+      </div>
       <header className="navbar">
-        <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.68} className="navbar-glass">
+        <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.42} className="navbar-glass">
           <div className="navbar-inner">
             <button className="brand" onClick={() => scrollTo('top')} aria-label="Voltar ao início">
               <span>&lt;</span>{portfolio.shortName.replace(' ', '')}<span>/&gt;</span>
@@ -80,8 +85,7 @@ export default function App() {
       <main>
         <section id="top" className="hero section-shell">
           <div className="hero-effects" aria-hidden="true">
-            {effectsEnabled && <Suspense fallback={null}>
-              <FloatingLines className="hero-floating-lines" enabledWaves={['top', 'middle', 'bottom']} lineCount={[5, 8, 5]} lineDistance={[8, 6, 5]} animationSpeed={0.45} interactive bendRadius={4.5} bendStrength={-0.3} mouseDamping={0.045} parallax parallaxStrength={0.12} linesGradient={['#c9e4fb', '#c6e9df', '#d7dcf8']} mixBlendMode="normal" backgroundColor="#ffffff" lightMode />
+            {cursorEnabled && <Suspense fallback={null}>
               {cursorEnabled && <GlowCursor className="hero-glow-cursor" color="#3298ee" secondaryColor="#42c9b0" trailLength={24} trailWidth={5} trailTaper={0.88} followSpeed={0.2} glowIntensity={1.25} glowSpread={0.9} hotspot={0.36} brightness={0.9} opacity={0.7} pulseSpeed={0.55} noiseStrength={0.015} idleFade idleTimeout={500} fadeDuration={650} blendMode="normal" maxDevicePixelRatio={1} />}
             </Suspense>}
           </div>
