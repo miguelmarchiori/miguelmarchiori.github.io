@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BorderGlow from './components/BorderGlow';
 import GlassSurface from './components/GlassSurface';
 import DriftWall from './components/DriftWall';
@@ -19,6 +19,18 @@ const CodeIcon = ({ children }) => {
 
 export default function App() {
   const [menu, setMenu] = useState(false);
+  useEffect(() => {
+    if (!menu || !window.matchMedia('(max-width: 700px)').matches) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const closeOnEscape = event => { if (event.key === 'Escape') setMenu(false); };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [menu]);
+
   const scrollTo = id => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMenu(false);
@@ -32,16 +44,20 @@ export default function App() {
             <button className="brand" onClick={() => scrollTo('top')} aria-label="Voltar ao início">
               <span>&lt;</span>{portfolio.shortName.replace(' ', '')}<span>/&gt;</span>
             </button>
-            <nav className={menu ? 'nav-links is-open' : 'nav-links'}>
-              {nav.map(item => <button key={item} onClick={() => scrollTo(item.toLowerCase())}>{item}</button>)}
-            </nav>
-            <button className="menu-btn" onClick={() => setMenu(!menu)} aria-label="Abrir menu" aria-expanded={menu}><i /><i /><i /></button>
+            <button className={`menu-btn ${menu ? 'is-open' : ''}`} onClick={() => setMenu(!menu)} aria-label={menu ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menu}><i /><i /><i /></button>
           </div>
         </GlassSurface>
+        {menu && <button className="nav-backdrop" onClick={() => setMenu(false)} aria-label="Fechar menu" />}
+        <nav className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
+          {nav.map(item => <button key={item} onClick={() => scrollTo(item.toLowerCase())}>{item}</button>)}
+        </nav>
       </header>
 
       <main>
         <section id="top" className="hero section-shell">
+          <div className="hero-marquee" aria-hidden="true">
+            <div className="hero-marquee-track"><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span></div>
+          </div>
           <div className="hero-content hero-grid">
             <div className="hero-copy">
               <div className="eyebrow"><span className="status-dot" /> {portfolio.availability}</div>
@@ -197,12 +213,14 @@ export default function App() {
               trigger="click"
               physics={false}
               drift={0}
-              folderColor="#45070d"
-              frontColor="#7f1020"
-              paperColor="#fff5f5"
-              itemColor="#f7f7f7"
-              itemTextColor="#151015"
-              labelColor="#fff"
+              folderColor="#dce8f6"
+              frontColor="#c5d9f0"
+              paperColor="#fffdf9"
+              itemColor="#fffdf9"
+              itemTextColor="#364c68"
+              labelColor="#304560"
+              width={200}
+              height={148}
             />
             <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.46} className="stack-copy-surface">
               <div className="stack-copy">
