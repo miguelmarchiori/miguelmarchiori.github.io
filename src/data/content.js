@@ -51,37 +51,6 @@ export const areas = [
   'Projetos de competição'
 ];
 
-export const projects = [
-  {
-    title: '[PROJETO WEB 01]',
-    description: 'Substitua este texto pelo seu primeiro projeto web, mostrando o problema resolvido e as tecnologias utilizadas.',
-    stack: ['HTML', 'CSS', 'PHP'],
-    link: '#',
-    image: '/assets/projects/project-01.svg'
-  },
-  {
-    title: '[PROJETO DE AUTOMAÇÃO]',
-    description: 'Espaço para apresentar uma automação, script ou sistema criado para facilitar uma tarefa real.',
-    stack: ['Python', 'Automação'],
-    link: '#',
-    image: '/assets/projects/project-02.svg'
-  },
-  {
-    title: '[PROJETO DE ROBÓTICA]',
-    description: 'Mostre aqui uma solução de programação, controle ou estratégia desenvolvida em uma competição.',
-    stack: ['Robótica', 'Python', 'Controle'],
-    link: '#',
-    image: '/assets/projects/project-03.svg'
-  },
-  {
-    title: '[PROJETO 04]',
-    description: 'Use este card para outro site, estudo, experimento ou projeto que queira destacar.',
-    stack: ['Web', 'Programação'],
-    link: '#',
-    image: '/assets/projects/project-04.svg'
-  }
-];
-
 export const experience = [
   {
     period: 'OBR · REGIONAL',

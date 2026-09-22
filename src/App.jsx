@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import BorderGlow from './components/BorderGlow';
 import GlassSurface from './components/GlassSurface';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
@@ -7,24 +6,24 @@ import GlassIcons from './components/GlassIcons';
 const FloatingLines = lazy(() => import('./components/FloatingLines'));
 const GlowCursor = lazy(() => import('./components/GlowCursor'));
 import {
-  SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk, SiGit
+  SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
 } from 'react-icons/si';
 import { FaLinkedinIn, FaCss3Alt } from 'react-icons/fa6';
-import { portfolio, skills, skillWall, areas, projects, experience } from './data/content';
+import { portfolio, skills, skillWall, areas, experience } from './data/content';
 
-const nav = ['Sobre', 'Projetos', 'Stack', 'Fotos', 'Experiência', 'Contato'];
+const nav = [
+  { label: 'Sobre', id: 'sobre' },
+  { label: 'Atuação', id: 'atuacao' },
+  { label: 'Stack', id: 'stack' },
+  { label: 'Fotos', id: 'fotos' },
+  { label: 'Contato', id: 'contato' }
+];
 const photos = [
   { src: '/assets/portfolio/portfolio-1.webp', alt: 'Equipe de robótica trabalhando na programação do robô', title: 'Programação em equipe', note: 'Robótica · trabalho de bancada' },
   { src: '/assets/portfolio/portfolio-2.webp', alt: 'Miguel Marchiori em uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' },
   { src: '/assets/portfolio/portfolio-3.webp', alt: 'Medalhas da Olimpíada Brasileira de Robótica', title: 'Conquistas na OBR', note: 'Olimpíada Brasileira de Robótica' },
   { src: '/assets/portfolio/portfolio-4.webp', alt: 'Detalhe do robô de competição com sensores e componentes eletrônicos', title: 'Robô em desenvolvimento', note: 'Montagem · testes' }
 ];
-const techIcons = { Python: SiPython, HTML: SiHtml5, CSS: FaCss3Alt, PHP: SiPhp, Java: SiOpenjdk, Git: SiGit, 'Git / GitHub': SiGithub };
-const CodeIcon = ({ children }) => {
-  const Icon = techIcons[children];
-  return <span className="code-chip">{Icon && <Icon aria-hidden="true" />}<span>{children}</span></span>;
-};
-
 export default function App() {
   const [menu, setMenu] = useState(false);
   const [effectsEnabled, setEffectsEnabled] = useState(false);
@@ -73,12 +72,12 @@ export default function App() {
             <button className="brand" onClick={() => scrollTo('top')} aria-label="Voltar ao início">
               <span>&lt;</span>{portfolio.shortName.replace(' ', '')}<span>/&gt;</span>
             </button>
-            <button className={`menu-btn ${menu ? 'is-open' : ''}`} onClick={() => setMenu(!menu)} aria-label={menu ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menu}><i /><i /><i /></button>
+            <button className={`menu-btn ${menu ? 'is-open' : ''}`} onClick={() => setMenu(!menu)} aria-label={menu ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menu} aria-controls="primary-navigation"><i /><i /><i /></button>
           </div>
         </GlassSurface>
         {menu && <button className="nav-backdrop" onClick={() => setMenu(false)} aria-label="Fechar menu" />}
-        <nav className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
-          {nav.map(item => <button key={item} onClick={() => scrollTo(item.toLowerCase())}>{item}</button>)}
+        <nav id="primary-navigation" className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
+          {nav.map(item => <button key={item.id} onClick={() => scrollTo(item.id)}>{item.label}</button>)}
         </nav>
       </header>
 
@@ -86,7 +85,7 @@ export default function App() {
         <section id="top" className="hero section-shell">
           <div className="hero-effects" aria-hidden="true">
             {cursorEnabled && <Suspense fallback={null}>
-              {cursorEnabled && <GlowCursor className="hero-glow-cursor" color="#3298ee" secondaryColor="#42c9b0" trailLength={24} trailWidth={5} trailTaper={0.88} followSpeed={0.2} glowIntensity={1.25} glowSpread={0.9} hotspot={0.36} brightness={0.9} opacity={0.7} pulseSpeed={0.55} noiseStrength={0.015} idleFade idleTimeout={500} fadeDuration={650} blendMode="normal" maxDevicePixelRatio={1} />}
+              <GlowCursor className="hero-glow-cursor" color="#3298ee" secondaryColor="#42c9b0" trailLength={24} trailWidth={5} trailTaper={0.88} followSpeed={0.2} glowIntensity={1.25} glowSpread={0.9} hotspot={0.36} brightness={0.9} opacity={0.7} pulseSpeed={0.55} noiseStrength={0.015} idleFade idleTimeout={500} fadeDuration={650} blendMode="normal" maxDevicePixelRatio={1} />
             </Suspense>}
           </div>
           <div className="hero-marquee" aria-hidden="true">
@@ -100,7 +99,7 @@ export default function App() {
               <p className="hero-headline">{portfolio.headline}</p>
               <p className="hero-bio">{portfolio.bio}</p>
               <div className="hero-actions">
-                <button className="primary-btn" onClick={() => scrollTo('projetos')}>Ver projetos <span>↗</span></button>
+              <button className="primary-btn" onClick={() => scrollTo('atuacao')}>Ver atuação <span>↗</span></button>
                 <a className="ghost-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /> WhatsApp <span>↗</span></a>
               </div>
               <GlassSurface width="100%" height="auto" borderRadius={20} backgroundOpacity={0.42} className="social-surface-wrap">
@@ -135,7 +134,7 @@ export default function App() {
               <GlassSurface width="100%" height="100%" borderRadius={36} backgroundOpacity={0.46} className="portrait-card">
                 <div className="portrait-wrap">
                   <div className="portrait-glow" />
-                  <img src="/assets/miguel.png" alt="Miguel Marchiori" className="portrait" />
+                  <img src="/assets/miguel.png" alt="Miguel Marchiori" className="portrait" fetchPriority="high" decoding="async" />
                   <div className="portrait-badge badge-one"><strong>OBR</strong><span>Campeão regional</span></div>
                   <div className="portrait-badge badge-two"><strong>PROGRAMADOR</strong><span>principal nas equipes</span></div>
                 </div>
@@ -179,30 +178,22 @@ export default function App() {
           </div>
         </section>
 
-        <section id="projetos" className="projects section-shell section-pad">
-          <div className="section-kicker">02 / PROJETOS</div>
-          <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.025} className="section-heading-glass">
-            <div className="section-heading">
-              <h2>Projetos que vão virar<br /><em>cases reais.</em></h2>
-              <p>Os quatro cards estão prontos para receber seus projetos, links, imagens e resultados. Me mande os projetos e eu troco tudo.</p>
-            </div>
-          </GlassSurface>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <BorderGlow key={project.title} className="project-card" colors={index % 2 ? ['#a6c8ef', '#5d9ce4', '#c1daf7'] : ['#8fb9e9', '#4a8dd9', '#bad5f4']} glowColor="211 75 60" glowIntensity={0.38} borderRadius={27} backgroundColor="transparent" fillOpacity={0.12}>
-                <GlassSurface width="100%" height="100%" borderRadius={26} backgroundOpacity={0.42} className="project-glass">
-                  <a href={project.link} className="project-link">
-                  <div className="project-image"><img src={project.image} alt="" loading="lazy" decoding="async" /></div>
-                  <div className="project-info">
-                    <div className="project-index">0{index + 1}</div>
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    <div className="stack-row">{project.stack.map(tech => <CodeIcon key={tech}>{tech}</CodeIcon>)}</div>
-                  </div>
-                    <span className="project-arrow">↗</span>
-                  </a>
-                </GlassSurface>
-              </BorderGlow>
+        <section id="atuacao" className="experience section-shell section-pad">
+          <div className="section-kicker">02 / NA PRÁTICA</div>
+          <div className="section-heading experience-heading">
+            <h2>Código em campo,<br /><em>feito em equipe.</em></h2>
+            <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
+          </div>
+          <div className="experience-grid">
+            {experience.map((item, index) => (
+              <article className="experience-item" key={item.company}>
+                <div className="experience-meta"><span>0{index + 1}</span><span>{item.period}</span></div>
+                <div className="experience-mark" aria-hidden="true">{item.period.split(' · ')[0]}</div>
+                <h3>{item.role}</h3>
+                <p className="experience-team">{item.company}</p>
+                <p className="experience-description">{item.description}</p>
+                <span className="experience-rule" aria-hidden="true" />
+              </article>
             ))}
           </div>
         </section>
@@ -212,7 +203,7 @@ export default function App() {
           <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.025} className="section-heading-glass">
             <div className="section-heading compact">
               <h2>As tecnologias que estão<br /><em>na minha bancada.</em></h2>
-              <p>Agora cada tecnologia aparece com seu logo oficial, mantendo o visual líquido e interativo.</p>
+              <p>Linguagens e ferramentas que uso para criar para a web, automatizar tarefas e competir em robótica.</p>
             </div>
           </GlassSurface>
           <GlassSurface width="100%" height={500} borderRadius={30} backgroundOpacity={0.48}>
@@ -225,7 +216,7 @@ export default function App() {
             <div className="language-icons-wrap">
               <div>
                 <small>LOGOS DA STACK</small>
-                <p>As principais linguagens do portfólio, agora com seus ícones.</p>
+                <p>Ferramentas que uso para criar para a web e competir em robótica.</p>
               </div>
               <GlassIcons
                 className="language-icons"
@@ -266,7 +257,7 @@ export default function App() {
         </section>
 
         <section id="fotos" className="photo-gallery section-shell section-pad">
-          <div className="section-kicker">04 / NA PRÁTICA</div>
+          <div className="section-kicker">04 / NOS BASTIDORES</div>
           <div className="section-heading">
             <h2>Ideias que saem<br /><em>da tela.</em></h2>
             <p>Um pouco dos bastidores, das equipes e das conquistas na robótica.</p>
@@ -281,25 +272,11 @@ export default function App() {
           </div>
         </section>
 
-        <section id="experiência" className="experience section-shell section-pad">
-          <div className="section-kicker">05 / EXPERIÊNCIA</div>
-          <div className="timeline">
-            {experience.map((item, index) => (
-              <GlassSurface key={index} width="100%" height="auto" borderRadius={20} backgroundOpacity={0.48}>
-                <article className="exp-card">
-                  <div className="exp-period">{item.period}</div>
-                  <div><h3>{item.role}</h3><h4>{item.company}</h4><p>{item.description}</p></div>
-                </article>
-              </GlassSurface>
-            ))}
-          </div>
-        </section>
-
         <section id="contato" className="contact section-shell section-pad">
           <GlassSurface width="100%" height="auto" borderRadius={32} backgroundOpacity={0.5} className="contact-box">
             <div className="contact-glow" />
             <div className="contact-content">
-              <div className="section-kicker">06 / CONTATO</div>
+              <div className="section-kicker">05 / CONTATO</div>
               <h2>Vamos transformar<br /><em>ideias em código.</em></h2>
               <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
               <div className="contact-actions">
@@ -312,9 +289,9 @@ export default function App() {
                   <GlassIcons
                     className="contact-icons"
                     items={[
-                      { icon: <SiGithub />, color: 'darkred', label: 'GitHub', href: portfolio.github },
-                      { icon: <FaLinkedinIn />, color: 'red', label: 'LinkedIn', href: portfolio.linkedin },
-                      { icon: <SiInstagram />, color: 'crimson', label: 'Instagram', href: portfolio.instagram }
+                      { icon: <SiGithub />, color: '#6574d8', label: 'GitHub', href: portfolio.github },
+                      { icon: <FaLinkedinIn />, color: '#0a66c2', label: 'LinkedIn', href: portfolio.linkedin },
+                      { icon: <SiInstagram />, color: '#e4405f', label: 'Instagram', href: portfolio.instagram }
                     ]}
                   />
                 </div>
