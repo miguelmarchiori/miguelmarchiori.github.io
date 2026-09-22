@@ -13,7 +13,7 @@ export default function ParticleText({
   particleSize = 2,
   density = 5,
   color = '#fff',
-  highlightColor = '#8b5cf6',
+  highlightColor = '#ff4d5d',
   scatter = 140,
   pointerRepel = 28,
   repelRadius = 110,

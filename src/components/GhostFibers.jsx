@@ -23,7 +23,8 @@ uniform float uWaveFrequency; uniform float uWaveSpeed; uniform float uLayerSpee
 uniform float uTwistFrequency; uniform float uTwistSpeed; uniform float uLineFrequency; uniform float uLineSpacing;
 uniform float uLineSharpness; uniform float uGlowFalloff; uniform float uGlowIntensity; uniform float uBrightness;
 uniform float uBlueBoost; uniform float uVignette; uniform float uGrain; uniform vec3 uLineColor; uniform vec3 uGlowColor;
-out vec4 fragColor; #define MAX_LAYERS 10
+out vec4 fragColor;
+#define MAX_LAYERS 10
 mat2 rot(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}
 float hash(vec2 p){p=floor(p);return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 void main(){
@@ -53,8 +54,18 @@ export default function GhostFibers({
   useEffect(() => {
     const el = ref.current;
     if (!el) return undefined;
-    const renderer = new Renderer({ webgl: 2, antialias: false, dpr: Math.min(Math.max(dpr, .5), 1.5) });
+    let renderer;
+    try {
+      renderer = new Renderer({ webgl: 2, antialias: false, dpr: Math.min(Math.max(dpr, .5), 1.5) });
+    } catch (error) {
+      el.classList.add('ghost-fibers-fallback');
+      return undefined;
+    }
     const gl = renderer.gl;
+    if (!gl) {
+      el.classList.add('ghost-fibers-fallback');
+      return undefined;
+    }
     const canvas = gl.canvas;
     Object.assign(canvas.style, { width: '100%', height: '100%', display: 'block' });
     canvas.setAttribute('aria-hidden', 'true');
@@ -70,8 +81,16 @@ export default function GhostFibers({
       uBrightness: { value: brightness }, uBlueBoost: { value: blueBoost }, uVignette: { value: vignette }, uGrain: { value: grain },
       uLineColor: { value: new Float32Array(hexToRgb(lineColor)) }, uGlowColor: { value: new Float32Array(hexToRgb(glowColor)) }
     };
-    const program = new Program(gl, { vertex, fragment, uniforms });
-    const mesh = new Mesh(gl, { geometry, program });
+    let program;
+    let mesh;
+    try {
+      program = new Program(gl, { vertex, fragment, uniforms });
+      mesh = new Mesh(gl, { geometry, program });
+    } catch (error) {
+      el.classList.add('ghost-fibers-fallback');
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      return undefined;
+    }
     let raf = 0, last = performance.now(), elapsed = 0, lastDraw = 0, visible = true;
 
     const resize = () => {

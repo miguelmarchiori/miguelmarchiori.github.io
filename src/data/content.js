@@ -1,3 +1,6 @@
+import { SiPython, SiHtml5, SiPhp, SiOpenjdk } from 'react-icons/si';
+import { FaCss3Alt } from 'react-icons/fa6';
+
 export const portfolio = {
   name: 'Miguel Marchiori da Silva Correia',
   shortName: 'Miguel Marchiori',
@@ -6,13 +9,13 @@ export const portfolio = {
   availability: 'Web design · robótica · automação',
   headline: 'Transformo ideias em código, protótipos e soluções práticas.',
   bio: 'Programador júnior com experiência em web design, robótica e automação. Trabalho principalmente com Python, HTML, CSS e PHP, enquanto sigo evoluindo em Java. Também atuo como programador principal em equipes de competição de robótica.',
-  email: 'seuemail@exemplo.com',
+  email: 'marchioritimoteo@gmail.com',
   github: 'https://github.com/redmpy',
   linkedin: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
   instagram: 'https://instagram.com/mg_marchiori',
   whatsapp: 'https://wa.me/5543988337338',
   phone: '+55 (43) 98833-7338',
-  cv: '#',
+  cv: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
   stats: [
     { value: '03', label: 'modalidades de robótica' },
     { value: '01', label: 'campeonato regional OBR' },
@@ -33,11 +36,11 @@ export const skills = [
 ];
 
 export const skillWall = [
-  { title: 'Python', image: '/assets/skills/python.svg' },
-  { title: 'HTML', image: '/assets/skills/html.svg' },
-  { title: 'CSS', image: '/assets/skills/css.svg' },
-  { title: 'PHP', image: '/assets/skills/php.svg' },
-  { title: 'Java', image: '/assets/skills/java.svg' }
+  { title: 'Python', icon: SiPython, accent: '#3776AB' },
+  { title: 'HTML5', icon: SiHtml5, accent: '#E34F26' },
+  { title: 'CSS3', icon: FaCss3Alt, accent: '#1572B6' },
+  { title: 'PHP', icon: SiPhp, accent: '#777BB4' },
+  { title: 'Java', icon: SiOpenjdk, accent: '#E76F00' }
 ];
 
 export const areas = [
@@ -88,8 +91,8 @@ export const experience = [
   },
   {
     period: 'FLL · REGIONAL',
-    role: 'Programador principal · Equipe de robótica',
-    company: 'First LEGO League · Paraná',
+    role: 'Programador principal · Shield',
+    company: '@equip_shield · First LEGO League Paraná',
     description: 'Participação na etapa regional do Paraná, atuando na programação e no desenvolvimento das soluções da equipe.'
   },
   {

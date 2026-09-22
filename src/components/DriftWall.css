@@ -14,3 +14,7 @@
 .drift-wall__tile:hover .drift-wall__overlay{opacity:0}
 @keyframes drift{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @media(max-width:700px){.drift-wall__plane{transform:translate(-50%,-50%) rotateX(8deg) rotateY(-8deg) translateZ(-80px)}.drift-wall{height:420px}}
+.drift-wall__icon{position:absolute;inset:0;display:grid;place-items:center;color:var(--dw-accent,#ff3346);font-size:58px;filter:drop-shadow(0 0 18px rgba(255,51,70,.16));z-index:1}
+.drift-wall__icon svg{width:62px;height:62px;display:block}
+.drift-wall__title{position:absolute;left:14px;bottom:12px;z-index:2;font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.92}
+.drift-wall__inner:has(.drift-wall__icon){background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.08)}

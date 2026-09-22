@@ -25,15 +25,22 @@ export default function DriftWall({ items = [], columns = 5, tileWidth = 180, ti
           <div className="drift-wall__col" key={c}>
             {[0, 1].map(copy => (
               <div className="drift-wall__track" key={copy}>
-                {col.map((item, index) => (
-                  <div className="drift-wall__tile" key={`${copy}-${index}`}>
-                    <div className="drift-wall__inner">
-                      <img src={item.image} alt={item.title || ''} loading="lazy" decoding="async" />
-                      <span className="drift-wall__overlay" />
-                      <b>{item.title}</b>
+                {col.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <div className="drift-wall__tile" key={`${copy}-${index}`}>
+                      <div className="drift-wall__inner" style={{ '--dw-accent': item.accent || '#ff3346' }}>
+                        {Icon ? (
+                          <span className="drift-wall__icon" aria-hidden="true"><Icon /></span>
+                        ) : (
+                          <img src={item.image} alt={item.title || ''} loading="lazy" decoding="async" />
+                        )}
+                        <span className="drift-wall__overlay" />
+                        <b>{item.title}</b>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ))}
           </div>
