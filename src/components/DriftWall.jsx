@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './DriftWall.css';
 
-export default function DriftWall({ items = [], columns = 5, tileWidth = 180, tileHeight = 110, gap = 14, tilt = 13, turn = -11, perspective = 1100, depth = 120, speed = 26, lift = 45, fade = .55, dim = .45, grayscale = false, overlayColor = '#06060b', className = '' }) {
+export default function DriftWall({ items = [], columns = 5, tileWidth = 180, tileHeight = 110, gap = 14, tilt = 13, turn = -11, perspective = 1100, depth = 120, speed = 26, lift = 45, fade = .55, dim = .45, grayscale = false, overlayColor = '#dce8f6', className = '' }) {
   const [visible, setVisible] = useState(true);
   const rootRef = useRef(null);
   const cols = useMemo(() => Array.from({ length: columns }, (_, c) => items.filter((_, i) => i % columns === c)), [items, columns]);
@@ -29,7 +29,7 @@ export default function DriftWall({ items = [], columns = 5, tileWidth = 180, ti
                   const Icon = item.icon;
                   return (
                     <div className="drift-wall__tile" key={`${copy}-${index}`}>
-                      <div className="drift-wall__inner" style={{ '--dw-accent': item.accent || '#ff3346' }}>
+                      <div className="drift-wall__inner" style={{ '--dw-accent': item.accent || '#6289b6' }}>
                         {Icon ? (
                           <span className="drift-wall__icon" aria-hidden="true"><Icon /></span>
                         ) : (
