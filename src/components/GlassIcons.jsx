@@ -1,9 +1,9 @@
 import './GlassIcons.css';
 
 const gradientMapping = {
-  red: 'linear-gradient(135deg, hsl(3, 90%, 50%), hsl(348, 90%, 50%))',
-  darkred: 'linear-gradient(135deg, hsl(350, 74%, 38%), hsl(3, 90%, 50%))',
-  crimson: 'linear-gradient(135deg, hsl(350, 84%, 42%), hsl(8, 88%, 56%))'
+  red: 'linear-gradient(135deg, #90b9e8, #5d94d5)',
+  darkred: 'linear-gradient(135deg, #9bbfe8, #6c9ed6)',
+  crimson: 'linear-gradient(135deg, #b0cceb, #7ba8dc)'
 };
 
 const GlassIcons = ({ items = [], className = '' }) => {
