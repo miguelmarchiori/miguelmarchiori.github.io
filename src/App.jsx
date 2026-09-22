@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import GhostFibers from './components/GhostFibers';
-import ParticleText from './components/ParticleText';
 import BorderGlow from './components/BorderGlow';
 import GlassSurface from './components/GlassSurface';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
-import FluidGlass from './components/FluidGlass';
 import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk, SiGit
 } from 'react-icons/si';
@@ -30,7 +27,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="navbar">
-        <GlassSurface width="100%" height="76px" borderRadius={0} backgroundOpacity={0.035} className="navbar-glass">
+        <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.68} className="navbar-glass">
           <div className="navbar-inner">
             <button className="brand" onClick={() => scrollTo('top')} aria-label="Voltar ao início">
               <span>&lt;</span>{portfolio.shortName.replace(' ', '')}<span>/&gt;</span>
@@ -38,52 +35,17 @@ export default function App() {
             <nav className={menu ? 'nav-links is-open' : 'nav-links'}>
               {nav.map(item => <button key={item} onClick={() => scrollTo(item.toLowerCase())}>{item}</button>)}
             </nav>
-            <button className="menu-btn" onClick={() => setMenu(!menu)} aria-label="Abrir menu"><i /><i /><i /></button>
+            <button className="menu-btn" onClick={() => setMenu(!menu)} aria-label="Abrir menu" aria-expanded={menu}><i /><i /><i /></button>
           </div>
         </GlassSurface>
       </header>
 
       <main>
         <section id="top" className="hero section-shell">
-          <GhostFibers
-            lineColor="#4b0b14"
-            glowColor="#e11d2e"
-            speed={0.12}
-            scale={2.2}
-            rotationSpeed={0.08}
-            layers={3}
-            waveAmplitude={0.014}
-            glowIntensity={1.25}
-            brightness={1.35}
-            blueBoost={1.15}
-            vignette={0.9}
-            grain={0.012}
-            dpr={0.75}
-            fps={30}
-          />
-          <FluidGlass className="hero-fluid-glass" backgroundColor="#07070b" />
-          <div className="hero-overlay" />
           <div className="hero-content hero-grid">
             <div className="hero-copy">
               <div className="eyebrow"><span className="status-dot" /> {portfolio.availability}</div>
-              <div className="particle-name">
-                <ParticleText
-                  text={portfolio.shortName}
-                  color="#ffffff"
-                  highlightColor="#ff3346"
-                  particleSize={1.25}
-                  density={8}
-                  scatter={80}
-                  pointerRepel={18}
-                  repelRadius={92}
-                  idleDrift={0.18}
-                  fontSize="clamp(2.6rem, 6.5vw, 5.9rem)"
-                  fontWeight={900}
-                  glow={false}
-                  fps={24}
-                />
-                <h1 className="hero-title">Miguel <span>Marchiori</span></h1>
-              </div>
+              <h1 className="hero-title">Miguel <span>Marchiori</span></h1>
               <p className="hero-role">{portfolio.role}</p>
               <p className="hero-headline">{portfolio.headline}</p>
               <p className="hero-bio">{portfolio.bio}</p>
@@ -91,7 +53,7 @@ export default function App() {
                 <button className="primary-btn" onClick={() => scrollTo('projetos')}>Ver projetos <span>↗</span></button>
                 <a className="ghost-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /> WhatsApp <span>↗</span></a>
               </div>
-              <GlassSurface width="100%" height="auto" borderRadius={20} backgroundOpacity={0.035} className="social-surface-wrap">
+              <GlassSurface width="100%" height="auto" borderRadius={20} backgroundOpacity={0.42} className="social-surface-wrap">
                 <div className="featured-socials" aria-label="Redes sociais e portfólio">
                   <a className="featured-social" href={portfolio.github} target="_blank" rel="noreferrer">
                     <span className="social-mark"><SiGithub /></span>
@@ -110,7 +72,7 @@ export default function App() {
                   </a>
                 </div>
               </GlassSurface>
-              <GlassSurface width="100%" height="auto" borderRadius={18} backgroundOpacity={0.028} className="hero-tech-surface">
+              <GlassSurface width="100%" height="auto" borderRadius={18} backgroundOpacity={0.38} className="hero-tech-surface">
                 <div className="hero-techs" aria-label="Principais linguagens">
                   {[['Python', SiPython], ['HTML', SiHtml5], ['CSS', FaCss3Alt], ['PHP', SiPhp], ['Java', SiOpenjdk]].map(([label, Icon]) => (
                     <span key={label} className="hero-tech"><Icon aria-hidden="true" /><b>{label}</b></span>
@@ -120,7 +82,7 @@ export default function App() {
             </div>
 
             <div className="hero-visual">
-              <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.025} className="portrait-card">
+              <GlassSurface width="100%" height="100%" borderRadius={36} backgroundOpacity={0.46} className="portrait-card">
                 <div className="portrait-wrap">
                   <div className="portrait-glow" />
                   <img src="/assets/miguel.png" alt="Miguel Marchiori" className="portrait" />
@@ -136,7 +98,7 @@ export default function App() {
         <section id="sobre" className="about section-shell section-pad">
           <div className="section-kicker">01 / SOBRE MIM</div>
           <div className="about-grid">
-            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.03}>
+            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.5}>
               <div className="about-intro-card">
                 <h2>Código, robótica e automação com uma pegada de <em>produto.</em></h2>
                 <p>{portfolio.bio}</p>
@@ -149,7 +111,7 @@ export default function App() {
                 </div>
               </div>
             </GlassSurface>
-            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.035}>
+            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.42}>
               <div className="about-card">
                 <div className="terminal-top"><span /><span /><span /></div>
                 <div className="terminal-code">
@@ -177,8 +139,8 @@ export default function App() {
           </GlassSurface>
           <div className="projects-grid">
             {projects.map((project, index) => (
-              <BorderGlow key={project.title} className="project-card" colors={index % 2 ? ['#7f1d1d', '#e11d2e', '#ff6b75'] : ['#991b1b', '#ef233c', '#ff8b95']} glowColor="0 85 62" glowIntensity={0.85} borderRadius={24}>
-                <GlassSurface width="100%" height="100%" borderRadius={23} backgroundOpacity={0.04} className="project-glass">
+              <BorderGlow key={project.title} className="project-card" colors={index % 2 ? ['#a6c8ef', '#5d9ce4', '#c1daf7'] : ['#8fb9e9', '#4a8dd9', '#bad5f4']} glowColor="211 75 60" glowIntensity={0.38} borderRadius={27} backgroundColor="transparent" fillOpacity={0.12}>
+                <GlassSurface width="100%" height="100%" borderRadius={26} backgroundOpacity={0.42} className="project-glass">
                   <a href={project.link} className="project-link">
                   <div className="project-image"><img src={project.image} alt="" loading="lazy" decoding="async" /></div>
                   <div className="project-info">
@@ -203,13 +165,13 @@ export default function App() {
               <p>Agora cada tecnologia aparece com seu logo oficial, mantendo o visual líquido e interativo.</p>
             </div>
           </GlassSurface>
-          <GlassSurface width="100%" height={500} borderRadius={30} backgroundOpacity={0.02}>
+          <GlassSurface width="100%" height={500} borderRadius={30} backgroundOpacity={0.48}>
             <div className="wall-wrap">
               <DriftWall items={skillWall} columns={5} tileWidth={168} tileHeight={110} gap={12} speed={25} grayscale={false} dim={0.42} lift={48} />
               <div className="wall-center"><span>TECNOLOGIAS</span><strong>ideias → código</strong></div>
             </div>
           </GlassSurface>
-          <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.03} className="language-icons-surface">
+          <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.44} className="language-icons-surface">
             <div className="language-icons-wrap">
               <div>
                 <small>LOGOS DA STACK</small>
@@ -242,7 +204,7 @@ export default function App() {
               itemTextColor="#151015"
               labelColor="#fff"
             />
-            <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.04} className="stack-copy-surface">
+            <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.46} className="stack-copy-surface">
               <div className="stack-copy">
                 <p>Minha base hoje está em programação web, automação e robótica. Java entra como a próxima linguagem em evolução.</p>
                 <div className="skill-list">{skills.map(skill => <span key={skill.label}>{skill.label}</span>)}</div>
@@ -255,7 +217,7 @@ export default function App() {
           <div className="section-kicker">04 / EXPERIÊNCIA</div>
           <div className="timeline">
             {experience.map((item, index) => (
-              <GlassSurface key={index} width="100%" height="auto" borderRadius={20} backgroundOpacity={0.035}>
+              <GlassSurface key={index} width="100%" height="auto" borderRadius={20} backgroundOpacity={0.48}>
                 <article className="exp-card">
                   <div className="exp-period">{item.period}</div>
                   <div><h3>{item.role}</h3><h4>{item.company}</h4><p>{item.description}</p></div>
@@ -266,17 +228,17 @@ export default function App() {
         </section>
 
         <section id="contato" className="contact section-shell section-pad">
-          <GlassSurface width="100%" height="auto" borderRadius={32} backgroundOpacity={0.045} className="contact-box">
+          <GlassSurface width="100%" height="auto" borderRadius={32} backgroundOpacity={0.5} className="contact-box">
             <div className="contact-glow" />
             <div className="contact-content">
               <div className="section-kicker">05 / CONTATO</div>
               <h2>Vamos transformar<br /><em>ideias em código.</em></h2>
               <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
               <div className="contact-actions">
-                <a className="email-link" href={portfolio.whatsapp} target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a>
-                <a className="phone-link" href={`tel:${portfolio.phone.replace(/[^0-9+]/g, '')}`}>{portfolio.phone}</a>
+                <a className="email-link" href={`mailto:${portfolio.email}`}>{portfolio.email} <span>↗</span></a>
+                <a className="phone-link" href={portfolio.whatsapp} target="_blank" rel="noreferrer">WhatsApp · {portfolio.phone} ↗</a>
               </div>
-              <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.028} className="contact-social-surface">
+              <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.42} className="contact-social-surface">
                 <div className="contact-social-content">
                   <span className="contact-social-label">ENCONTRE-ME</span>
                   <GlassIcons
