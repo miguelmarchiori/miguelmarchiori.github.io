@@ -1,4 +1,4 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×m“¢Ö¥¢ëiºÙbë5.glow-cursor {
+.glow-cursor {
   position: relative;
   width: 100%;
   height: 100%;
@@ -7,4 +7,17 @@ YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×m“¢Ö¥¢ëiºÙbë5.glow-cursor {
 
 .glow-cursor__canvas {
   position: absolute;
-  insÛkh‘éì¶»§q«^v[\‹Y]™[Îˆ›Û™NÃBˆ\Ù\‹\Ù[Xİˆ›Û™NÃBŸCBƒB‹™ÛİËXİ\œÛÜ—×ØÛÛ[ÃBˆÜÚ][Ûˆ™[]]™NÃBˆ‹Z[™^ˆNÃBˆÚYˆL	NÃBˆZYÚˆL	NÃBŸCB
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.glow-cursor__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
