@@ -7,6 +7,11 @@ Landing page em React + Vite com GhostFibers, ParticleText, GlassSurface, GlassI
 - Build command: `npm run build`
 - Publish directory: `dist`
 
+## GitHub Pages
+
+O deploy em `https://redmpy.github.io/portfolio/` é feito pelo GitHub Actions a cada atualização da branch `main`.
+O workflow usa `npm run build:pages` para configurar os caminhos dos arquivos estáticos.
+
 As versões das dependências estão fixadas para evitar alterações automáticas que possam quebrar o deploy.
 
 ### Compatibilidade importante

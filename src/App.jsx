@@ -19,10 +19,10 @@ const nav = [
   { label: 'Contato', id: 'contato' }
 ];
 const photos = [
-  { src: '/assets/portfolio/portfolio-1.webp', alt: 'Equipe de robótica trabalhando na programação do robô', title: 'Programação em equipe', note: 'Robótica · trabalho de bancada' },
-  { src: '/assets/portfolio/portfolio-2.webp', alt: 'Miguel Marchiori em uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' },
-  { src: '/assets/portfolio/portfolio-3.webp', alt: 'Medalhas da Olimpíada Brasileira de Robótica', title: 'Conquistas na OBR', note: 'Olimpíada Brasileira de Robótica' },
-  { src: '/assets/portfolio/portfolio-4.webp', alt: 'Detalhe do robô de competição com sensores e componentes eletrônicos', title: 'Robô em desenvolvimento', note: 'Montagem · testes' }
+  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-1.webp`, alt: 'Equipe de robótica trabalhando na programação do robô', title: 'Programação em equipe', note: 'Robótica · trabalho de bancada' },
+  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-2.webp`, alt: 'Miguel Marchiori em uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' },
+  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-3.webp`, alt: 'Medalhas da Olimpíada Brasileira de Robótica', title: 'Conquistas na OBR', note: 'Olimpíada Brasileira de Robótica' },
+  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-4.webp`, alt: 'Detalhe do robô de competição com sensores e componentes eletrônicos', title: 'Robô em desenvolvimento', note: 'Montagem · testes' }
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
@@ -134,7 +134,7 @@ export default function App() {
               <GlassSurface width="100%" height="100%" borderRadius={36} backgroundOpacity={0.46} className="portrait-card">
                 <div className="portrait-wrap">
                   <div className="portrait-glow" />
-                  <img src="/assets/miguel.png" alt="Miguel Marchiori" className="portrait" fetchPriority="high" decoding="async" />
+                  <img src={`${import.meta.env.BASE_URL}assets/miguel.png`} alt="Miguel Marchiori" className="portrait" fetchPriority="high" decoding="async" />
                   <div className="portrait-badge badge-one"><strong>OBR</strong><span>Campeão regional</span></div>
                   <div className="portrait-badge badge-two"><strong>PROGRAMADOR</strong><span>principal nas equipes</span></div>
                 </div>
