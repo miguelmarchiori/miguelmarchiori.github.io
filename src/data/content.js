@@ -10,7 +10,7 @@ export const portfolio = {
   headline: 'Transformo ideias em código, protótipos e soluções práticas.',
   bio: 'Programador júnior com experiência em web design, robótica e automação. Trabalho principalmente com Python, HTML, CSS e PHP, enquanto sigo evoluindo em Java. Também atuo como programador principal em equipes de competição de robótica.',
   email: 'marchioritimoteo@gmail.com',
-  github: 'https://github.com/redmpy',
+  github: 'https://github.com/miguelmarchiori',
   linkedin: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
   instagram: 'https://instagram.com/mg_marchiori',
   whatsapp: 'https://wa.me/5543988337338',

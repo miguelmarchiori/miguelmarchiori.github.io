@@ -106,7 +106,7 @@ export default function App() {
                 <div className="featured-socials" aria-label="Redes sociais e portfólio">
                   <a className="featured-social" href={portfolio.github} target="_blank" rel="noreferrer">
                     <span className="social-mark"><SiGithub /></span>
-                    <span className="social-copy"><small>GitHub</small><strong>@redmpy</strong></span>
+                    <span className="social-copy"><small>GitHub</small><strong>@miguelmarchiori</strong></span>
                     <span className="social-arrow">↗</span>
                   </a>
                   <a className="featured-social" href={portfolio.linkedin} target="_blank" rel="noreferrer">

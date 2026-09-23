@@ -9,8 +9,8 @@ Landing page em React + Vite com GhostFibers, ParticleText, GlassSurface, GlassI
 
 ## GitHub Pages
 
-O deploy em `https://redmpy.github.io/portfolio/` é feito pelo GitHub Actions a cada atualização da branch `main`.
-O workflow usa `npm run build:pages` para configurar os caminhos dos arquivos estáticos.
+O site está publicado em `https://miguelmarchiori.github.io/`.
+O deploy é feito pelo GitHub Actions a cada atualização da branch `main`; o build gera os arquivos para a raiz do domínio.
 
 As versões das dependências estão fixadas para evitar alterações automáticas que possam quebrar o deploy.
 
