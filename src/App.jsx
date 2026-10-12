@@ -9,12 +9,13 @@ import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
 } from 'react-icons/si';
 import { FaLinkedinIn, FaCss3Alt } from 'react-icons/fa6';
-import { portfolio, skills, skillWall, areas, experience } from './data/content';
+import { portfolio, skills, skillWall, areas, experience, projects } from './data/content';
 
 const nav = [
   { label: 'Sobre', id: 'sobre' },
   { label: 'Atuação', id: 'atuacao' },
   { label: 'Stack', id: 'stack' },
+  { label: 'Projetos', id: 'projetos' },
   { label: 'Fotos', id: 'fotos' },
   { label: 'Contato', id: 'contato' }
 ];
@@ -253,6 +254,31 @@ export default function App() {
                 <div className="skill-list">{skills.map(skill => <span key={skill.label}>{skill.label}</span>)}</div>
               </div>
             </GlassSurface>
+          </div>
+        </section>
+
+        <section id="projetos" className="projects-section section-shell section-pad">
+          <div className="section-kicker">04 / PROJETOS</div>
+          <div className="section-heading">
+            <h2>Projetos que<br /><em>ganham vida.</em></h2>
+            <p>Trabalhos de desenvolvimento web que transformam necessidades reais em experiências digitais.</p>
+          </div>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <article className="project-card" key={project.name}>
+                <div className="project-preview project-preview-agropet" aria-hidden="true">
+                  <span className="project-window-dot" /><span className="project-window-dot" /><span className="project-window-dot" />
+                  <div className="project-preview-content"><span>AGRO PET</span><strong>RODRIGUES</strong><small>AGROPECUÁRIA · PET SHOP</small><div className="project-preview-lines"><i /><i /><i /></div></div>
+                </div>
+                <div className="project-card-body">
+                  <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-tags">{project.technologies.map(technology => <span key={technology}>{technology}</span>)}</div>
+                  <a className="project-link" href={project.url} target="_blank" rel="noreferrer">Visitar site <span>↗</span></a>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
