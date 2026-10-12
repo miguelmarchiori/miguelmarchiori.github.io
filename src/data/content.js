@@ -51,7 +51,17 @@ export const areas = [
   'Projetos de competição'
 ];
 
-export const projects = [\n  {\n    name: 'Agro Pet Rodrigues',\n    category: 'Desenvolvimento web',\n    description: 'Site institucional para apresentar a empresa, sua identidade e seus serviços em uma presença digital clara e acessível.',\n    url: 'https://agro-pet-rodrigues.vercel.app',\n    technologies: ['Web Design', 'Frontend', 'Responsivo']\n  }\n];\n\nexport const experience = [
+export const projects = [
+  {
+    name: 'Agro Pet Rodrigues',
+    category: 'Desenvolvimento web',
+    description: 'Site institucional para apresentar a empresa, sua identidade e seus serviços em uma presença digital clara e acessível.',
+    url: 'https://agro-pet-rodrigues.vercel.app',
+    technologies: ['Web Design', 'Frontend', 'Responsivo']
+  }
+];
+
+export const experience = [
   {
     period: 'OBR · REGIONAL',
     role: 'Programador principal · Quarteto Fantástico',
