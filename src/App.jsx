@@ -3,7 +3,6 @@ import GlassSurface from './components/GlassSurface';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
-import MiguelAvatar from './components/MiguelAvatar';
 const FloatingLines = lazy(() => import('./components/FloatingLines'));
 const GlowCursor = lazy(() => import('./components/GlowCursor'));
 import {
@@ -30,17 +29,8 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [effectsEnabled, setEffectsEnabled] = useState(false);
   const [cursorEnabled, setCursorEnabled] = useState(false);
-  const [activeLook, setActiveLook] = useState(0);
-  const [glassesOn, setGlassesOn] = useState(true);
-  const [outfitIndex, setOutfitIndex] = useState(0);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme') || 'light'; } catch { return 'light'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme', theme); } catch {} }, [theme]);
-  const looks = [
-    { name: 'Modo programador', tone: 'blue', description: 'Entre linhas de código, interfaces e ideias que viram projetos.' },
-    { name: 'Modo robótica', tone: 'green', description: 'Programação principal, testes e estratégia: robótica é trabalho em equipe.' },
-    { name: 'Modo criativo', tone: 'warm', description: 'Design, criatividade e tecnologia trabalhando juntos para criar algo útil.' }
-  ];
-  const changeLook = direction => setActiveLook(current => (current + direction + looks.length) % looks.length);
   useEffect(() => {
     const canRender = window.matchMedia('(prefers-reduced-motion: no-preference)');
     const canShowCursor = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
