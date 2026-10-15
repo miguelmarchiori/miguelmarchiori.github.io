@@ -29,6 +29,14 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [effectsEnabled, setEffectsEnabled] = useState(false);
   const [cursorEnabled, setCursorEnabled] = useState(false);
+  const [activeLook, setActiveLook] = useState(0);
+  const [glassesOn, setGlassesOn] = useState(false);
+  const looks = [
+    { name: 'Modo programador', tone: 'blue', description: 'Entre linhas de código, interfaces e ideias que viram projetos.' },
+    { name: 'Modo robótica', tone: 'green', description: 'Programação principal, testes e estratégia: robótica é trabalho em equipe.' },
+    { name: 'Modo criativo', tone: 'warm', description: 'Design, criatividade e tecnologia trabalhando juntos para criar algo útil.' }
+  ];
+  const changeLook = direction => setActiveLook(current => (current + direction + looks.length) % looks.length);
   useEffect(() => {
     const canRender = window.matchMedia('(prefers-reduced-motion: no-preference)');
     const canShowCursor = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
@@ -99,6 +107,10 @@ export default function App() {
               <p className="hero-role">{portfolio.role}</p>
               <p className="hero-headline">{portfolio.headline}</p>
               <p className="hero-bio">{portfolio.bio}</p>
+              <div className="look-description" aria-live="polite">
+                <span className="look-description-label">AGORA · {looks[activeLook].name.toUpperCase()}</span>
+                <p>{looks[activeLook].description}</p>
+              </div>
               <div className="hero-actions">
               <button className="primary-btn" onClick={() => scrollTo('atuacao')}>Ver atuação <span>↗</span></button>
                 <a className="ghost-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /> WhatsApp <span>↗</span></a>
@@ -135,7 +147,14 @@ export default function App() {
               <GlassSurface width="100%" height="100%" borderRadius={36} backgroundOpacity={0.46} className="portrait-card">
                 <div className="portrait-wrap">
                   <div className="portrait-glow" />
-                  <img src={`${import.meta.env.BASE_URL}assets/miguel.png`} alt="Miguel Marchiori" className="portrait" fetchPriority="high" decoding="async" />
+                  <img src={`${import.meta.env.BASE_URL}assets/miguel.png`} alt="Miguel Marchiori" className={`portrait look-${looks[activeLook].tone}`} fetchPriority="high" decoding="async" />
+                  {glassesOn && <div className="portrait-glasses" aria-hidden="true"><span /><i /><span /></div>}
+                  <div className="look-controls" aria-label="Personalizar visual">
+                    <button type="button" className="look-arrow" onClick={() => changeLook(-1)} aria-label="Visual anterior">←</button>
+                    <span className="look-counter">{String(activeLook + 1).padStart(2, '0')} / {String(looks.length).padStart(2, '0')}</span>
+                    <button type="button" className="look-arrow" onClick={() => changeLook(1)} aria-label="Próximo visual">→</button>
+                    <button type="button" className={`glasses-toggle ${glassesOn ? 'is-active' : ''}`} onClick={() => setGlassesOn(value => !value)} aria-pressed={glassesOn}>{glassesOn ? 'Óculos: ON' : 'Adicionar óculos'}</button>
+                  </div>
                   <div className="portrait-badge badge-one"><strong>OBR</strong><span>Campeão regional</span></div>
                   <div className="portrait-badge badge-two"><strong>PROGRAMADOR</strong><span>principal nas equipes</span></div>
                 </div>
