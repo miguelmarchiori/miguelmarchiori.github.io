@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 
+import './TechText.css';
+
 
 const LABEL_FONT = '10px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
 const FALLOFF_STEPS = 8;
