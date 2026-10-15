@@ -8,7 +8,7 @@ export const portfolio = {
   location: 'Brasil',
   availability: 'Web design · robótica · automação',
   headline: 'Transformo ideias em código, protótipos e soluções práticas.',
-  bio: 'Programador júnior com experiência em web design, robótica e automação. Trabalho principalmente com Python, HTML, CSS e PHP, enquanto sigo evoluindo em Java. Também atuo como programador principal em equipes de competição de robótica.',
+  bio: 'Sou programador em formação e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação, com experiência em Python, HTML, CSS e PHP e evolução contínua em Java. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica e atuo como programador principal em equipes de competição. Programar é minha paixão.',
   email: 'marchioritimoteo@gmail.com',
   github: 'https://github.com/miguelmarchiori',
   linkedin: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
