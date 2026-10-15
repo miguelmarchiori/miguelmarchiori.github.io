@@ -3,6 +3,7 @@ import GlassSurface from './components/GlassSurface';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
+import MiguelAvatar from './components/MiguelAvatar';
 const FloatingLines = lazy(() => import('./components/FloatingLines'));
 const GlowCursor = lazy(() => import('./components/GlowCursor'));
 import {
@@ -30,7 +31,10 @@ export default function App() {
   const [effectsEnabled, setEffectsEnabled] = useState(false);
   const [cursorEnabled, setCursorEnabled] = useState(false);
   const [activeLook, setActiveLook] = useState(0);
-  const [glassesOn, setGlassesOn] = useState(false);
+  const [glassesOn, setGlassesOn] = useState(true);
+  const [outfitIndex, setOutfitIndex] = useState(0);
+  const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme') || 'light'; } catch { return 'light'; } });
+  useEffect(() => { try { window.localStorage.setItem('portfolio-theme', theme); } catch {} }, [theme]);
   const looks = [
     { name: 'Modo programador', tone: 'blue', description: 'Entre linhas de código, interfaces e ideias que viram projetos.' },
     { name: 'Modo robótica', tone: 'green', description: 'Programação principal, testes e estratégia: robótica é trabalho em equipe.' },
@@ -69,7 +73,7 @@ export default function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app`} data-theme={theme}>
       <div className="ambient-background" aria-hidden="true">
         {effectsEnabled && <Suspense fallback={null}>
           <FloatingLines className="ambient-floating-lines" enabledWaves={['top', 'middle', 'bottom']} lineCount={[4, 7, 4]} lineDistance={[8, 6, 5]} animationSpeed={0.38} interactive bendRadius={4.5} bendStrength={-0.28} mouseDamping={0.045} parallax parallaxStrength={0.1} linesGradient={['#c9e4fb', '#c6e9df', '#d7dcf8']} mixBlendMode="normal" backgroundColor="#ffffff" lightMode />
@@ -81,6 +85,7 @@ export default function App() {
             <button className="brand" onClick={() => scrollTo('top')} aria-label="Voltar ao início">
               <span>&lt;</span>{portfolio.shortName.replace(' ', '')}<span>/&gt;</span>
             </button>
+            <button type="button" className="theme-toggle" onClick={() => setTheme(value => value === "light" ? "dark" : "light")} aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}>{theme === "light" ? "☾" : "☀"}</button>
             <button className={`menu-btn ${menu ? 'is-open' : ''}`} onClick={() => setMenu(!menu)} aria-label={menu ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menu} aria-controls="primary-navigation"><i /><i /><i /></button>
           </div>
         </GlassSurface>
@@ -100,68 +105,16 @@ export default function App() {
           <div className="hero-marquee" aria-hidden="true">
             <div className="hero-marquee-track"><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span></div>
           </div>
-          <div className="hero-content hero-grid">
-            <div className="hero-copy">
-              <div className="eyebrow"><span className="status-dot" /> {portfolio.availability}</div>
-              <h1 className="hero-title">Miguel <span>Marchiori</span></h1>
-              <p className="hero-role">{portfolio.role}</p>
-              <p className="hero-headline">{portfolio.headline}</p>
-              <p className="hero-bio">{portfolio.bio}</p>
-              <div className="look-description" aria-live="polite">
-                <span className="look-description-label">AGORA · {looks[activeLook].name.toUpperCase()}</span>
-                <p>{looks[activeLook].description}</p>
-              </div>
-              <div className="hero-actions">
-              <button className="primary-btn" onClick={() => scrollTo('atuacao')}>Ver atuação <span>↗</span></button>
-                <a className="ghost-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /> WhatsApp <span>↗</span></a>
-              </div>
-              <GlassSurface width="100%" height="auto" borderRadius={20} backgroundOpacity={0.42} className="social-surface-wrap">
-                <div className="featured-socials" aria-label="Redes sociais e portfólio">
-                  <a className="featured-social" href={portfolio.github} target="_blank" rel="noreferrer">
-                    <span className="social-mark"><SiGithub /></span>
-                    <span className="social-copy"><small>GitHub</small><strong>@miguelmarchiori</strong></span>
-                    <span className="social-arrow">↗</span>
-                  </a>
-                  <a className="featured-social" href={portfolio.linkedin} target="_blank" rel="noreferrer">
-                    <span className="social-mark"><FaLinkedinIn /></span>
-                    <span className="social-copy"><small>LinkedIn</small><strong>Miguel Marchiori</strong></span>
-                    <span className="social-arrow">↗</span>
-                  </a>
-                  <a className="featured-social" href={portfolio.instagram} target="_blank" rel="noreferrer">
-                    <span className="social-mark"><SiInstagram /></span>
-                    <span className="social-copy"><small>Instagram</small><strong>@mg_marchiori</strong></span>
-                    <span className="social-arrow">↗</span>
-                  </a>
-                </div>
-              </GlassSurface>
-              <GlassSurface width="100%" height="auto" borderRadius={18} backgroundOpacity={0.38} className="hero-tech-surface">
-                <div className="hero-techs" aria-label="Principais linguagens">
-                  {[['Python', SiPython], ['HTML', SiHtml5], ['CSS', FaCss3Alt], ['PHP', SiPhp], ['Java', SiOpenjdk]].map(([label, Icon]) => (
-                    <span key={label} className="hero-tech"><Icon aria-hidden="true" /><b>{label}</b></span>
-                  ))}
-                </div>
-              </GlassSurface>
-            </div>
-
-            <div className="hero-visual">
-              <GlassSurface width="100%" height="100%" borderRadius={36} backgroundOpacity={0.46} className="portrait-card">
-                <div className="portrait-wrap">
-                  <div className="portrait-glow" />
-                  <img src={`${import.meta.env.BASE_URL}assets/miguel.png`} alt="Miguel Marchiori" className={`portrait look-${looks[activeLook].tone}`} fetchPriority="high" decoding="async" />
-                  {glassesOn && <div className="portrait-glasses" aria-hidden="true"><span /><i /><span /></div>}
-                  <div className="look-controls" aria-label="Personalizar visual">
-                    <button type="button" className="look-arrow" onClick={() => changeLook(-1)} aria-label="Visual anterior">←</button>
-                    <span className="look-counter">{String(activeLook + 1).padStart(2, '0')} / {String(looks.length).padStart(2, '0')}</span>
-                    <button type="button" className="look-arrow" onClick={() => changeLook(1)} aria-label="Próximo visual">→</button>
-                    <button type="button" className={`glasses-toggle ${glassesOn ? 'is-active' : ''}`} onClick={() => setGlassesOn(value => !value)} aria-pressed={glassesOn}>{glassesOn ? 'Óculos: ON' : 'Adicionar óculos'}</button>
-                  </div>
-                  <div className="portrait-badge badge-one"><strong>OBR</strong><span>Campeão regional</span></div>
-                  <div className="portrait-badge badge-two"><strong>PROGRAMADOR</strong><span>principal nas equipes</span></div>
-                </div>
-              </GlassSurface>
-            </div>
-          </div>
-          <div className="hero-scroll"><span /> SCROLL</div>
+          <div className="hero-content hero-grid hero-refresh"><div className="hero-copy">
+            <div className="eyebrow"><span className="status-dot" /> {portfolio.availability}</div><p className="hero-kicker">OLÁ, EU SOU</p>
+            <h1 className="hero-title">Miguel<span className="hero-period">.</span></h1><p className="hero-role">Programador fullstack, curioso por natureza.</p>
+            <p className="hero-bio">Sou um programador Fullstack com mais de 5 linguagens de programação, tenho diversos projetos que podem ser encontrados abaixo, sou iniciação científica da UTFPR, campeão regional norte de robótica na Olimpíada Brasileira de Robótica. Programar é a minha paixão.</p>
+            <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
+            <div className="hero-mini-note"><span className="status-dot" /> Atualmente transformando café em código (e robôs em campeões).</div></div>
+            <div className="hero-visual hero-avatar-stage"><span className="avatar-orbit orbit-one" aria-hidden="true" /><span className="avatar-orbit orbit-two" aria-hidden="true" /><div className="avatar-name">Miguel<span>.</span></div>
+              <div className="avatar-display"><button type="button" className="look-arrow avatar-arrow" onClick={() => setOutfitIndex(i => (i + 2) % 3)} aria-label="Visual anterior">←</button><MiguelAvatar outfitIndex={outfitIndex} glassesOn={glassesOn} /><button type="button" className="look-arrow avatar-arrow" onClick={() => setOutfitIndex(i => (i + 1) % 3)} aria-label="Próximo visual">→</button></div>
+              <div className="avatar-caption"><span className="avatar-live-dot" /> {["Modo programador", "Modo robótica", "Modo criativo"][outfitIndex]} <span>·</span> roupa {outfitIndex + 1}/3</div><button type="button" className="glasses-toggle avatar-glasses-toggle" onClick={() => setGlassesOn(value => !value)} aria-pressed={glassesOn}>{glassesOn ? "Tirar os óculos" : "Colocar os óculos"}</button></div></div>
+          <div className="hero-scroll"><span /> ROLE PARA DESCOBRIR</div>
         </section>
 
         <section id="sobre" className="about section-shell section-pad">
