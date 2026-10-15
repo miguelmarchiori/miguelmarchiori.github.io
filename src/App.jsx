@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import GlassSurface from './components/GlassSurface';
+import TechText from './components/TechText';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
@@ -97,11 +98,11 @@ export default function App() {
           </div>
           <div className="hero-content hero-grid hero-refresh"><div className="hero-copy">
             <div className="eyebrow"><span className="status-dot" /> {portfolio.availability}</div><p className="hero-kicker">OLÁ, EU SOU</p>
-            <h1 className="hero-title">Miguel<span className="hero-period">.</span></h1><p className="hero-role">Programador fullstack, curioso por natureza.</p>
+            <div className="hero-tech-name"><TechText text="MIGUEL MARCHIORI" fontWeight={800} fontSize={128} letterSpacing={-0.055} color="currentColor" accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div><p className="hero-role">Programador fullstack, curioso por natureza.</p>
             <p className="hero-bio">Sou um programador Fullstack com mais de 5 linguagens de programação, tenho diversos projetos que podem ser encontrados abaixo, sou iniciação científica da UTFPR, campeão regional norte de robótica na Olimpíada Brasileira de Robótica. Programar é a minha paixão.</p>
             <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
             <div className="hero-mini-note"><span className="status-dot" /> Atualmente transformando café em código (e robôs em campeões).</div></div>
-            <div className="hero-visual hero-avatar-stage hero-photo-stage"><span className="avatar-orbit orbit-one" aria-hidden="true" /><span className="avatar-orbit orbit-two" aria-hidden="true" /><div className="avatar-name">Miguel<span>.</span></div><img className="hero-profile-photo" src={`${import.meta.env.BASE_URL}assets/portfolio/portfolio-2.webp`} alt="Miguel Marchiori em uniforme da equipe de robótica" /></div>
+            <div className="hero-visual hero-avatar-stage hero-photo-stage"><span className="avatar-orbit orbit-one" aria-hidden="true" /><span className="avatar-orbit orbit-two" aria-hidden="true" /><img className="hero-profile-photo" src={`${import.meta.env.BASE_URL}assets/portfolio/portfolio-2.webp`} alt="Miguel Marchiori em uniforme da equipe de robótica" /></div>
           </div>
           <div className="hero-scroll"><span /> ROLE PARA DESCOBRIR</div>
         </section>
