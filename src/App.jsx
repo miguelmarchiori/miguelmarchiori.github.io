@@ -102,6 +102,7 @@ export default function App() {
             <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
             <div className="hero-mini-note"><span className="status-dot" /> Atualmente transformando café em código (e robôs em campeões).</div></div>
             <div className="hero-visual hero-avatar-stage hero-photo-stage"><span className="avatar-orbit orbit-one" aria-hidden="true" /><span className="avatar-orbit orbit-two" aria-hidden="true" /><div className="avatar-name">Miguel<span>.</span></div><img className="hero-profile-photo" src={`${import.meta.env.BASE_URL}assets/portfolio/portfolio-2.webp`} alt="Miguel Marchiori em uniforme da equipe de robótica" /></div>
+          </div>
           <div className="hero-scroll"><span /> ROLE PARA DESCOBRIR</div>
         </section>
 
