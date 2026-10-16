@@ -141,7 +141,7 @@ export default function App() {
           <div className="section-kicker">01 / SOBRE MIM</div>
           <div className="about-grid about-story-grid">
             <div className="about-story-copy">
-              <h2 className="about-story-title"><SplitFlapText text="COMO COMECEI!" tileColor="#17243a" textColor="var(--text)" fontSize="clamp(16px, 2.4vw, 30px)" gap={3} tileRadius={5} flipDuration={0.12} stagger={0.045} depth={0.35} /></h2>
+              <h2 className="about-story-title"><SplitFlapText text="COMO COMECEI!" tileColor="#17243a" textColor="#f8fafc" fontSize="clamp(16px, 2.4vw, 30px)" gap={3} tileRadius={5} flipDuration={0.12} stagger={0.045} depth={0.35} /></h2>
               <p>Eu sou o Miguel, tenho interesse por tecnologia desde cedo e gosto de ver as ideias saírem do papel, seja num site, num código ou num robô. A robótica me levou ao título de campeão regional da OBR e me ensinou a trabalhar em equipe, liderar e resolver problemas sob pressão. Hoje estudo mais sobre programação e web design, quero transformar essa paixão em carreira na engenharia da computação.</p>
             </div>
             <div className="about-story-photo">
