@@ -57,6 +57,12 @@ export default function App() {
           opacity={theme === 'dark' ? 0.58 : 0.52}
           speed={0.24}
           depth={0.9}
+          backgroundColor="rgba(0, 0, 0, 0)"
+          preset="silk"
+          pattern="dot"
+          wave="silk"
+          interactive={true}
+          intro={true}
         />
       </div>
       <header className="navbar">
