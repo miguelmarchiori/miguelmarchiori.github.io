@@ -1021,3 +1021,53 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
     contain-intrinsic-size: auto 760px;
   }
 }
+
+
+/* Modo de desempenho: reduzir filtros caros nas seções abaixo do hero */
+/* Evita recalcular blur do conteúdo atrás de cada cartão durante a rolagem. */
+.app main .glass-surface,
+.app main .glass-surface--svg,
+.app main .glass-surface--webgl,
+.app main .glass-surface--fallback,
+.app main .experience-item,
+.app main .project-card,
+.app main .photo-card,
+.app main .stack-copy-surface,
+.app main .contact-box,
+.app main .contact-social-surface {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08) !important;
+}
+.app main .glass-surface--svg,
+.app main .glass-surface--webgl,
+.app main .glass-surface--fallback {
+  background: rgba(120, 145, 175, .08);
+}
+.app[data-theme="dark"] main .glass-surface--svg,
+.app[data-theme="dark"] main .glass-surface--webgl,
+.app[data-theme="dark"] main .glass-surface--fallback {
+  background: rgba(25, 40, 62, .76);
+}
+.app main .experience-item,
+.app main .project-card,
+.app main .photo-card,
+.app main .drift-wall__inner {
+  transition: border-color .18s ease, opacity .18s ease !important;
+}
+.app main .experience-item:hover,
+.app main .project-card:hover,
+.app main .photo-card:hover {
+  transform: none !important;
+}
+@media (max-width: 700px) {
+  .app main .glass-surface,
+  .app main .experience-item,
+  .app main .project-card,
+  .app main .photo-card,
+  .app main .contact-box {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+}
