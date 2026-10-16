@@ -1,0 +1,188 @@
+.rb-carousel {
+  --rb-ink: #f7f9fc;
+  --rb-muted: rgba(247, 249, 252, .78);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  outline: none;
+  color: var(--rb-ink);
+}
+.rb-carousel--light {
+  --rb-ink: #24364d;
+  --rb-muted: rgba(36, 54, 77, .78);
+}
+.rb-carousel__stage {
+  position: relative;
+  width: 100%;
+  height: calc(min(var(--rb-card-width), 82vw) * var(--rb-card-height-ratio));
+  min-height: 340px;
+  max-height: 450px;
+  perspective: 1100px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rb-carousel__slide {
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(var(--rb-card-width), 82vw);
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--rb-radius);
+  text-align: left;
+  color: var(--rb-ink);
+  background: #202b3a;
+  box-shadow: 0 24px 55px rgba(9, 20, 36, .25);
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform .48s cubic-bezier(.2,.75,.25,1), opacity .35s ease, filter .35s ease;
+  will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent;
+}
+.rb-carousel__slide.is-active {
+  cursor: default;
+  box-shadow: 0 28px 64px rgba(9, 20, 36, .3), 0 0 0 1px rgba(255,255,255,.12);
+}
+.rb-carousel__slide:focus-visible {
+  outline: 2px solid #5da4ff;
+  outline-offset: 4px;
+}
+.rb-carousel__image-wrap,
+.rb-carousel__image-wrap img,
+.rb-carousel__scrim {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.rb-carousel__image-wrap img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform .6s ease;
+}
+.rb-carousel__slide.is-active:hover .rb-carousel__image-wrap img {
+  transform: scale(1.035);
+}
+.rb-carousel__scrim {
+  background: linear-gradient(180deg, rgba(6, 14, 27, .02) 10%, rgba(6, 14, 27, .16) 40%, rgba(6, 14, 27, .88) 100%);
+}
+.rb-carousel__content {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(22px, 3vw, 34px);
+}
+.rb-carousel__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+  background: rgba(13, 28, 49, .42);
+  color: #fff;
+  font: 600 9px var(--mono);
+  letter-spacing: .12em;
+}
+.rb-carousel__title {
+  display: block;
+  color: #fff;
+  font: 700 clamp(25px, 3vw, 38px)/1.08 var(--display);
+  letter-spacing: -.045em;
+}
+.rb-carousel__description {
+  display: block;
+  max-width: 34ch;
+  color: rgba(255,255,255,.84);
+  font: 400 12px/1.75 var(--sans);
+}
+.rb-carousel__rim {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,.17);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.rb-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+.rb-carousel__arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0 0 4px;
+  border: 1px solid rgba(114, 145, 181, .28);
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  color: #31577f;
+  font: 300 30px/1 var(--sans);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.rb-carousel__arrow:hover {
+  background: rgba(255,255,255,.9);
+  transform: scale(1.06);
+}
+.rb-carousel__dots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.rb-carousel__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(91, 121, 155, .32);
+  cursor: pointer;
+  transition: width .25s ease, background .25s ease;
+}
+.rb-carousel__dot.is-active {
+  width: 24px;
+  border-radius: 999px;
+  background: #1672e8;
+}
+@media (max-width: 700px) {
+  .rb-carousel__stage {
+    height: clamp(330px, 105vw, 420px);
+    min-height: 330px;
+  }
+  .rb-carousel__slide {
+    width: min(var(--rb-card-width), 82vw);
+  }
+  .rb-carousel__content {
+    padding: 22px;
+    gap: 9px;
+  }
+  .rb-carousel__description {
+    font-size: 11px;
+    line-height: 1.65;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-carousel__slide,
+  .rb-carousel__image-wrap img,
+  .rb-carousel__arrow,
+  .rb-carousel__dot {
+    transition: none !important;
+  }
+}
