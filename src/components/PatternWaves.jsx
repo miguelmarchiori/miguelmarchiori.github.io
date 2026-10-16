@@ -30,7 +30,7 @@ void main() {
   vec2 cell = fract(grid) - 0.5;
   float displacement = h * 28.0;
   cell.y += displacement / uSpacing;
-  float radius = 0.13 + 0.2 * (0.5 + 0.5 * sin(h * 25.0));
+  float radius = 0.20 + 0.22 * (0.5 + 0.5 * sin(h * 25.0));
   float dotShape = 1.0 - smoothstep(radius - 0.07, radius + 0.07, length(cell));
   float highlight = clamp(0.42 + h * 5.5 + cos(p.x * 4.0 + t) * 0.12, 0.12, 0.9);
   float edgeFade = smoothstep(0.0, 0.18, uv.x) * (1.0 - smoothstep(0.82, 1.0, uv.x));
@@ -78,7 +78,7 @@ export default function PatternWaves({
     container.appendChild(canvas);
 
     const parseHex = value => {
-      const match = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(value);
+      const match = /^#?([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})$/i.exec(value);
       return match ? match.slice(1).map(part => parseInt(part, 16) / 255) : [0.44, 0.6, 0.8];
     };
     const uniforms = {
