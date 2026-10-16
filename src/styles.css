@@ -843,7 +843,7 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 /* Descer o bloco inteiro de texto no desktop, sem mover a foto ou alterar o celular. */
 @media (min-width: 701px) {
   .hero-refresh .hero-copy {
-    transform: translateY(-20px);
+    transform: translateY(-50px);
   }
 }
 
