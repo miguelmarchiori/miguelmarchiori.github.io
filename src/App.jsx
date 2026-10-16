@@ -193,7 +193,8 @@ export default function App() {
             arrows={true}
             loop={true}
             theme={theme}
-          />        </section>
+          />
+        </section>
 
         <section id="stack" className="stack-section section-shell section-pad">
           <div className="section-kicker">03 / STACK</div>
