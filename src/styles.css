@@ -1133,3 +1133,28 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 .about-story-title { margin: 0 0 20px; line-height: 1; }
 .about-story-title .split-flap-text { vertical-align: middle; }
 @media (max-width: 700px) { .about-story-title { margin-bottom: 17px; } }
+
+
+/* Título rotativo da seção de robótica */
+.robotics-rotating-title {
+  min-width: 0;
+  max-width: 100%;
+  line-height: 1.2 !important;
+  overflow: hidden;
+}
+.robotics-rotating-title .text-rotate-wrap {
+  font-size: clamp(30px, 4.2vw, 56px);
+  font-weight: 800;
+  letter-spacing: -.055em;
+  max-width: 100%;
+}
+.robotics-rotating-title .text-rotate-highlight {
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(22, 114, 232, .2);
+}
+@media (max-width: 700px) {
+  .robotics-rotating-title .text-rotate-wrap {
+    font-size: clamp(23px, 7vw, 36px);
+    letter-spacing: -.045em;
+  }
+}
