@@ -1127,3 +1127,9 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .about-story-copy > p { font-size: 14px; line-height: 1.8; }
   .about-story-photo img { min-height: 0; height: clamp(260px, 75vw, 360px); }
 }
+
+
+/* Split-flap heading for the personal story */
+.about-story-title { margin: 0 0 20px; line-height: 1; }
+.about-story-title .split-flap-text { vertical-align: middle; }
+@media (max-width: 700px) { .about-story-title { margin-bottom: 17px; } }
