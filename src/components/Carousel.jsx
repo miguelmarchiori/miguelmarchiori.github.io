@@ -20,6 +20,7 @@ export default function Carousel({
 }) {
   const [active, setActive] = useState(() => Math.max(0, Math.min(initialIndex, items.length - 1)));
   const [dragStart, setDragStart] = useState(null);
+  const cardWidth = typeof baseWidth === 'number' ? baseWidth : (parseFloat(baseWidth) || 340);
   if (!items.length) return null;
 
   const go = direction => {
@@ -80,7 +81,7 @@ export default function Carousel({
                 opacity: visible ? (Math.abs(distance) === 0 ? 1 : 0.56) : 0,
                 visibility: visible ? 'visible' : 'hidden',
                 pointerEvents: visible ? 'auto' : 'none',
-                transform: `translateX(calc(var(--rb-distance) * (var(--rb-card-width) * .68 + var(--rb-gap)))) scale(${distance === 0 ? 1 : .86}) rotateY(${effect === 'tilt' ? distance * -13 : 0}deg)`
+                transform: `translateX(${distance * (cardWidth * .68 + gap)}px) scale(${distance === 0 ? 1 : .86}) rotateY(${effect === 'tilt' ? distance * -13 : 0}deg)`
               }}
             >
               <span className="rb-carousel__image-wrap">
