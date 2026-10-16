@@ -3,6 +3,7 @@ import GlassSurface from './components/GlassSurface';
 import TechText from './components/TechText';
 import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
+import RotatingText from './components/RotatingText';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
@@ -151,7 +152,7 @@ export default function App() {
         <section id="atuacao" className="experience section-shell section-pad">
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
-            <h2>Código em campo,<br /><em>feito em equipe.</em></h2>
+            <h2 className="robotics-rotating-title"><RotatingText texts={['ROBÓTICA: FTC', 'ROBÓTICA: OBR', 'ROBÓTICA: FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
           <div className="experience-grid">
