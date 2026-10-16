@@ -81,7 +81,7 @@ export default function Carousel({
                 opacity: visible ? (Math.abs(distance) === 0 ? 1 : 0.56) : 0,
                 visibility: visible ? 'visible' : 'hidden',
                 pointerEvents: visible ? 'auto' : 'none',
-                transform: `translateX(${distance * (cardWidth * .68 + gap)}px) scale(${distance === 0 ? 1 : .86}) rotateY(${effect === 'tilt' ? distance * -13 : 0}deg)`
+                transform: `translateX(calc(-50% + ${distance * (cardWidth * .68 + gap)}px)) scale(${distance === 0 ? 1 : .86}) rotateY(${effect === 'tilt' ? distance * -13 : 0}deg)`
               }}
             >
               <span className="rb-carousel__image-wrap">
