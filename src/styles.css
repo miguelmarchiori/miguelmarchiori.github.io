@@ -810,3 +810,24 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   background: transparent !important;
   box-shadow: none !important;
 }
+
+/* Modo escuro: manter a navegação igual à do modo claro, só com texto branco. */
+.app[data-theme="dark"] #primary-navigation {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.app[data-theme="dark"] #primary-navigation button,
+.app[data-theme="dark"] #primary-navigation button:hover,
+.app[data-theme="dark"] #primary-navigation button:focus,
+.app[data-theme="dark"] #primary-navigation button:focus-visible,
+.app[data-theme="dark"] #primary-navigation button:active {
+  color: #fff !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
