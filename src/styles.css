@@ -483,5 +483,5 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 
 
 /* React Bits BlurText para o primeiro nome no hero */
-.hero-tech-line-miguel .hero-blur-name{display:block;width:100%;font-family:'Michroma',var(--sans);font-size:clamp(76px,9.2vw,126px);font-weight:400;line-height:1;letter-spacing:-.045em;white-space:nowrap;}
+.hero-tech-line-miguel .hero-blur-name{display:block;width:100%;font-family:'Kaushan Script',var(--display);font-size:clamp(76px,9.2vw,126px);font-weight:400;font-style:normal;line-height:1.12;letter-spacing:-.045em;white-space:nowrap;}
 @media(max-width:700px){.hero-tech-line-miguel .hero-blur-name{font-size:clamp(58px,15vw,92px);letter-spacing:-.07em}}
