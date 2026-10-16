@@ -487,5 +487,5 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 @media(max-width:700px){.hero-tech-line-miguel .hero-blur-name{font-size:clamp(58px,15vw,92px);letter-spacing:-.07em}}
 
 /* Ajustes finos do hero */
-.hero-tech-name .hero-tech-line:nth-child(2){transform:translateX(-12px)}
+.hero-tech-name .hero-tech-line:nth-child(2){transform:translateX(-18px)}
 .hero-photo-stage .hero-profile-photo{transform:translateY(-20px)}
