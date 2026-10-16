@@ -42,7 +42,7 @@ const GlassIcons = ({
         '--glass-gap': `${gap}px`,
         '--glass-columns': columns,
         '--glass-radius': `${radius}px`,
-        '--glass-tint': tint,
+        '--glass-tint': `color-mix(in srgb, ${tint} ${Math.round(Math.max(0, Math.min(1, tintOpacity)) * 100)}%, transparent)`,
         '--glass-tint-opacity': tintOpacity,
         '--glass-ink': ink,
         '--glass-tilt': `${tilt}deg`,
