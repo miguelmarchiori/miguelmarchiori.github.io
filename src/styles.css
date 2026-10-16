@@ -1149,6 +1149,12 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   max-width: 100%;
 }
 .robotics-rotating-title .text-rotate-highlight {
+  width: 3.1em;
+  height: 1.35em;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(22, 114, 232, .2);
 }
