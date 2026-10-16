@@ -184,6 +184,7 @@ export default function App() {
               </div>
               <GlassIcons
                 className="language-icons"
+                size={66} gap={22} columns={5} roundness={0.28} plate="tilt" hover="press" labels="always" theme={theme === "dark" ? "dark" : "light"}
                 items={[
                   { icon: <SiPython />, color: '#3776AB', label: 'Python' },
                   { icon: <SiHtml5 />, color: '#E34F26', label: 'HTML5' },
@@ -277,6 +278,7 @@ export default function App() {
                   <span className="contact-social-label">ENCONTRE-ME</span>
                   <GlassIcons
                     className="contact-icons"
+                    size={58} gap={22} columns={3} roundness={0.3} plate="tilt" hover="press" labels="always" theme={theme === "dark" ? "dark" : "light"}
                     items={[
                       { icon: <SiGithub />, color: '#6574d8', label: 'GitHub', href: portfolio.github },
                       { icon: <FaLinkedinIn />, color: '#0a66c2', label: 'LinkedIn', href: portfolio.linkedin },
