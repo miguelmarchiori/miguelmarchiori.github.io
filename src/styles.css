@@ -831,3 +831,13 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   border: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* Modo claro: usar a mesma cor do nome principal, alterando somente as letras da navegação. */
+.app:not([data-theme="dark"]) #primary-navigation button,
+.app:not([data-theme="dark"]) #primary-navigation button:hover,
+.app:not([data-theme="dark"]) #primary-navigation button:focus,
+.app:not([data-theme="dark"]) #primary-navigation button:focus-visible,
+.app:not([data-theme="dark"]) #primary-navigation button:active {
+  color: #17202e !important;
+}
