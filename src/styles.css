@@ -1189,3 +1189,11 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 .app:not([data-theme="dark"]) .about-story-copy .split-flap-text__tile {
   color: #f8fafc;
 }
+
+
+/* Ajuste fino do nome no layout mobile */
+@media (max-width: 700px) {
+  .hero-tech-name .hero-tech-line:nth-child(2) {
+    transform: translateX(-8px);
+  }
+}
