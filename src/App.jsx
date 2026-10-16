@@ -131,7 +131,7 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="hero-scroll"><span /> ROLE PARA DESCOBRIR</div>
+
         </section>
 
         <section id="sobre" className="about section-shell section-pad">
