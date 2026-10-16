@@ -846,6 +846,6 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 /* Hero: subir o bloco de texto inteiro sem alterar a posição da foto ou os estilos internos. */
 @media (min-width: 701px) {
   .hero-refresh .hero-copy {
-    transform: translateY(-80px);
+    transform: translateY(-95px);
   }
 }
