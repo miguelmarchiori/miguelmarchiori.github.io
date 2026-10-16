@@ -1071,3 +1071,56 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
     box-shadow: none !important;
   }
 }
+
+
+/* Seção Sobre: trajetória pessoal com foto ao lado */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr .9fr;
+  align-items: stretch;
+  gap: 22px;
+}
+.about-story-copy,
+.about-story-photo {
+  min-width: 0;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border, rgba(153, 183, 224, .2));
+  border-radius: 28px;
+  background: var(--glass-bg, rgba(21, 32, 51, .65));
+}
+.about-story-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vw, 52px);
+}
+.about-story-copy h2 {
+  margin: 0 0 20px;
+  color: var(--text);
+  font: 700 clamp(30px, 3.8vw, 46px)/1.08 var(--display);
+  letter-spacing: -.055em;
+}
+.about-story-copy > p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+.about-story-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 700px) {
+  .about-story-grid { grid-template-columns: 1fr; gap: 14px; }
+  .about-story-copy, .about-story-photo { min-height: 0; border-radius: 22px; }
+  .about-story-copy { padding: 28px 23px; }
+  .about-story-copy h2 { font-size: clamp(29px, 8vw, 36px); }
+  .about-story-copy > p { font-size: 14px; line-height: 1.8; }
+  .about-story-photo img { min-height: 0; height: clamp(280px, 85vw, 430px); }
+}
