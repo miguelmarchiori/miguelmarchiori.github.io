@@ -28,8 +28,8 @@ const photos = [
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
-  const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme') || 'light'; } catch { return 'light'; } });
-  useEffect(() => { try { window.localStorage.setItem('portfolio-theme', theme); } catch {} }, [theme]);
+  const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
+  useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
     if (!menu || !window.matchMedia('(max-width: 700px)').matches) return undefined;
     const previousOverflow = document.body.style.overflow;
