@@ -4,6 +4,7 @@ import TechText from './components/TechText';
 import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
 import RotatingText from './components/RotatingText';
+import Carousel from './components/Carousel';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
@@ -155,19 +156,44 @@ export default function App() {
             <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
-          <div className="experience-grid">
-            {experience.map((item, index) => (
-              <article className="experience-item" key={item.company}>
-                <div className="experience-meta"><span>0{index + 1}</span><span>{item.period}</span></div>
-                <div className="experience-mark" aria-hidden="true">{item.period.split(' · ')[0]}</div>
-                <h3>{item.role}</h3>
-                <p className="experience-team">{item.company}</p>
-                <p className="experience-description">{item.description}</p>
-                <span className="experience-rule" aria-hidden="true" />
-              </article>
-            ))}
-          </div>
-        </section>
+          <Carousel
+            className="robotics-experience-carousel"
+            items={[
+              {
+                id: 'obr',
+                title: 'OBR',
+                eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
+                description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.',
+                image: 'https://i.imgur.com/fVpfF0K.png',
+                alt: 'Miguel em atividade de robótica na OBR'
+              },
+              {
+                id: 'fll',
+                title: 'FLL',
+                eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
+                description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.',
+                image: 'https://i.imgur.com/FNGeJbu.png',
+                alt: 'Miguel em atividade de robótica na FLL'
+              },
+              {
+                id: 'ftc',
+                title: 'FTC',
+                eyebrow: 'VANGUARD FTC',
+                description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.',
+                image: 'https://i.imgur.com/grpiCo0.png',
+                alt: 'Miguel em atividade de robótica na FTC'
+              }
+            ]}
+            baseWidth={390}
+            aspectRatio={1.12}
+            gap={20}
+            radius={24}
+            effect="tilt"
+            indicator="dots"
+            arrows={true}
+            loop={true}
+            theme={theme}
+          />        </section>
 
         <section id="stack" className="stack-section section-shell section-pad">
           <div className="section-kicker">03 / STACK</div>
