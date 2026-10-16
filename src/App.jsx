@@ -13,7 +13,7 @@ import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
 } from 'react-icons/si';
 import { FaLinkedinIn, FaCss3Alt } from 'react-icons/fa6';
-import { portfolio, skills, skillWall, areas, experience, projects } from './data/content';
+import { portfolio, skills, skillWall, areas, projects } from './data/content';
 
 const nav = [
   { label: 'Sobre', id: 'sobre' },
