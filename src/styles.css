@@ -478,6 +478,9 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 .hero-tech-name .hero-tech-line:nth-child(2){transform:translateX(-18px)}
 .hero-photo-stage .hero-profile-photo{transform:translateY(-20px)}
 
+/* Alinha a base do quadro da foto com o botão do GitHub no desktop. */
+@media (min-width:701px){.hero-photo-stage{transform:translateY(-80px)}}
+
 
 /* Liquid Glass consistente nos cartões, controles e componentes interativos */
 .app {
