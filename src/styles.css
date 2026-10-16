@@ -764,3 +764,28 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 @media (hover: none) {
   .nav-links button:hover { background: transparent !important; }
 }
+
+
+/* Barra superior: contraste explícito no modo escuro, sem o brilho claro do GlassSurface. */
+.app[data-theme="dark"] .navbar-glass,
+.app[data-theme="dark"] .navbar-glass.glass-surface,
+.app[data-theme="dark"] .navbar-glass.glass-surface--svg,
+.app[data-theme="dark"] .navbar-glass.glass-surface--webgl,
+.app[data-theme="dark"] .navbar-glass.glass-surface--fallback {
+  background: rgba(8, 14, 26, 0.96) !important;
+  border: 1px solid rgba(159, 190, 230, 0.18) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.1) !important;
+  backdrop-filter: blur(22px) saturate(1.1) !important;
+}
+.app[data-theme="dark"] .navbar-glass .glass-surface__sheen,
+.app[data-theme="dark"] .navbar-glass .glass-surface__rim,
+.app[data-theme="dark"] .navbar-glass .glass-surface__line,
+.app[data-theme="dark"] .navbar-glass .glass-surface__glow,
+.app[data-theme="dark"] .navbar-glass .glass-surface__canvas,
+.app[data-theme="dark"] .navbar-glass .glass-surface__frame {
+  display: none !important;
+}
+.app[data-theme="dark"] .navbar-glass .glass-surface__content {
+  background: transparent !important;
+}
