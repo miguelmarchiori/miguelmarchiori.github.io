@@ -480,6 +480,7 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 
 /* Alinha a base do quadro da foto com o botão do GitHub no desktop. */
 @media (min-width:701px){.hero-photo-stage{width:86%;height:min(520px,58vw);min-height:360px;justify-self:center;transform:translateY(-35px)}}
+@media (min-width:701px){.hero-refresh .hero-copy{transform:translateY(20px)}}
 
 
 /* Liquid Glass consistente nos cartões, controles e componentes interativos */
