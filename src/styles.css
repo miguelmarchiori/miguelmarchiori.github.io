@@ -841,3 +841,11 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 .app:not([data-theme="dark"]) #primary-navigation button:active {
   color: #17202e !important;
 }
+
+
+/* Hero: subir o bloco de texto inteiro sem alterar a posição da foto ou os estilos internos. */
+@media (min-width: 701px) {
+  .hero-refresh .hero-copy {
+    transform: translateY(-48px);
+  }
+}
