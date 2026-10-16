@@ -27,7 +27,7 @@ const photos = [
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
-  const [heroPhotoIndex, setHeroPhotoIndex] = useState(1);
+  const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
