@@ -152,7 +152,7 @@ export default function App() {
         <section id="atuacao" className="experience section-shell section-pad">
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
-            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={false} staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
+            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
           <div className="experience-grid">
