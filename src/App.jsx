@@ -164,24 +164,21 @@ export default function App() {
                 title: 'OBR',
                 eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
                 description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.',
-                image: 'https://i.imgur.com/fVpfF0K.png',
-                alt: 'Miguel em atividade de robótica na OBR'
+
               },
               {
                 id: 'fll',
                 title: 'FLL',
                 eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
                 description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.',
-                image: 'https://i.imgur.com/FNGeJbu.png',
-                alt: 'Miguel em atividade de robótica na FLL'
+
               },
               {
                 id: 'ftc',
                 title: 'FTC',
                 eyebrow: 'VANGUARD FTC',
                 description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.',
-                image: 'https://i.imgur.com/grpiCo0.png',
-                alt: 'Miguel em atividade de robótica na FTC'
+
               }
             ]}
             baseWidth={390}
