@@ -97,6 +97,17 @@ export default function App() {
         {menu && <button className="nav-backdrop" onClick={() => setMenu(false)} aria-label="Fechar menu" />}
         <nav id="primary-navigation" className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
           {nav.map(item => <button key={item.id} onClick={() => scrollTo(item.id)}>{item.label}</button>)}
+          <div className="mobile-theme-row">
+            <span>{theme === "dark" ? "Modo escuro" : "Modo claro"}</span>
+            <label className="theme-switch theme-switch--mobile" aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}>
+              <input className="theme-switch__checkbox" type="checkbox" checked={theme === "dark"} onChange={event => setTheme(event.target.checked ? "dark" : "light")} aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"} />
+              <div className="theme-switch__container" aria-hidden="true">
+                <div className="theme-switch__circle-container"><div className="theme-switch__sun-moon-container"><div className="theme-switch__moon"><div className="theme-switch__spot" /><div className="theme-switch__spot" /><div className="theme-switch__spot" /></div></div></div>
+                <div className="theme-switch__clouds" />
+                <svg className="theme-switch__stars-container" viewBox="0 0 54 24" fill="none" aria-hidden="true"><path d="M8 1l1.8 5.2L15 8l-5.2 1.8L8 15l-1.8-5.2L1 8l5.2-1.8L8 1Z" fill="currentColor"/><path d="M28 8l1.2 3.4L33 12.5l-3.8 1.2L28 17l-1.2-3.3L23 12.5l3.8-1.1L28 8Z" fill="currentColor"/><path d="M43 2l1.1 3.1L47 6l-2.9 1L43 10l-1-3-3-1 3-1 1-3Z" fill="currentColor"/></svg>
+              </div>
+            </label>
+          </div>
         </nav>
       </header>
 
