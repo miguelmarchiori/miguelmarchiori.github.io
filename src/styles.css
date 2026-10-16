@@ -747,45 +747,24 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
 
 /* Ajustes finais: navegação sem blocos de fundo e sem efeitos de hover excessivos. */
 .nav-links button,
-.app[data-theme=dark] .nav-links button {
-  background: transparent !important;
+.app[data-theme=dark] .nav-links button,
+.nav-links button:hover,
+.app[data-theme=dark] .nav-links button:hover,
+.nav-links button:focus,
+.app[data-theme=dark] .nav-links button:focus,
+.nav-links button:focus-visible,
+.app[data-theme=dark] .nav-links button:focus-visible,
+.nav-links button:active,
+.app[data-theme=dark] .nav-links button:active {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
 }
-.nav-links button:hover,
-.app[data-theme=dark] .nav-links button:hover,
-.nav-links button:focus-visible,
-.app[data-theme=dark] .nav-links button:focus-visible {
-  background: transparent !important;
-  box-shadow: none !important;
-}
 .nav-links button:hover { color: var(--text); }
 .app[data-theme=dark] .nav-links button:hover { color: #ffffff; }
-@media (hover: none) {
-  .nav-links button:hover { background: transparent !important; }
-}
-
-
-/* Barra superior: contraste explícito no modo escuro, sem o brilho claro do GlassSurface. */
-.app[data-theme="dark"] .navbar-glass,
-.app[data-theme="dark"] .navbar-glass.glass-surface,
-.app[data-theme="dark"] .navbar-glass.glass-surface--svg,
-.app[data-theme="dark"] .navbar-glass.glass-surface--webgl,
-.app[data-theme="dark"] .navbar-glass.glass-surface--fallback {
-  background: rgba(8, 14, 26, 0.96) !important;
-  border: 1px solid rgba(159, 190, 230, 0.18) !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(1.1) !important;
-  backdrop-filter: blur(22px) saturate(1.1) !important;
-}
-.app[data-theme="dark"] .navbar-glass .glass-surface__sheen,
-.app[data-theme="dark"] .navbar-glass .glass-surface__rim,
-.app[data-theme="dark"] .navbar-glass .glass-surface__line,
-.app[data-theme="dark"] .navbar-glass .glass-surface__glow,
-.app[data-theme="dark"] .navbar-glass .glass-surface__canvas,
-.app[data-theme="dark"] .navbar-glass .glass-surface__frame {
-  display: none !important;
-}
-.app[data-theme="dark"] .navbar-glass .glass-surface__content {
-  background: transparent !important;
-}
+.nav-links button::before,
+.nav-links button::after { content: none !important; display: none !important; }
