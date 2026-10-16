@@ -68,7 +68,7 @@ export default function Carousel({
           return (
             <button
               type="button"
-              className={`rb-carousel__slide${index === active ? ' is-active' : ''}`}
+              className={`rb-carousel__slide rb-carousel__slide--${String(item.id ?? '').toLowerCase()}${index === active ? ' is-active' : ''}`}
               key={item.id ?? item.title ?? index}
               aria-label={`Mostrar ${item.title}`}
               aria-current={index === active ? 'true' : undefined}
