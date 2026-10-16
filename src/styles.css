@@ -1197,3 +1197,17 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
     transform: translateX(-14px);
   }
 }
+
+/* Garantir contraste do menu recolhível no modo escuro em telas pequenas. */
+@media (max-width: 700px) {
+  .app[data-theme="dark"] #primary-navigation,
+  .app[data-theme="dark"] #primary-navigation.is-open {
+    background: #0b1423 !important;
+    background-color: #0b1423 !important;
+    background-image: none !important;
+    border: 1px solid rgba(159, 190, 230, .28) !important;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, .42) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
