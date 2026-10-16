@@ -18,7 +18,7 @@
 .rb-carousel__stage {
   position: relative;
   width: 100%;
-  height: calc(min(var(--rb-card-width), 82vw) * var(--rb-card-height-ratio));
+  height: clamp(340px, 34vw, 430px);
   min-height: 340px;
   max-height: 450px;
   perspective: 1100px;
