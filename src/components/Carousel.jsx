@@ -70,9 +70,9 @@ export default function Carousel({
               type="button"
               className={`rb-carousel__slide rb-carousel__slide--${String(item.id ?? '').toLowerCase()}${index === active ? ' is-active' : ''}`}
               key={item.id ?? item.title ?? index}
-              aria-label={`Mostrar ${item.title}`}
+              aria-label={item.href ? `Abrir Instagram da equipe ${item.title}` : `Mostrar ${item.title}`}
               aria-current={index === active ? 'true' : undefined}
-              onClick={() => setActive(index)}
+              onClick={() => { if (item.href) window.open(item.href, '_blank', 'noopener,noreferrer'); else setActive(index); }}
               style={{
                 '--rb-distance': distance,
                 '--rb-order': 10 - Math.abs(distance),
