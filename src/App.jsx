@@ -21,10 +21,9 @@ const nav = [
   { label: 'Contato', id: 'contato' }
 ];
 const photos = [
-  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-1.webp`, alt: 'Equipe de robótica trabalhando na programação do robô', title: 'Programação em equipe', note: 'Robótica · trabalho de bancada' },
   { src: 'https://i.imgur.com/fVpfF0K.png', alt: 'Miguel Marchiori em uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' },
-  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-3.webp`, alt: 'Medalhas da Olimpíada Brasileira de Robótica', title: 'Conquistas na OBR', note: 'Olimpíada Brasileira de Robótica' },
-  { src: `${import.meta.env.BASE_URL}assets/portfolio/portfolio-4.webp`, alt: 'Detalhe do robô de competição com sensores e componentes eletrônicos', title: 'Robô em desenvolvimento', note: 'Montagem · testes' }
+  { src: 'https://i.imgur.com/FNGeJbu.png', alt: 'Miguel Marchiori — segunda foto', title: 'Miguel Marchiori', note: 'Programação · robótica' },
+  { src: 'https://i.imgur.com/grpiCo0.png', alt: 'Miguel Marchiori — terceira foto', title: 'Miguel Marchiori', note: 'Programação · robótica' }
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
