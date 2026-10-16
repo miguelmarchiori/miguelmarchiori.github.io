@@ -162,6 +162,7 @@ export default function App() {
               {
                 id: 'obr',
                 title: 'OBR',
+                href: 'https://www.instagram.com/quartetofantastico_sesi/',
                 eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
                 description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.',
 
@@ -169,6 +170,7 @@ export default function App() {
               {
                 id: 'fll',
                 title: 'FLL',
+                href: 'https://www.instagram.com/equip_shield/',
                 eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
                 description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.',
 
@@ -176,6 +178,7 @@ export default function App() {
               {
                 id: 'ftc',
                 title: 'FTC',
+                href: 'https://www.instagram.com/vanguardftc_/',
                 eyebrow: 'VANGUARD FTC',
                 description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.',
 
