@@ -136,35 +136,14 @@ export default function App() {
 
         <section id="sobre" className="about section-shell section-pad">
           <div className="section-kicker">01 / SOBRE MIM</div>
-          <div className="about-grid">
-            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.5}>
-              <div className="about-intro-card">
-                <h2>Código, robótica e automação com uma pegada de <em>produto.</em></h2>
-                <p>{portfolio.bio}</p>
-                <div className="stats">
-                  {portfolio.stats.map(stat => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
-                </div>
-                <div className="contact-mini">
-                  <span>{portfolio.phone}</span>
-                  <a href={portfolio.whatsapp} target="_blank" rel="noreferrer">falar comigo no WhatsApp ↗</a>
-                </div>
-              </div>
-            </GlassSurface>
-            <GlassSurface width="100%" height="100%" borderRadius={28} backgroundOpacity={0.42}>
-              <div className="about-card">
-                <div className="terminal-top"><span /><span /><span /></div>
-                <div className="terminal-code">
-                  <p><span>const</span> miguel = {'{'}</p>
-                  <p>&nbsp;&nbsp;foco: <b>"web + robótica"</b>,</p>
-                  <p>&nbsp;&nbsp;linguagens: [<b>"Python"</b>, <b>"HTML"</b>, <b>"CSS"</b>, <b>"PHP"</b>],</p>
-                  <p>&nbsp;&nbsp;java: <b>"aprendendo"</b>,</p>
-                  <p>&nbsp;&nbsp;competição: <b>"OBR / FLL / FTC"</b>,</p>
-                  <p>&nbsp;&nbsp;papel: <b>"programador principal"</b></p>
-                  <p>{'}'};</p>
-                </div>
-                <div className="terminal-note">// construindo, testando, competindo.</div>
-              </div>
-            </GlassSurface>
+          <div className="about-grid about-story-grid">
+            <div className="about-story-copy">
+              <h2>Como <em>comecei!</em></h2>
+              <p>Eu sou o Miguel, tenho interesse por tecnologia desde cedo e gosto de ver as ideias saírem do papel, seja num site, num código ou num robô. A robótica me levou ao título de campeão regional da OBR e me ensinou a trabalhar em equipe, liderar e resolver problemas sob pressão. Hoje estudo mais sobre programação e web design, quero transformar essa paixão em carreira na engenharia da computação.</p>
+            </div>
+            <div className="about-story-photo">
+              <img src="https://i.imgur.com/GLGKpVZ.jpeg" alt="Miguel Marchiori" loading="lazy" decoding="async" />
+            </div>
           </div>
         </section>
 
