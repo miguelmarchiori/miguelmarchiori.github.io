@@ -1006,3 +1006,18 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .theme-switch--mobile { display: block; flex: 0 0 auto; }
   .app[data-theme="dark"] .mobile-theme-row { color: #eef4ff; border-top-color: rgba(180,205,235,.2); }
 }
+
+
+/* Otimizações de renderização para as seções fora da primeira tela */
+@media (min-width: 701px) {
+  .section-shell:not(.hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
+@media (max-width: 700px) {
+  .section-shell:not(.hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 760px;
+  }
+}
