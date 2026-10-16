@@ -54,7 +54,7 @@ export default function App() {
           className="site-pattern-waves"
           color={theme === 'dark' ? '#8abaff' : '#477db8'}
           spacing={11}
-          opacity={theme === 'dark' ? 0.2 : 0.19}
+          opacity={theme === 'dark' ? 0.58 : 0.52}
           speed={0.24}
           depth={0.9}
         />
