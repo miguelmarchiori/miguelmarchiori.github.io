@@ -1158,3 +1158,16 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
     letter-spacing: -.045em;
   }
 }
+
+.robotics-rotating-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: .22em;
+}
+.robotics-rotating-title .robotics-title-prefix {
+  flex: 0 0 auto;
+}
+.robotics-rotating-title .text-rotate-wrap {
+  flex: 0 0 auto;
+}
