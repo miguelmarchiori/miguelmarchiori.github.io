@@ -1,11 +1,11 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import GlassSurface from './components/GlassSurface';
 import TechText from './components/TechText';
 import BlurText from './components/BlurText';
 import DriftWall from './components/DriftWall';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
-const FloatingLines = lazy(() => import('./components/FloatingLines'));
+import PatternWaves from './components/PatternWaves';
 import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
 } from 'react-icons/si';
@@ -28,16 +28,8 @@ const photos = [
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
-  const [effectsEnabled, setEffectsEnabled] = useState(false);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme') || 'light'; } catch { return 'light'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme', theme); } catch {} }, [theme]);
-  useEffect(() => {
-    const canRender = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    const update = () => setEffectsEnabled(canRender.matches);
-    update();
-    canRender.addEventListener?.('change', update);
-    return () => canRender.removeEventListener?.('change', update);
-  }, []);
   useEffect(() => {
     if (!menu || !window.matchMedia('(max-width: 700px)').matches) return undefined;
     const previousOverflow = document.body.style.overflow;
@@ -58,9 +50,14 @@ export default function App() {
   return (
     <div className={`app`} data-theme={theme}>
       <div className="ambient-background" aria-hidden="true">
-        {effectsEnabled && <Suspense fallback={null}>
-          <FloatingLines className="ambient-floating-lines" enabledWaves={['top', 'middle', 'bottom']} lineCount={[4, 7, 4]} lineDistance={[8, 6, 5]} animationSpeed={0.28} linesGradient={['#c9e4fb', '#c6e9df', '#d7dcf8']} mixBlendMode="normal" backgroundColor="#ffffff" lightMode />
-        </Suspense>}
+        <PatternWaves
+          className="site-pattern-waves"
+          color={theme === 'dark' ? '#8abaff' : '#477db8'}
+          spacing={11}
+          opacity={theme === 'dark' ? 0.2 : 0.19}
+          speed={0.24}
+          depth={0.9}
+        />
       </div>
       <header className="navbar">
         <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.42} className="navbar-glass">
@@ -99,9 +96,6 @@ export default function App() {
 
       <main>
         <section id="top" className="hero section-shell">
-          <div className="hero-marquee" aria-hidden="true">
-            <div className="hero-marquee-track"><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span><span>Miguel&nbsp;—&nbsp;Marchiori&nbsp;&nbsp;</span></div>
-          </div>
           <div className="hero-content hero-grid hero-refresh"><div className="hero-copy">
             <p className="hero-kicker">OLÁ, EU SOU</p>
             <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><BlurText text="MIGUEL" className="hero-blur-name" animateBy="letters" effect="blur" direction="top" staggerFrom="start" trigger="load" delay={75} stepDuration={0.55} blur={10} distance={28} /></div><div className="hero-tech-line"><TechText text="MARCHIORI" fontFamily="Michroma" fontWeight={800} fontSize={190} letterSpacing={-0.055} color="currentColor" accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div></div><p className="hero-role">Programador Fullstack</p>
