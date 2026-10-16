@@ -974,3 +974,25 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .experience-item:hover, .project-card:hover, .photo-card:hover { transform: none; }
   .photo-card:hover img { transform: none; }
 }
+
+
+/* Put the color-mode switch inside the mobile navigation drawer. */
+.mobile-theme-row { display: none; }
+.theme-switch--mobile { display: none; }
+@media (max-width: 700px) {
+  .navbar-inner > .theme-switch { display: none; }
+  .mobile-theme-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+    padding: 18px 8px 4px;
+    border-top: 1px solid var(--line, rgba(120,140,165,.2));
+    color: var(--text, #26364b);
+    font-size: 14px;
+    font-weight: 650;
+  }
+  .theme-switch--mobile { display: block; flex: 0 0 auto; }
+  .app[data-theme="dark"] .mobile-theme-row { color: #eef4ff; border-top-color: rgba(180,205,235,.2); }
+}
