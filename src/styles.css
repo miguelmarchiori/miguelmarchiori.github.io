@@ -883,6 +883,12 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .hero-tech-name .hero-tech-line { min-width: 0; }
   .hero-photo-stage { order: 3; width: 100%; height: clamp(250px, 76vw, 340px); min-height: 0; border-radius: 26px; }
   .hero-photo-stage .hero-profile-photo { width: min(82%, 300px); height: 100%; min-height: 0; transform: none; object-fit: contain; object-position: center bottom; }
+  /* Keep the portrait below the introduction and both action buttons on mobile. */
+  .hero-refresh .hero-role { order: 3; }
+  .hero-refresh .hero-bio { order: 4; }
+  .hero-refresh .hero-actions { order: 5; }
+  .hero-mini-note { order: 6; }
+  .hero-photo-stage { order: 7; }
   .orbit-one { width: 230px; height: 230px; }
   .orbit-two { width: 285px; height: 285px; }
   .hero-refresh .hero-role { order: 4; margin: 2px 0 0; font-size: 16px; text-align: left; }
