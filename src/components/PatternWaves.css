@@ -5,9 +5,25 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  background-image: radial-gradient(circle, rgba(71, 125, 184, .25) 1.35px, transparent 1.65px);
+  background-size: 11px 11px;
+  animation: pattern-waves-drift 9s linear infinite;
 }
 .pattern-waves canvas {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+}
+@keyframes pattern-waves-drift {
+  0% { background-position: 0 0; }
+  50% { background-position: 11px 5px; }
+  100% { background-position: 22px 0; }
+}
+.app[data-theme="dark"] .pattern-waves {
+  background-image: radial-gradient(circle, rgba(138, 186, 255, .32) 1.35px, transparent 1.65px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pattern-waves { animation: none; }
 }
