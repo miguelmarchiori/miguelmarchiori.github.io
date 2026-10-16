@@ -1,0 +1,38 @@
+.text-rotate-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  max-width: 100%;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.text-rotate {
+  display: inline-flex;
+  white-space: pre;
+  transform-style: preserve-3d;
+}
+.text-rotate-element {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+.text-rotate-highlight {
+  align-items: center;
+  overflow: hidden;
+  padding: .08em .22em .12em;
+  border-radius: .14em;
+  line-height: 1.15;
+}
+.text-rotate-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-rotate-element { transition: none !important; }
+}
