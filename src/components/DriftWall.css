@@ -19,3 +19,8 @@
 @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @media (max-width: 700px) { .drift-wall__plane { transform: translate(-50%,-50%) rotateX(8deg) rotateY(-8deg) translateZ(-80px); } .drift-wall { height: 420px; } }
 @media (prefers-reduced-motion: reduce) { .drift-wall__track { animation: none; } }
+
+/* Static low-cost mode for the technology wall */
+.drift-wall__track { animation: none !important; will-change: auto !important; }
+.drift-wall__plane { transform-style: flat; }
+.drift-wall__col, .drift-wall__tile { transform-style: flat; }
