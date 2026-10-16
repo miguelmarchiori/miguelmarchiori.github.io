@@ -186,3 +186,23 @@
     transition: none !important;
   }
 }
+
+/* Identidade visual de cada modalidade */
+.rb-carousel__slide--obr {
+  background-color: #090909;
+}
+.rb-carousel__slide--obr .rb-carousel__scrim {
+  background: linear-gradient(180deg, rgba(0,0,0,.08) 8%, rgba(0,0,0,.28) 42%, rgba(0,0,0,.97) 100%);
+}
+.rb-carousel__slide--fll {
+  background-color: #53677e;
+}
+.rb-carousel__slide--fll .rb-carousel__scrim {
+  background: linear-gradient(180deg, rgba(65,88,112,.08) 8%, rgba(65,88,112,.28) 42%, rgba(48,64,83,.97) 100%);
+}
+.rb-carousel__slide--ftc {
+  background-color: #54228a;
+}
+.rb-carousel__slide--ftc .rb-carousel__scrim {
+  background: linear-gradient(180deg, rgba(82,35,137,.10) 8%, rgba(82,35,137,.36) 42%, rgba(35,12,61,.97) 100%);
+}
