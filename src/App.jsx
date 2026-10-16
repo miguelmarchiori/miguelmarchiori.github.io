@@ -55,13 +55,13 @@ export default function App() {
           color={theme === 'dark' ? '#8abaff' : '#477db8'}
           spacing={11}
           opacity={theme === 'dark' ? 0.58 : 0.52}
-          speed={0.24}
+          speed={0}
           depth={0.9}
           backgroundColor="rgba(0, 0, 0, 0)"
           preset="silk"
           pattern="dot"
           wave="silk"
-          interactive={true}
+          interactive={false}
           intro={true}
         />
       </div>
