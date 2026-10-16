@@ -28,6 +28,7 @@ const photos = [
 ];
 export default function App() {
   const [menu, setMenu] = useState(false);
+  const [heroPhotoIndex, setHeroPhotoIndex] = useState(1);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
@@ -119,7 +120,17 @@ export default function App() {
             <p className="hero-bio">Sou programador full stack e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica. Programar é minha paixão.</p>
             <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
             </div>
-            <div className="hero-visual hero-avatar-stage hero-photo-stage"><span className="avatar-orbit orbit-one" aria-hidden="true" /><span className="avatar-orbit orbit-two" aria-hidden="true" /><img className="hero-profile-photo" src="https://i.imgur.com/fVpfF0K.png" alt="Miguel Marchiori em uniforme da equipe de robótica" loading="eager" fetchPriority="high" decoding="async" /></div>
+            <div className="hero-visual hero-avatar-stage hero-photo-stage">
+              <span className="avatar-orbit orbit-one" aria-hidden="true" />
+              <span className="avatar-orbit orbit-two" aria-hidden="true" />
+              <button className="hero-photo-arrow hero-photo-arrow--left cursor-pointer duration-200 hover:scale-125 active:scale-100" type="button" title="Foto anterior" aria-label="Mostrar foto anterior" onClick={() => setHeroPhotoIndex(index => (index - 1 + photos.length) % photos.length)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" className="stroke-blue-300" aria-hidden="true"><path strokeLinejoin="round" strokeLinecap="round" strokeWidth="1.5" d="M11 6L5 12M5 12L11 18M5 12H19" /></svg>
+              </button>
+              <img key={photos[heroPhotoIndex].src} className="hero-profile-photo" src={photos[heroPhotoIndex].src} alt={photos[heroPhotoIndex].alt} loading="eager" fetchPriority="high" decoding="async" />
+              <button className="hero-photo-arrow hero-photo-arrow--right cursor-pointer duration-200 hover:scale-125 active:scale-100" type="button" title="Próxima foto" aria-label="Mostrar próxima foto" onClick={() => setHeroPhotoIndex(index => (index + 1) % photos.length)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" className="stroke-blue-300" aria-hidden="true"><path strokeLinejoin="round" strokeLinecap="round" strokeWidth="1.5" d="M11 6L5 12M5 12L11 18M5 12H19" /></svg>
+              </button>
+            </div>
           </div>
           <div className="hero-scroll"><span /> ROLE PARA DESCOBRIR</div>
         </section>
