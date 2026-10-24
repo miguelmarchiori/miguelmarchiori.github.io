@@ -1230,3 +1230,14 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
     -webkit-backdrop-filter: none !important;
   }
 }
+
+
+/* Ajuste definitivo do intervalo entre Stack e Projetos, inclusive no mobile. */
+@media (min-width: 701px) {
+  .app main #stack.stack-section.section-pad { padding-bottom: 18px !important; }
+  .app main #projetos.projects-section.section-pad { padding-top: 28px !important; }
+}
+@media (max-width: 700px) {
+  .app main #stack.stack-section.section-pad { padding-top: 58px !important; padding-bottom: 8px !important; }
+  .app main #projetos.projects-section.section-pad { padding-top: 28px !important; }
+}
