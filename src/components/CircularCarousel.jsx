@@ -133,12 +133,6 @@ const CircularCarousel = ({
           })}
         </div>
       </div>
-      {captions && current && (
-        <div className="circular-carousel__caption" aria-live="polite">
-          <span>{current.title || current.alt}</span>
-          <span className="circular-carousel__count">{String(active + 1).padStart(2, '0')} <i>/</i> {String(count).padStart(2, '0')}</span>
-        </div>
-      )}
     </div>
   );
 };
