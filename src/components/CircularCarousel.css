@@ -1,0 +1,113 @@
+.circular-carousel {
+  --cc-radius: 16px;
+  --cc-fade: #000;
+  position: relative;
+  width: 100%;
+  height: 510px;
+  overflow: hidden;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+  color: var(--text, #17202e);
+}
+.circular-carousel:active { cursor: grabbing; }
+.circular-carousel:focus-visible { outline: 2px solid #1672e8; outline-offset: -4px; border-radius: 24px; }
+.circular-carousel__scene {
+  position: absolute;
+  inset: 0 0 58px;
+  perspective: 1250px;
+  perspective-origin: 50% 45%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+.circular-carousel__ring {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transition: transform .22s ease-out;
+}
+.circular-carousel__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 20px 14px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(120, 151, 190, .26);
+  background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(229,239,251,.9));
+  box-shadow: 0 18px 44px rgba(18, 41, 73, .12), inset 0 1px 0 rgba(255,255,255,.9);
+  color: #243247;
+  text-align: center;
+  cursor: pointer;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
+  transform-origin: center center;
+}
+.circular-carousel__card.is-active {
+  border-color: rgba(22,114,232,.6);
+  box-shadow: 0 24px 58px rgba(22,114,232,.18), inset 0 1px 0 rgba(255,255,255,.95);
+}
+.circular-carousel__logo-wrap {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.84);
+  box-shadow: inset 0 0 0 1px rgba(48,74,108,.08);
+}
+.circular-carousel__logo-wrap img { display: block; width: 56px; height: 56px; object-fit: contain; }
+.circular-carousel__card-title { margin-top: 2px; font-size: 17px; line-height: 1.2; font-weight: 750; letter-spacing: -.025em; }
+.circular-carousel__card-subtitle { max-width: 145px; color: #728197; font-size: 11px; line-height: 1.4; }
+.circular-carousel__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--text, #17202e);
+  font-size: 13px;
+  font-weight: 650;
+}
+.circular-carousel__count { color: #8794a5; font: 11px var(--mono, monospace); }
+.circular-carousel__count i { padding-inline: 3px; font-style: normal; opacity: .6; }
+.app[data-theme="dark"] .circular-carousel__card {
+  border-color: rgba(141,173,215,.2);
+  background: linear-gradient(145deg, rgba(29,42,61,.98), rgba(13,22,35,.96));
+  box-shadow: 0 18px 44px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.06);
+  color: #f0f5ff;
+}
+.app[data-theme="dark"] .circular-carousel__card.is-active { border-color: rgba(74,151,255,.7); box-shadow: 0 24px 58px rgba(0,0,0,.34), 0 0 30px rgba(22,114,232,.12); }
+.app[data-theme="dark"] .circular-carousel__logo-wrap { background: rgba(255,255,255,.94); }
+.app[data-theme="dark"] .circular-carousel__card-subtitle { color: #a7b6ca; }
+.stack-carousel-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+.stack-carousel-heading h2 { margin: 0; color: #243247; font: 700 clamp(34px, 5vw, 54px)/1.05 var(--display); letter-spacing: -.06em; }
+.stack-carousel-heading h2 em { color: var(--accent); font-style: normal; }
+.stack-carousel-heading p { max-width: 340px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.app[data-theme="dark"] .stack-carousel-heading h2 { color: #f0f5ff; }
+@media (max-width: 700px) {
+  .stack-carousel-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .circular-carousel { height: 410px; }
+  .circular-carousel__scene { inset: 0 0 52px; perspective: 900px; }
+  .circular-carousel__ring { top: 42%; }
+  .circular-carousel__logo-wrap { width: 66px; height: 66px; border-radius: 18px; }
+  .circular-carousel__logo-wrap img { width: 44px; height: 44px; }
+  .circular-carousel__card-title { font-size: 15px; }
+  .circular-carousel__card-subtitle { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circular-carousel__ring, .circular-carousel__card { transition: none; }
+}
