@@ -77,8 +77,6 @@ const CircularCarousel = ({
   };
 
   if (!count) return null;
-  const current = items[active] || items[0];
-
   return (
     <div
       ref={rootRef}
