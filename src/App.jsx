@@ -216,7 +216,6 @@ export default function App() {
                 { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
                 { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
                 { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' },
-                { src: 'https://store-images.s-microsoft.com/image/apps.63316.13648817699362622.62c9f0f0-1aab-458b-ae78-49ebc2189081.8c4f60db-b6bb-41e5-b361-bb0eeb30722d', alt: 'Logo LEGO', title: 'LEGO SPIKE', subtitle: 'Robótica educacional' }
               ]}
               preset="cylinder"
               intro="rise"
