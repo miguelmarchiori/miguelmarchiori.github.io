@@ -211,12 +211,12 @@ export default function App() {
               items={[
                 { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
                 { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
-                { src: 'https://cdn.simpleicons.org/css3/1572B6', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
+                { src: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1920px-CSS3_logo_and_wordmark.svg.png', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
                 { src: 'https://cdn.simpleicons.org/PHP/777BB4', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
                 { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
                 { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
                 { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' },
-                { src: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/LEGO_logo.svg', alt: 'Logo LEGO', title: 'LEGO SPIKE', subtitle: 'Robótica educacional' }
+                { src: 'https://store-images.s-microsoft.com/image/apps.63316.13648817699362622.62c9f0f0-1aab-458b-ae78-49ebc2189081.8c4f60db-b6bb-41e5-b361-bb0eeb30722d', alt: 'Logo LEGO', title: 'LEGO SPIKE', subtitle: 'Robótica educacional' }
               ]}
               preset="cylinder"
               intro="rise"
