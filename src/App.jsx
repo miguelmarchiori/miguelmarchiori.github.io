@@ -203,7 +203,7 @@ export default function App() {
         <section id="stack" className="stack-section section-shell section-pad">
           <div className="section-kicker">03 / STACK</div>
           <div className="stack-carousel-heading">
-            <h2>Minha caixa de <em>ferramentas.</em></h2>
+            <h2>Minhas <em>línguas de programação.</em></h2>
             <p>Linguagens e tecnologias que uso para transformar ideias em projetos.</p>
           </div>
           <div className="stack-circular-stage">
