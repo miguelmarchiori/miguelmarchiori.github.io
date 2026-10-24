@@ -331,7 +331,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer><span>© {new Date().getFullYear()} {portfolio.shortName}</span><span>feito para web + robótica</span></footer>
+      <footer><span>© {new Date().getFullYear()} {portfolio.shortName}</span></footer>
     </div>
   );
 }
