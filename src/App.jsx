@@ -306,7 +306,7 @@ export default function App() {
             <div className="contact-glow" />
             <div className="contact-content">
               <div className="section-kicker">05 / CONTATO</div>
-              <h2>Vamos transformar<br /><em>ideias em código.</em></h2>
+              <h2>Vamos fazer um projeto juntos!</h2>
               <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
               <div className="contact-actions">
                 <a className="email-link" href={`mailto:${portfolio.email}`}>{portfolio.email} <span>↗</span></a>
