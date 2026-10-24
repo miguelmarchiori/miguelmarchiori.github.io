@@ -32,6 +32,7 @@ const photos = [
 export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
@@ -244,24 +245,58 @@ export default function App() {
           <div className="section-kicker">04 / PROJETOS</div>
           <div className="section-heading">
             <h2>Projetos que<br /><em>ganham vida.</em></h2>
-            <p>Trabalhos de desenvolvimento web que transformam necessidades reais em experiências digitais.</p>
+            <p>Explore os projetos e veja uma prévia do resultado antes de abrir cada um.</p>
           </div>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <article className="project-card" key={project.name}>
-                <div className="project-preview project-preview-agropet" aria-hidden="true">
-                  <span className="project-window-dot" /><span className="project-window-dot" /><span className="project-window-dot" />
-                  <div className="project-preview-content"><span>AGRO PET</span><strong>RODRIGUES</strong><small>AGROPECUÁRIA · PET SHOP</small><div className="project-preview-lines"><i /><i /><i /></div></div>
-                </div>
-                <div className="project-card-body">
-                  <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <div className="project-tags">{project.technologies.map(technology => <span key={technology}>{technology}</span>)}</div>
-                  <a className="project-link" href={project.url} target="_blank" rel="noreferrer">Visitar site <span>↗</span></a>
-                </div>
-              </article>
-            ))}
+          <div className="projects-showcase">
+            <div className="projects-list" role="listbox" aria-label="Lista de projetos">
+              {projects.map((project, index) => (
+                <button
+                  className={`projects-list-item ${selectedProjectIndex === index ? 'is-selected' : ''}`}
+                  key={project.name}
+                  type="button"
+                  role="option"
+                  aria-selected={selectedProjectIndex === index}
+                  onClick={() => setSelectedProjectIndex(index)}
+                >
+                  <span className="projects-list-number">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="projects-list-copy">
+                    <strong>{project.name}</strong>
+                    <small>{project.category}</small>
+                  </span>
+                  <span className="projects-list-arrow" aria-hidden="true">↗</span>
+                </button>
+              ))}
+            </div>
+            {projects[selectedProjectIndex] && (() => {
+              const project = projects[selectedProjectIndex];
+              const isPdf = project.type === 'pdf' || /\\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
+              const previewUrl = project.previewUrl || project.url;
+              return (
+                <article className="project-detail">
+                  <div className="project-detail-topbar">
+                    <div className="project-detail-dots" aria-hidden="true"><i /><i /><i /></div>
+                    <span>{isPdf ? 'PRÉVIA DO DOCUMENTO' : 'PRÉVIA DO PROJETO'}</span>
+                    <span className="project-detail-number">{String(selectedProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
+                  </div>
+                  <div className={`project-live-preview ${isPdf ? 'is-document' : ''}`}>
+                    {project.previewImage ? (
+                      <img src={project.previewImage} alt={`Prévia de ${project.name}`} loading="lazy" />
+                    ) : isPdf ? (
+                      <iframe src={previewUrl} title={`Prévia do documento ${project.name}`} loading="lazy" />
+                    ) : (
+                      <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={-1} />
+                    )}
+                    <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">Abrir projeto <span>↗</span></a>
+                  </div>
+                  <div className="project-detail-body">
+                    <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.technologies.join(' · ')}</span></div>
+                    <h3>{project.name}</h3>
+                    <p>{project.description}</p>
+                    <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{isPdf ? 'Abrir PDF' : 'Visitar site'} <span>↗</span></a>
+                  </div>
+                </article>
+              );
+            })()}
           </div>
         </section>
 
