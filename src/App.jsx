@@ -243,7 +243,7 @@ export default function App() {
         <section id="projetos" className="projects-section section-shell section-pad">
           <div className="section-kicker">04 / PROJETOS</div>
           <div className="section-heading">
-            <h2>Projetos que<br /><em>ganham vida.</em></h2>
+            <h2>Projetos que<br /><em>eu fiz.</em></h2>
             <p>Explore os projetos e veja uma prévia do resultado antes de abrir cada um.</p>
           </div>
           <div className="projects-showcase">
