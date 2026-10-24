@@ -21,7 +21,6 @@ const nav = [
   { label: 'Robótica', id: 'atuacao' },
   { label: 'Stack', id: 'stack' },
   { label: 'Projetos', id: 'projetos' },
-  { label: 'Fotos', id: 'fotos' },
   { label: 'Contato', id: 'contato' }
 ];
 const photos = [
@@ -300,21 +299,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="fotos" className="photo-gallery section-shell section-pad">
-          <div className="section-kicker">04 / NOS BASTIDORES</div>
-          <div className="section-heading">
-            <h2>Ideias que saem<br /><em>da tela.</em></h2>
-            <p>Um pouco dos bastidores, das equipes e das conquistas na robótica.</p>
-          </div>
-          <div className="photo-grid">
-            {photos.map((photo, index) => (
-              <figure className={`photo-card photo-card-${index + 1}`} key={photo.src}>
-                <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
-                <figcaption><span>{photo.note}</span><strong>{photo.title}</strong></figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
+
 
         <section id="contato" className="contact section-shell section-pad">
           <GlassSurface width="100%" height="auto" borderRadius={32} backgroundOpacity={0.5} className="contact-box">
