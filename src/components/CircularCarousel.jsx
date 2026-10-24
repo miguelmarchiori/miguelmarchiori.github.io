@@ -77,6 +77,17 @@ const CircularCarousel = ({
   };
 
   if (!count) return null;
+  const current = items[active] || items[0];
+  const descriptions = {
+    Python: 'Uma linguagem versátil e legível, muito usada em automação, lógica de programação, análise de dados e robótica.',
+    HTML5: 'Define a estrutura e o conteúdo das páginas web, organizando textos, imagens, links e componentes.',
+    CSS3: 'Controla a aparência dos sites: cores, layouts, animações e adaptação para celulares e computadores.',
+    PHP: 'Linguagem voltada ao desenvolvimento web no servidor, usada para criar páginas dinâmicas e conectar sistemas a bancos de dados.',
+    Java: 'Linguagem orientada a objetos usada em aplicações, sistemas e programação de robôs, incluindo projetos de FTC.',
+    Git: 'Ferramenta de controle de versão que registra alterações no código e facilita o trabalho em equipe.',
+    GitHub: 'Plataforma para hospedar repositórios Git, colaborar em projetos e acompanhar o histórico do desenvolvimento.',
+    'LEGO SPIKE': 'Plataforma de robótica educacional com hub, motores e sensores, usada para construir e programar robôs.'
+  };
   return (
     <div
       ref={rootRef}
