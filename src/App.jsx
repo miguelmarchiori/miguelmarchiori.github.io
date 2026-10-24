@@ -269,7 +269,7 @@ export default function App() {
             </div>
             {projects[selectedProjectIndex] && (() => {
               const project = projects[selectedProjectIndex];
-              const isPdf = project.type === 'pdf' || /\\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
+              const isPdf = project.type === 'pdf' || /\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
               const previewUrl = project.previewUrl || project.url;
               return (
                 <article className="project-detail">
