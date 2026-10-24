@@ -131,6 +131,11 @@ const CircularCarousel = ({
           })}
         </div>
       </div>
+      <aside className="circular-carousel__details" aria-live="polite">
+        <span className="circular-carousel__details-kicker">TECNOLOGIA SELECIONADA</span>
+        <h3>{current.title || current.alt}</h3>
+        <p>{descriptions[current.title] || current.subtitle || 'Tecnologia utilizada nos meus projetos.'}</p>
+      </aside>
     </div>
   );
 };
