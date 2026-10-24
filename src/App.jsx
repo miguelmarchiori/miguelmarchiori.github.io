@@ -6,6 +6,7 @@ import SplitFlapText from './components/SplitFlapText';
 import RotatingText from './components/RotatingText';
 import Carousel from './components/Carousel';
 import DriftWall from './components/DriftWall';
+import CircularCarousel from './components/CircularCarousel';
 import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
 import PatternWaves from './components/PatternWaves';
@@ -201,60 +202,42 @@ export default function App() {
 
         <section id="stack" className="stack-section section-shell section-pad">
           <div className="section-kicker">03 / STACK</div>
-          <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.025} className="section-heading-glass">
-            <div className="section-heading compact">
-              <h2>As tecnologias que estão<br /><em>na minha bancada.</em></h2>
-              <p>Linguagens e ferramentas que uso para criar para a web, automatizar tarefas e competir em robótica.</p>
-            </div>
-          </GlassSurface>
-          <GlassSurface width="100%" height={500} borderRadius={30} backgroundOpacity={0.48}>
-            <div className="wall-wrap">
-              <DriftWall items={skillWall} columns={5} tileWidth={168} tileHeight={110} gap={12} speed={25} grayscale={false} dim={0.42} lift={48} />
-              <div className="wall-center"><span>TECNOLOGIAS</span><strong>ideias → código</strong></div>
-            </div>
-          </GlassSurface>
-          <GlassSurface width="100%" height="auto" borderRadius={24} backgroundOpacity={0.44} className="language-icons-surface">
-            <div className="language-icons-wrap">
-              <div>
-                <small>LOGOS DA STACK</small>
-                <p>Ferramentas que uso para criar para a web e competir em robótica.</p>
-              </div>
-              <GlassIcons
-                className="language-icons"
-                size={66} gap={22} columns={5} roundness={0.28} plate="tilt" hover="press" labels="always" theme={theme === "dark" ? "dark" : "light"}
-                items={[
-                  { icon: <SiPython />, color: '#3776AB', label: 'Python' },
-                  { icon: <SiHtml5 />, color: '#E34F26', label: 'HTML5' },
-                  { icon: <FaCss3Alt />, color: '#1572B6', label: 'CSS3' },
-                  { icon: <SiPhp />, color: '#777BB4', label: 'PHP' },
-                  { icon: <SiOpenjdk />, color: '#E76F00', label: 'Java' }
-                ]}
-              />
-            </div>
-          </GlassSurface>
-          <div className="stack-bottom">
-            <FolderFloat
-              items={areas}
-              label="ÁREAS"
-              sublabel={`${areas.length} frentes`}
-              trigger="click"
-              physics={false}
-              drift={0}
-              folderColor="#dce8f6"
-              frontColor="#c5d9f0"
-              paperColor="#fffdf9"
-              itemColor="#fffdf9"
-              itemTextColor="#364c68"
-              labelColor="#304560"
-              width={200}
-              height={148}
+          <div className="stack-carousel-heading">
+            <h2>Minha caixa de <em>ferramentas.</em></h2>
+            <p>Linguagens e tecnologias que uso para transformar ideias em projetos.</p>
+          </div>
+          <div className="stack-circular-stage">
+            <CircularCarousel
+              items={[
+                { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
+                { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
+                { src: 'https://cdn.simpleicons.org/CSS3/1572B6', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
+                { src: 'https://cdn.simpleicons.org/PHP/777BB4', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
+                { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
+                { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
+                { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' },
+                { src: 'https://cdn.simpleicons.org/LEGO/FFCF00', alt: 'Logo LEGO', title: 'LEGO SPIKE', subtitle: 'Robótica educacional' }
+              ]}
+              preset="cylinder"
+              intro="rise"
+              cardWidth={174}
+              aspectRatio={1}
+              gap={22}
+              autoplay="drift"
+              speed={14}
+              direction="left"
+              draggable={true}
+              momentum={0.6}
+              snap={true}
+              pauseOnHover={true}
+              focusOnClick={true}
+              parallax={0.18}
+              stretch={0.25}
+              depthFade={0.42}
+              fadeColor={theme === 'dark' ? '#080d16' : '#ffffff'}
+              cornerRadius={20}
+              captions={true}
             />
-            <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.46} className="stack-copy-surface">
-              <div className="stack-copy">
-                <p>Minha base hoje está em programação web, automação e robótica. Java entra como a próxima linguagem em evolução.</p>
-                <div className="skill-list">{skills.map(skill => <span key={skill.label}>{skill.label}</span>)}</div>
-              </div>
-            </GlassSurface>
           </div>
         </section>
 
