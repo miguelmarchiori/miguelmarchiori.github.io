@@ -1545,3 +1545,67 @@ footer { clear: both; }
   .contact-content { padding: 22px 16px !important; }
   .contact h2 { font-size: 33px; }
 }
+
+
+/* Ajusta o bloco ENCONTRE-ME e os seletores reais do GlassIcons */
+.contact-social-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  align-items: start;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 22px !important;
+  box-sizing: border-box;
+}
+.contact-social-label {
+  display: block;
+  margin: 0;
+  color: var(--muted, #8a97a7);
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: .14em;
+}
+.contact-social-content .contact-icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 28px 22px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+.contact-icons .glass-icon {
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+}
+.contact-icons .glass-icon-label {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.contact-icons .glass-icon-glyph { color: var(--glass-ink); }
+.app[data-theme="dark"] .contact-icons .glass-icon-label { color: #c3d3e8; }
+
+@media (max-width: 700px) {
+  .contact-social-content { gap: 15px; padding: 17px !important; }
+  .contact-social-content .contact-icons {
+    justify-content: flex-start;
+    gap: 28px 20px;
+  }
+  .contact-icons .glass-icon {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 360px) {
+  .contact-social-content .contact-icons { gap: 24px 15px; }
+  .contact-icons .glass-icon {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+}
