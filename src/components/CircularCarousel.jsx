@@ -136,7 +136,6 @@ const CircularCarousel = ({
                   <img src={item.src} alt={item.alt || ''} loading="lazy" decoding="async" draggable="false" />
                 </span>
                 {captions && <span className="circular-carousel__card-title">{item.title}</span>}
-                {captions && item.subtitle && <span className="circular-carousel__card-subtitle">{item.subtitle}</span>}
               </button>
             );
           })}
