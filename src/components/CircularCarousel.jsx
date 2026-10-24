@@ -116,6 +116,8 @@ const CircularCarousel = ({
                 style={{
                   width: cardWidth,
                   height: cardWidth / aspectRatio,
+                  marginLeft: -cardWidth / 2,
+                  marginTop: -(cardWidth / aspectRatio) / 2,
                   borderRadius: cornerRadius,
                   transform: `rotateY(${rotation}deg) translateZ(${radius}px)`,
                   '--cc-index': index
