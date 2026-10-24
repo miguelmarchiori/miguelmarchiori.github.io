@@ -3,7 +3,7 @@
   --cc-fade: #000;
   position: relative;
   width: 100%;
-  height: 510px;
+  height: 590px;
   overflow: hidden;
   outline: none;
   user-select: none;
@@ -16,7 +16,7 @@
 .circular-carousel:focus-visible { outline: 2px solid #1672e8; outline-offset: -4px; border-radius: 24px; }
 .circular-carousel__scene {
   position: absolute;
-  inset: 0 0 58px;
+  inset: 0;
   perspective: 1250px;
   perspective-origin: 50% 45%;
   overflow: hidden;
@@ -25,7 +25,7 @@
 }
 .circular-carousel__ring {
   position: absolute;
-  top: 43%;
+  top: 48%;
   left: 50%;
   transform-style: preserve-3d;
   transition: transform .22s ease-out;
@@ -60,13 +60,13 @@
 .circular-carousel__logo-wrap {
   display: grid;
   place-items: center;
-  width: 86px;
-  height: 86px;
+  width: 112px;
+  height: 112px;
   border-radius: 24px;
   background: rgba(255,255,255,.84);
   box-shadow: inset 0 0 0 1px rgba(48,74,108,.08);
 }
-.circular-carousel__logo-wrap img { display: block; width: 56px; height: 56px; object-fit: contain; }
+.circular-carousel__logo-wrap img { display: block; width: 78px; height: 78px; object-fit: contain; }
 .circular-carousel__card-title { margin-top: 2px; font-size: 17px; line-height: 1.2; font-weight: 750; letter-spacing: -.025em; }
 .circular-carousel__card-subtitle { max-width: 145px; color: #728197; font-size: 11px; line-height: 1.4; }
 .circular-carousel__caption {
@@ -100,11 +100,11 @@
 .app[data-theme="dark"] .stack-carousel-heading h2 { color: #f0f5ff; }
 @media (max-width: 700px) {
   .stack-carousel-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
-  .circular-carousel { height: 410px; }
-  .circular-carousel__scene { inset: 0 0 52px; perspective: 900px; }
-  .circular-carousel__ring { top: 42%; }
-  .circular-carousel__logo-wrap { width: 66px; height: 66px; border-radius: 18px; }
-  .circular-carousel__logo-wrap img { width: 44px; height: 44px; }
+  .circular-carousel { height: 470px; }
+  .circular-carousel__scene { inset: 0; perspective: 900px; }
+  .circular-carousel__ring { top: 47%; }
+  .circular-carousel__logo-wrap { width: 82px; height: 82px; border-radius: 18px; }
+  .circular-carousel__logo-wrap img { width: 60px; height: 60px; }
   .circular-carousel__card-title { font-size: 15px; }
   .circular-carousel__card-subtitle { font-size: 10px; }
 }
