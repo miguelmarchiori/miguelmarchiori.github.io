@@ -204,7 +204,7 @@ export default function App() {
           <div className="section-kicker">03 / STACK</div>
           <div className="stack-carousel-heading">
             <h2>Minhas <em>línguas de programação.</em></h2>
-            <p>Linguagens e tecnologias que uso para transformar ideias em projetos.</p>
+            <p>Linguagens que eu tenho no meu arsenal e pra que uso cada uma</p>
           </div>
           <div className="stack-circular-stage">
             <CircularCarousel
