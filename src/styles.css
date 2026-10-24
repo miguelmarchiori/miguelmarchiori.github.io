@@ -364,7 +364,8 @@ footer { width: min(1220px, calc(100% - 64px)); display: flex; justify-content: 
   .project-live-preview { height: 240px; }
   .project-detail-body { padding: 17px 17px 20px; }
   .project-detail-body .project-meta span:last-child { text-align: left; }
-} font-size: 22px; } }
+  .project-detail-body h3 { font-size: 22px; }
+}
 
 
 /* Interactive profile controls */
