@@ -268,16 +268,17 @@ export default function App() {
             </div>
             {selectedProjectIndex !== null && projects[selectedProjectIndex] && (() => {
               const project = projects[selectedProjectIndex];
+              const isDocument = project.type === 'document';
               const isPdf = project.type === 'pdf' || /\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
               const previewUrl = project.previewUrl || project.url;
               return (
                 <article className="project-detail">
                   <div className="project-detail-topbar">
                     <div className="project-detail-dots" aria-hidden="true"><i /><i /><i /></div>
-                    <span>{isPdf ? 'PRÉVIA DO DOCUMENTO' : 'PRÉVIA DO PROJETO'}</span>
+                    <span>{isPdf || isDocument ? 'PRÉVIA DO DOCUMENTO' : 'PRÉVIA DO PROJETO'}</span>
                     <span className="project-detail-number">{String(selectedProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
                   </div>
-                  <div className={`project-live-preview ${isPdf ? 'is-document' : ''}`}>
+                  <div className={`project-live-preview ${isPdf || isDocument ? 'is-document' : ''}`}>
                     {project.previewImage ? (
                       <img src={project.previewImage} alt={`Prévia de ${project.name}`} loading="lazy" />
                     ) : isPdf ? (
@@ -291,7 +292,7 @@ export default function App() {
                     <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.technologies.join(' · ')}</span></div>
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
-                    <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{isPdf ? 'Abrir PDF' : 'Visitar site'} <span>↗</span></a>
+                    <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{isPdf ? 'Abrir PDF' : isDocument ? 'Abrir documento' : 'Visitar site'} <span>↗</span></a>
                   </div>
                 </article>
               );
