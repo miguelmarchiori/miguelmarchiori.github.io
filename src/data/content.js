@@ -56,9 +56,9 @@ export const projects = [
     name: 'Pesquisa LEGO SPIKE Prime — OBR',
     category: 'Iniciação científica',
     description: 'Documento completo da pesquisa sobre o desenvolvimento de um robô autônomo em Python com LEGO SPIKE Prime para a categoria Resgate da OBR, com imagens do robô, metodologia, resultados e descrição da máquina de estados.',
-    url: '/documento-robo-lego-spike-prime.pdf',
-    previewUrl: '/documento-robo-lego-spike-prime.pdf',
-    type: 'pdf',
+    url: '/documento-robo-lego-spike-prime.html',
+    previewUrl: '/documento-robo-lego-spike-prime.html',
+    type: 'document',
     technologies: ['Python', 'LEGO SPIKE Prime', 'OBR']
   },
   {
