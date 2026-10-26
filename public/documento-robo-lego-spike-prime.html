@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desenvolvimento de um robô autônomo em Python com LEGO SPIKE Prime</title>
+<style>
+:root{color-scheme:light;--blue:#145db8;--ink:#202a37;--muted:#586779;--rule:#d9e2ec}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#edf1f5;color:var(--ink);font:16px/1.75 Georgia,"Times New Roman",serif}
+.page{width:min(100%,900px);margin:24px auto;padding:clamp(24px,5vw,64px);background:#fff;box-shadow:0 12px 42px #20344a12}
+.topline{height:4px;background:var(--blue);margin-bottom:24px}
+.kicker{font:700 11px/1.5 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+h1{font-size:clamp(27px,4vw,39px);line-height:1.18;letter-spacing:-.025em;margin:12px 0 18px}
+h2{font:700 22px/1.3 Arial,sans-serif;color:var(--blue);margin:38px 0 12px;padding-left:12px;border-left:3px solid var(--blue)}
+h3{font:700 17px/1.4 Arial,sans-serif;margin:24px 0 7px}
+p{margin:0 0 14px;text-align:justify}
+ul{padding-left:25px}
+li{margin:7px 0}
+.abstract{padding:19px 21px;background:#f5f8fc;border:1px solid var(--rule);border-radius:12px}
+.keywords{font-size:14px;color:var(--muted);margin-top:15px}
+figure{margin:26px auto;max-width:670px;text-align:center}
+figure img{display:block;width:100%;max-height:580px;object-fit:contain;background:#f5f7fa;border-radius:7px}
+figcaption{font-size:13px;color:var(--muted);font-style:italic;margin-top:9px}
+.equation{margin:18px auto;padding:18px;background:#f5f8fc;border:1px solid var(--rule);text-align:center;font:15px/2.0 ui-monospace,Consolas,monospace;border-radius:8px;overflow-wrap:anywhere}
+.state-list{padding-left:20px}
+.state-list li{padding-left:4px}
+.references p{font-size:14px;padding-left:24px;text-indent:-24px;margin:10px 0;text-align:left}
+.footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);color:var(--muted);font:12px/1.5 Arial,sans-serif}
+@media(max-width:600px){body{font-size:15px;background:#fff}.page{margin:0;padding:25px 19px;box-shadow:none}h2{font-size:20px}figure img{max-height:420px}}
+</style>
+</head>
+<body>
+<main class="page">
+<div class="topline"></div>
+<div class="kicker">Iniciação científica · Robótica educacional</div>
+<h1>Desenvolvimento de um robô autônomo em Python com LEGO SPIKE Prime para a categoria Resgate da OBR no Ensino Médio</h1>
+<section class="abstract">
+<h2 style="margin-top:0">Resumo</h2>
+<p>Este trabalho apresenta o desenvolvimento de um robô autônomo programado em Python, utilizando o kit LEGO SPIKE Prime, para a categoria Resgate da Olimpíada Brasileira de Robótica (OBR). Inicialmente, observou-se que a programação visual em blocos, comumente empregada nessa plataforma, gera programas extensos, difíceis de ler e de modificar quando aplicada às tarefas exigidas na categoria: seguir a linha, identificar cores e desviar de obstáculos. Desse modo, a linguagem Python foi adotada como alternativa para obter maior controle sobre o comportamento do robô. O desenvolvimento se estendeu por sete meses, partindo do estudo dos conceitos fundamentais da linguagem e de sua aplicação ao ambiente do SPIKE Prime. O robô foi equipado com dois sensores de cor e um sensor ultrassônico, e o seguimento de linha foi implementado por meio de controle proporcional. O código foi estruturado em funções específicas para cada tarefa e aprimorado em ciclos de testes e ajustes. A abordagem permitiu reutilizar funções, concentrar os parâmetros de ajuste em variáveis únicas e acelerar as iterações de teste. A equipe do autor sagrou-se campeã regional da OBR na área Norte do Paraná e alcançou o nono lugar na etapa estadual, auxiliando a equipe campeã, também de Apucarana.</p>
+<p class="keywords"><strong>Palavras-chave:</strong> Python; Programação em blocos; LEGO SPIKE Prime; Olimpíada Brasileira de Robótica.</p>
+</section>
+
+<h2>Introdução</h2>
+<p>A robótica educacional tem se firmado como um recurso valioso para aprimorar habilidades em programação, raciocínio lógico e solução de problemas (CASTRO et al., 2016; OLIVEIRA et al., 2025). No âmbito da Olimpíada Brasileira de Robótica (OBR), o kit LEGO SPIKE Prime serve como plataforma para a criação de robôs autônomos voltados a desafios competitivos, o que exige métodos de programação que garantam maior eficácia, exatidão e adaptabilidade.</p>
+<p>Na categoria Resgate da OBR, o robô precisa seguir a linha, identificar cores diferentes e desviar de obstáculos ao longo do trajeto. A programação visual em blocos, comumente empregada no LEGO SPIKE Prime, exibe limitações significativas para o desenvolvimento dos algoritmos necessários: ao implementar essas tarefas, os programas tornam-se extensos, difíceis de ler e de modificar.</p>
+<p>Uma das maneiras de contornar esse problema é adotar a linguagem Python, que concede maior controle sobre o comportamento do robô e simplifica a implementação de estratégias mais sofisticadas (MENEZES, 2010; BORGES, 2014). Diante disso, o objetivo deste trabalho é descrever o desenvolvimento de um robô autônomo, em Python, utilizando o LEGO SPIKE Prime, e analisar a sua aplicabilidade em competições de robótica, particularmente na categoria Resgate da OBR. Especificamente, buscou-se:</p>
+<ul><li>Aplicar a linguagem Python ao ambiente do LEGO SPIKE Prime;</li><li>Implementar as tarefas de seguir linha, reconhecer cores e desviar de obstáculos; e</li><li>Organizar o código de forma modular, de modo a facilitar testes, correções e ajustes.</li></ul>
+<p>Nesse sentido, o presente trabalho descreve a metodologia adotada, o desenvolvimento do robô e os resultados obtidos, com o intuito de oferecer uma base para que outras equipes adotem essa abordagem.</p>
+
+<h2>Metodologia</h2>
+<p>O projeto foi desenvolvido ao longo de sete meses, começando pelo estudo dos conceitos fundamentais de Python e avançando para sua aplicação ao ambiente do LEGO SPIKE Prime. Em seguida, configurou-se o robô com dois sensores de cor e um sensor ultrassônico para acompanhar a linha, reconhecer cores e detectar obstáculos. O seguimento de linha utilizou controle proporcional: calculou-se o erro pela diferença entre as leituras dos sensores e aplicou-se uma correção proporcional a esse valor, ajustando a constante Kp por meio de testes. O programa foi organizado em funções específicas para cada tarefa e aperfeiçoado em ciclos de execução, observação do comportamento e ajuste dos parâmetros. O professor responsável orientou o projeto, um acadêmico auxiliou no desenvolvimento e a equipe de robótica colaborou na construção e validação do robô; a programação ficou sob responsabilidade do autor.</p>
+
+<h2>Desenvolvimento</h2>
+<h3>Estudo e aplicação da linguagem Python</h3>
+<p>Na primeira fase do projeto, realizou-se o estudo dos conceitos fundamentais de Python, necessário para substituir a programação em blocos por código escrito. Em seguida, esses conceitos foram aplicados ao ambiente do LEGO SPIKE Prime, o que permitiu controlar diretamente os motores e a leitura dos sensores do robô.</p>
+<h3>Configuração do robô</h3>
+<p>O robô foi equipado com dois sensores de cor e um sensor ultrassônico. Os sensores de cor são responsáveis por acompanhar a linha do percurso e reconhecer as diferentes cores encontradas, enquanto o sensor ultrassônico possibilita a detecção de obstáculos para que o robô os desvie ao longo do trajeto.</p>
+<figure><img src="https://i.imgur.com/FNGeJbu.png" alt="Robô autônomo desenvolvido com LEGO SPIKE Prime"><figcaption>Figura 1 — Robô desenvolvido, visto de frente.</figcaption></figure>
+<figure><img src="https://i.imgur.com/fVpfF0K.png" alt="Robô LEGO SPIKE Prime durante a preparação e os testes"><figcaption>Figura 2 — Robô desenvolvido durante os testes.</figcaption></figure>
+
+<h3>Seguimento de linha com controle proporcional</h3>
+<p>Para o seguimento da linha, utilizou-se controle proporcional (KNOSPE, 2006; VELLOSO; ALBANDES, 2025). Nessa estratégia, o erro é definido como a diferença entre as leituras dos dois sensores de cor, e a correção aplicada à direção do robô é proporcional a esse erro, conforme a Equação 1:</p>
+<div class="equation">erro = leitura_sensor_esquerdo − leitura_sensor_direito<br>correção = Kp × erro <br><strong>(Equação 1)</strong></div>
+<p>Em que Kp é a constante proporcional, um dos parâmetros ajustados durante os ciclos de testes. Assim, quanto maior a diferença entre as leituras, maior a correção aplicada, e o robô retorna à linha de forma suave quando o erro é pequeno.</p>
+<h3>Reconhecimento de cores e desvio de obstáculos</h3>
+<p>O reconhecimento de cores foi realizado a partir das leituras dos sensores de cor, e o desvio de obstáculos, a partir das leituras do sensor ultrassônico. Cada uma dessas tarefas foi implementada em uma função específica, de modo que o programa principal apenas coordena a execução das funções de acordo com a etapa do percurso.</p>
+<h3>Estruturação do código e ciclos de testes</h3>
+<p>O código foi organizado em funções específicas para cada tarefa do percurso, com os parâmetros de ajuste concentrados em variáveis únicas. Essa organização permitiu que testes e correções fossem feitos alterando poucos pontos do programa. O refinamento ocorreu de forma iterativa: o robô era testado, o comportamento observado era analisado e os parâmetros e as funções eram ajustados, repetindo-se o ciclo até se obter o desempenho desejado.</p>
+
+<h2>Resultados</h2>
+<p>A programação em Python permitiu a estruturação do código em funções reutilizáveis, específicas para cada tarefa do percurso, concentrando os parâmetros de ajuste em variáveis únicas. Com isso, foram viabilizadas iterações mais rápidas do programa, tanto para testes quanto para correções, o que representa uma vantagem em relação aos programas extensos e de difícil modificação produzidos com a programação em blocos.</p>
+<p>Como consequência da aplicação da metodologia elaborada, a equipe do autor obteve o título de campeã regional da OBR na área Norte do Paraná e, na etapa estadual, ficou em nono lugar, auxiliando a equipe que conquistou o primeiro lugar, também de Apucarana.</p>
+<p>Cabe destacar que este trabalho não realizou uma comparação quantitativa entre a programação em blocos e a linguagem Python; a análise apresentada é, portanto, qualitativa, baseada na experiência de desenvolvimento do projeto.</p>
+
+<h2>Conclusões</h2>
+<p>O emprego da linguagem Python no LEGO SPIKE Prime apresentou-se como uma alternativa viável para a criação de robôs voltados a competições de robótica. A abordagem possibilitou organizar o código em funções modulares e centralizar o ajuste de parâmetros, o que agilizou o ciclo de testes e contribuiu para o desempenho da equipe, campeã regional da OBR.</p>
+<p>Na etapa estadual, a equipe alcançou o nono lugar e colaborou com a equipe que conquistou o primeiro lugar, também de Apucarana, compartilhando a experiência com a programação em Python. Além disso, o trabalho contribuiu para incentivar alunos mais jovens a adotarem a linguagem Python nos próximos anos da competição.</p>
+<p>A experiência também mostrou que é possível participar de uma iniciação científica ainda durante o ensino médio e aprender em contato com a universidade. A convivência com estudantes de graduação e o uso dos espaços universitários aproximaram o autor de outras formas de estudar, testar ideias e resolver problemas. Essa vivência exigiu iniciativa para aprender conteúdos novos e disposição para trocar conhecimentos com pessoas de diferentes etapas de formação. O estudo oferece uma base para que outras equipes adotem a metodologia e desenvolvam soluções para a categoria Resgate da OBR. Para trabalhos futuros, recomenda-se comparar quantitativamente a programação em blocos e a linguagem Python.</p>
+
+<h2>Referências</h2>
+<div class="references">
+<p>BORGES, L. E. <em>Python para desenvolvedores: aborda Python 3.3.</em> São Paulo: Novatec, 2014.</p>
+<p>CASTRO, A. K. de et al. Desenvolvimento de robô inteligente para a Olimpíada Brasileira de Robótica. In: MOSTRA NACIONAL DE ROBÓTICA, 6., 2016, Recife. Anais [...]. Recife: MNR, 2016.</p>
+<p>KNOSPE, C. PID control. <em>IEEE Control Systems Magazine</em>, v. 26, n. 1, p. 30–31, 2006.</p>
+<p>MENEZES, N. N. C. <em>Introdução à programação com Python.</em> São Paulo: Novatec, 2010.</p>
+<p>OLIVEIRA, G. R. de et al. Ensinando Python com LEGO™ Spike Prime: uma abordagem prática para jovens de 13 a 18 anos. In: SIMPÓSIO BRASILEIRO DE EDUCAÇÃO EM COMPUTAÇÃO (EDUCOMP), 5., 2025, Juiz de Fora. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2025. p. 278–287. DOI: https://doi.org/10.5753/educomp.2025.4911.</p>
+<p>VELLOSO, N. S.; ALBANDES, I. Controle PID aplicado a um robô seguidor de linha na Olimpíada Brasileira de Robótica. <em>SICT Res.</em>, Bento Gonçalves, v. 14, nov. 2025. ISSN 2594-7893.</p>
+</div>
+
+<h2>Descrição textual da máquina de estados</h2>
+<p>O programa opera como uma máquina de estados implícita, coordenada por um laço contínuo. Em cada ciclo, a prioridade das verificações determina qual rotina assume o controle. A leitura dos sensores pode interromper temporariamente o seguimento de linha para tratar uma condição especial; concluída a rotina, o controle retorna ao laço principal.</p>
+<ol class="state-list">
+<li><strong>Seguimento de linha:</strong> estado padrão. Os dois sensores de cor medem a reflexão, o programa calcula a diferença entre as leituras e aplica correções proporcionais às velocidades dos motores. O ciclo é repetido em intervalos curtos.</li>
+<li><strong>Parada por vermelho:</strong> se ambos os sensores identificam vermelho, os motores param e o laço recomeça. A parada tem prioridade sobre as demais ações verificadas naquele ciclo.</li>
+<li><strong>Confirmação da entrada de resgate:</strong> quando o ultrassônico detecta uma distância dentro do limite configurado, o programa aguarda brevemente e mede novamente. Uma segunda detecção válida transfere o controle para a rotina de entrada e busca na área de resgate.</li>
+<li><strong>Busca na área de resgate:</strong> a rotina especializada explora direções usando giros discretos e leituras de distância, registra a orientação estimada e procura uma rota de saída. Ao concluir, devolve o controle ao laço principal, com uma janela temporária para evitar leituras indevidas de verde ou preto durante a transição.</li>
+<li><strong>Desvio de obstáculo:</strong> uma distância curta precisa persistir na leitura de confirmação antes de iniciar o desvio. A rotina para o robô, executa a sequência programada de giros e deslocamentos e então retorna ao laço principal.</li>
+<li><strong>Marcador de dois pretos:</strong> a leitura simultânea de preto é confirmada após uma pequena espera. O robô emite um sinal sonoro e avança pelo tempo configurado; depois inicia um intervalo de bloqueio que evita interpretar novamente marcas próximas.</li>
+<li><strong>Decisão por verde:</strong> fora do intervalo de bloqueio após uma marca preta, uma leitura verde é confirmada. Verde no sensor direito chama a curva à direita; no esquerdo, à esquerda; verde em ambos os sensores solicita um giro de 180 graus. Após a manobra, a execução volta ao laço.</li>
+<li><strong>Retorno ao estado padrão:</strong> se nenhuma condição prioritária é confirmada, o programa executa uma iteração do controle proporcional e repete as leituras.</li>
+</ol>
+<p>A ordem das condições no laço é relevante: vermelho, entrada da área de resgate, obstáculo, dois pretos e verde são avaliados antes do seguimento de linha. As esperas de confirmação reduzem respostas a leituras isoladas, enquanto as janelas de bloqueio ajudam a evitar que uma mesma marca seja processada repetidamente.</p>
+<div class="footer">Documento de pesquisa · LEGO SPIKE Prime · Python · Olimpíada Brasileira de Robótica</div>
+</main>
+</body>
+</html>
