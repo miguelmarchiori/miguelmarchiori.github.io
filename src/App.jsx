@@ -31,7 +31,7 @@ const photos = [
 export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
@@ -246,7 +246,7 @@ export default function App() {
             <h2>Projetos que<br /><em>eu fiz.</em></h2>
             <p>Explore os projetos e veja uma prévia do resultado antes de abrir cada um.</p>
           </div>
-          <div className="projects-showcase">
+          <div className={`projects-showcase ${selectedProjectIndex !== null ? 'has-selection' : 'is-collapsed'}`} aria-label="Projetos do portfólio">
             <div className="projects-list" role="listbox" aria-label="Lista de projetos">
               {projects.map((project, index) => (
                 <button
@@ -255,7 +255,7 @@ export default function App() {
                   type="button"
                   role="option"
                   aria-selected={selectedProjectIndex === index}
-                  onClick={() => setSelectedProjectIndex(index)}
+                  onClick={() => setSelectedProjectIndex(current => current === index ? null : index)}
                 >
                   <span className="projects-list-number">{String(index + 1).padStart(2, '0')}</span>
                   <span className="projects-list-copy">
@@ -266,7 +266,7 @@ export default function App() {
                 </button>
               ))}
             </div>
-            {projects[selectedProjectIndex] && (() => {
+            {selectedProjectIndex !== null && projects[selectedProjectIndex] && (() => {
               const project = projects[selectedProjectIndex];
               const isPdf = project.type === 'pdf' || /\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
               const previewUrl = project.previewUrl || project.url;
