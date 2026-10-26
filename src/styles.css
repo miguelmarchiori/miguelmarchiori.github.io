@@ -1609,3 +1609,26 @@ footer { clear: both; }
     height: 44px;
   }
 }
+
+
+/* Expansão sob demanda das prévias de projetos */
+.projects-showcase.is-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+}
+.projects-showcase.is-collapsed .projects-list-item {
+  min-height: 72px;
+}
+.projects-showcase.has-selection {
+  grid-template-columns: minmax(245px, .72fr) minmax(0, 1.55fr);
+}
+.projects-list-item.is-selected .projects-list-arrow {
+  transform: rotate(45deg);
+}
+.project-live-preview.is-document iframe {
+  pointer-events: auto;
+}
+@media (max-width: 700px) {
+  .projects-showcase.has-selection {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
