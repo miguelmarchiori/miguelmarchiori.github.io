@@ -286,7 +286,7 @@ export default function App() {
                     ) : (
                       <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={-1} />
                     )}
-                    <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">Abrir projeto <span>↗</span></a>
+                    <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">{isPdf ? "Abrir PDF" : isDocument ? "Abrir documento" : "Abrir projeto"} <span>↗</span></a>
                   </div>
                   <div className="project-detail-body">
                     <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.technologies.join(' · ')}</span></div>
