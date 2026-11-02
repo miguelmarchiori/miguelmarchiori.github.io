@@ -281,7 +281,7 @@ export default function App() {
                     ) : isPdf ? (
                       <iframe src={previewUrl} title={`Prévia do documento ${project.name}`} loading="lazy" />
                     ) : (
-                      <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={-1} />
+                      <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={0} />
                     )}
                     <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">{isPdf ? "Abrir PDF" : isDocument ? "Abrir documento" : "Abrir projeto"} <span>↗</span></a>
                   </div>
