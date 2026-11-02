@@ -1,5 +1,3 @@
-import './GlassSurface.css';
-
 export default function GlassSurface({
   children,
   width = 200,
@@ -20,7 +18,7 @@ export default function GlassSurface({
   };
 
   return (
-    <div className={`glass-surface glass-surface--fallback ${className}`} style={containerStyle}>
+    <div className={`glass-surface glass-surface--lite ${className}`} style={containerStyle}>
       <div className="glass-surface__content">{children}</div>
     </div>
   );
