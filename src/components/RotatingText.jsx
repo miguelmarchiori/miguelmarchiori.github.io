@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { AnimatePresence, motion, MotionConfig, useReducedMotion } from 'motion/react';
 import './RotatingText.css';
 
@@ -10,7 +10,7 @@ const effects = {
   drop: { initial: { y: '-110%', opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: '110%', opacity: 0 } }
 };
 
-export default function RotatingText({
+function RotatingText({
   texts = [],
   effect = 'slide',
   direction = 'up',
@@ -93,3 +93,4 @@ export default function RotatingText({
     </MotionConfig>
   );
 }
+export default memo(RotatingText);

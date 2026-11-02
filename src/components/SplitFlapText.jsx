@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import './SplitFlapText.css';
 
 const SplitFlapText = ({
@@ -54,4 +54,4 @@ const SplitFlapText = ({
   );
 };
 
-export default SplitFlapText;
+export default memo(SplitFlapText);

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import './Carousel.css';
 
 const wrap = (index, count) => ((index % count) + count) % count;
 
-export default function Carousel({
+function Carousel({
   items = [],
   baseWidth = 340,
   aspectRatio = 1.15,
@@ -110,3 +110,4 @@ export default function Carousel({
     </div>
   );
 }
+export default memo(Carousel);

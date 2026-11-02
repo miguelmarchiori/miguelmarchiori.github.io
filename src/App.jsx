@@ -5,16 +5,12 @@ import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
 import RotatingText from './components/RotatingText';
 import Carousel from './components/Carousel';
-import DriftWall from './components/DriftWall';
 import CircularCarousel from './components/CircularCarousel';
-import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
 import PatternWaves from './components/PatternWaves';
-import {
-  SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
-} from 'react-icons/si';
-import { FaLinkedinIn, FaCss3Alt } from 'react-icons/fa6';
-import { portfolio, skills, skillWall, areas, projects } from './data/content';
+import { SiGithub, SiInstagram } from 'react-icons/si';
+import { FaLinkedinIn } from 'react-icons/fa6';
+import { portfolio, projects } from './data/content';
 
 const nav = [
   { label: 'Sobre', id: 'sobre' },
@@ -28,6 +24,43 @@ const photos = [
   { src: 'https://i.imgur.com/FNGeJbu.png', alt: 'Miguel Marchiori — segunda foto', title: 'Miguel Marchiori', note: 'Programação · robótica' },
   { src: 'https://i.imgur.com/grpiCo0.png', alt: 'Miguel Marchiori — terceira foto', title: 'Miguel Marchiori', note: 'Programação · robótica' }
 ];
+const roboticsModalities = ['FTC', 'OBR', 'FLL'];
+const roboticsTeams = [
+  {
+    id: 'obr',
+    title: 'OBR',
+    image: 'https://i.imgur.com/fnA157h.png',
+    href: 'https://www.instagram.com/quartetofantastico_sesi/',
+    eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
+    description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.'
+  },
+  {
+    id: 'fll',
+    title: 'FLL',
+    image: 'https://i.imgur.com/GOuvQD6.png',
+    href: 'https://www.instagram.com/equip_shield/',
+    eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
+    description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.'
+  },
+  {
+    id: 'ftc',
+    title: 'FTC',
+    image: 'https://i.imgur.com/avRl8ae.jpeg',
+    href: 'https://www.instagram.com/vanguardftc_/',
+    eyebrow: 'VANGUARD FTC',
+    description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.'
+  }
+];
+const technologyItems = [
+  { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
+  { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
+  { src: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1920px-CSS3_logo_and_wordmark.svg.png', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
+  { src: 'https://cdn.simpleicons.org/PHP/777BB4', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
+  { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
+  { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
+  { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' }
+];
+
 export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
@@ -119,7 +152,7 @@ export default function App() {
         <section id="top" className="hero section-shell">
           <div className="hero-content hero-grid hero-refresh"><div className="hero-copy">
             <p className="hero-kicker">OLÁ, EU SOU</p>
-            <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><BlurText text="MIGUEL" className="hero-blur-name" animateBy="letters" effect="blur" direction="top" staggerFrom="start" trigger="load" delay={75} stepDuration={0.55} blur={10} distance={28} /></div><div className="hero-tech-line"><TechText text="MARCHIORI" fontFamily="Michroma" fontWeight={800} fontSize={190} letterSpacing={-0.055} color="currentColor" accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div></div><p className="hero-role">Programador Fullstack</p>
+            <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><BlurText text="MIGUEL" className="hero-blur-name" animateBy="letters" effect="blur" direction="top" staggerFrom="start" trigger="load" delay={75} stepDuration={0.55} blur={10} distance={28} /></div><div className="hero-tech-line"><TechText text="MARCHIORI" fontFamily="Michroma" fontWeight={800} fontSize={190} letterSpacing={-0.055} color={theme === 'dark' ? '#eef4ff' : '#17243a'} accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div></div><p className="hero-role">Programador Fullstack</p>
             <p className="hero-bio">Sou programador full stack e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica. Programar é minha paixão.</p>
             <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
             </div>
@@ -154,40 +187,12 @@ export default function App() {
         <section id="atuacao" className="experience section-shell section-pad">
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
-            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
+            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={roboticsModalities} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
           <Carousel
             className="robotics-experience-carousel"
-            items={[
-              {
-                id: 'obr',
-                title: 'OBR',
-                image: 'https://i.imgur.com/fnA157h.png',
-                href: 'https://www.instagram.com/quartetofantastico_sesi/',
-                eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
-                description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.',
-
-              },
-              {
-                id: 'fll',
-                title: 'FLL',
-                image: 'https://i.imgur.com/GOuvQD6.png',
-                href: 'https://www.instagram.com/equip_shield/',
-                eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
-                description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.',
-
-              },
-              {
-                id: 'ftc',
-                title: 'FTC',
-                image: 'https://i.imgur.com/avRl8ae.jpeg',
-                href: 'https://www.instagram.com/vanguardftc_/',
-                eyebrow: 'VANGUARD FTC',
-                description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.',
-
-              }
-            ]}
+            items={roboticsTeams}
             baseWidth={390}
             aspectRatio={1.12}
             gap={20}
@@ -208,15 +213,7 @@ export default function App() {
           </div>
           <div className="stack-circular-stage">
             <CircularCarousel
-              items={[
-                { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
-                { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
-                { src: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1920px-CSS3_logo_and_wordmark.svg.png', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
-                { src: 'https://cdn.simpleicons.org/PHP/777BB4', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
-                { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
-                { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
-                { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' },
-              ]}
+              items={technologyItems}
               preset="cylinder"
               intro="rise"
               cardWidth={218}
