@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import GlassSurface from './components/GlassSurface';
+import GlassSurface from './components/GlassSurfaceLite';
 import SplitFlapText from './components/SplitFlapText';
 import GlassIcons from './components/GlassIcons';
 import {
