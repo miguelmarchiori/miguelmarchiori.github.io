@@ -49,7 +49,7 @@ export default function App() {
         if (entry.target === stackNode) setStackReady(true);
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '450px 0px', threshold: 0.01 });
+    }, { rootMargin: '120px 0px', threshold: 0.01 });
     if (experienceNode) observer.observe(experienceNode);
     if (stackNode) observer.observe(stackNode);
     return () => observer.disconnect();
