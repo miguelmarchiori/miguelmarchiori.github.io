@@ -1632,3 +1632,71 @@ footer { clear: both; }
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+
+/* Contraste reforçado para a seção Projetos no tema escuro */
+.app[data-theme="dark"] #projetos .section-heading h2,
+.app[data-theme="dark"] #projetos .section-heading p {
+  color: #f1f6ff !important;
+}
+.app[data-theme="dark"] #projetos .section-heading p {
+  color: #b8c8dd !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-item {
+  background: #142238 !important;
+  border-color: #344963 !important;
+  color: #f2f6ff !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-item:hover {
+  background: #1a2d47 !important;
+  border-color: #6da4ff !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-item.is-selected {
+  background: #1d3555 !important;
+  border-color: #79adff !important;
+  box-shadow: inset 3px 0 0 #8bbaff, 0 8px 24px rgba(0,0,0,.16) !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-number {
+  color: #93b8eb !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-copy strong {
+  color: #f4f7ff !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-copy small {
+  color: #bdcbe0 !important;
+}
+.app[data-theme="dark"] #projetos .projects-list-arrow,
+.app[data-theme="dark"] #projetos .projects-list-item.is-selected .projects-list-arrow {
+  color: #9fc4ff !important;
+}
+.app[data-theme="dark"] #projetos .project-detail {
+  background: #111f33 !important;
+  border-color: #3a506c !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.28) !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-topbar {
+  background: #172840 !important;
+  border-bottom-color: #344963 !important;
+  color: #c2d2e8 !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-body {
+  background: #111f33 !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-body .project-meta,
+.app[data-theme="dark"] #projetos .project-detail-body .project-meta span {
+  color: #a9c8f3 !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-body h3 {
+  color: #f4f7ff !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-body p {
+  color: #c2cee0 !important;
+}
+.app[data-theme="dark"] #projetos .project-detail-body .project-link {
+  color: #a8cbff !important;
+}
+.app[data-theme="dark"] #projetos .project-preview-open {
+  background: rgba(7,17,31,.94) !important;
+  border-color: rgba(193,216,248,.42) !important;
+  color: #ffffff !important;
+}
