@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { memo, useEffect, useMemo, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, RenderTarget, Texture } from 'ogl';
 
 import './PatternWaves.css';
@@ -483,7 +483,7 @@ const PatternWaves = ({
       paused
     };
     wakeRef.current?.();
-  });
+  }, [colors, preset, pattern, wave, spacing, markSize, depth, light, shine, contrast, speed, scale, direction, opacity, fade, fadeSize, characters, interactive, cursorSize, cursorStrength, intro, paused]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -892,4 +892,4 @@ const PatternWaves = ({
   return <div ref={containerRef} className={`pattern-waves ${className}`.trim()} style={style} />;
 };
 
-export default PatternWaves;
+export default memo(PatternWaves);
