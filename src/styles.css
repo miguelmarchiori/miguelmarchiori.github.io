@@ -1754,3 +1754,16 @@ footer { clear: both; }
     transform: none;
   }
 }
+
+
+/* Static glass panels avoid expensive SVG/backdrop refraction during startup */
+.glass-surface--lite {
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .36), 0 10px 30px rgba(25, 46, 75, .06);
+}
+.app[data-theme="dark"] .glass-surface--lite {
+  border-color: rgba(155, 184, 223, .2);
+  background: rgba(12, 23, 39, .82);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), 0 12px 38px rgba(0, 0, 0, .18);
+}
