@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import './CircularCarousel.css';
 
 const CircularCarousel = ({
@@ -18,45 +18,69 @@ const CircularCarousel = ({
   className = ''
 }) => {
   const rootRef = useRef(null);
-  const [angle, setAngle] = useState(0);
+  const angleRef = useRef(0);
+  const ringRef = useRef(null);
   const [active, setActive] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const [paused, setPaused] = useState(false);
   const drag = useRef(null);
   const count = items.length;
   const step = 360 / Math.max(count, 1);
   const radius = useMemo(() => Math.max(150, (cardWidth + gap) / (2 * Math.tan(Math.PI / Math.max(count, 3)))), [cardWidth, gap, count]);
 
+  const applyAngle = next => {
+    angleRef.current = next;
+    if (ringRef.current) ringRef.current.style.transform = `translateZ(${-radius}px) rotateY(${next}deg)`;
+  };
+
   useEffect(() => {
-    if (autoplay !== 'drift' || paused || count < 2) return undefined;
-    let frame;
+    const node = rootRef.current;
+    if (!node || !('IntersectionObserver' in window)) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!query) return undefined;
+    const sync = () => setReducedMotion(query.matches);
+    sync();
+    query.addEventListener?.('change', sync);
+    return () => query.removeEventListener?.('change', sync);
+  }, []);
+
+  useEffect(() => {
+    if (autoplay !== 'drift' || paused || !isVisible || reducedMotion || count < 2) return undefined;
+    let frame = 0;
     let last = 0;
     const tick = now => {
       if (last) {
         const delta = Math.min((now - last) / 1000, 0.05);
-        setAngle(current => {
-          const next = current + (direction === 'right' ? 1 : -1) * speed * delta;
-          const index = ((Math.round(-next / step) % count) + count) % count;
-          setActive(index);
-          return next;
-        });
+        const next = angleRef.current + (direction === 'right' ? 1 : -1) * speed * delta;
+        applyAngle(next);
+        const index = ((Math.round(-next / step) % count) + count) % count;
+        setActive(current => current === index ? current : index);
       }
       last = now;
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [autoplay, paused, count, direction, speed, step]);
+  }, [autoplay, paused, count, direction, speed, step, isVisible, reducedMotion, radius]);
 
   const focusIndex = index => {
     const target = -index * step;
-    const normalized = angle + ((((target - angle) % 360) + 540) % 360) - 180;
-    setAngle(normalized);
+    const current = angleRef.current;
+    const normalized = current + ((((target - current) % 360) + 540) % 360) - 180;
+    applyAngle(normalized);
     setActive(index);
   };
 
   const onPointerDown = event => {
     if (!draggable || event.button !== 0) return;
-    drag.current = { x: event.clientX, angle, moved: false };
+    drag.current = { x: event.clientX, angle: angleRef.current, moved: false };
     event.currentTarget.setPointerCapture?.(event.pointerId);
     setPaused(true);
   };
@@ -65,14 +89,15 @@ const CircularCarousel = ({
     const delta = event.clientX - drag.current.x;
     if (Math.abs(delta) > 3) drag.current.moved = true;
     const next = drag.current.angle + delta * 0.45;
-    setAngle(next);
-    setActive(((Math.round(-next / step) % count) + count) % count);
+    applyAngle(next);
+    const index = ((Math.round(-next / step) % count) + count) % count;
+    setActive(current => current === index ? current : index);
   };
   const onPointerUp = () => {
     if (!drag.current) return;
     const moved = drag.current.moved;
     drag.current = null;
-    if (moved) setAngle(current => Math.round(current / step) * step);
+    if (moved) applyAngle(Math.round(angleRef.current / step) * step);
     setPaused(false);
   };
 
@@ -110,7 +135,7 @@ const CircularCarousel = ({
       }}
     >
       <div className="circular-carousel__scene">
-        <div className="circular-carousel__ring" style={{ transform: `translateZ(${-radius}px) rotateY(${angle}deg)` }}>
+        <div ref={ringRef} className="circular-carousel__ring" style={{ transform: `translateZ(${-radius}px) rotateY(${angleRef.current}deg)` }}>
           {items.map((item, index) => {
             const rotation = index * step;
             return (
@@ -150,4 +175,4 @@ const CircularCarousel = ({
   );
 };
 
-export default CircularCarousel;
+export default memo(CircularCarousel);
