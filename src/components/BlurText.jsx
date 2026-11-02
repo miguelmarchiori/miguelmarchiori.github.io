@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 const directions = {
   top: { y: 24, x: 0 },
@@ -8,7 +8,7 @@ const directions = {
   right: { x: 24, y: 0 }
 };
 
-export default function BlurText({
+function BlurText({
   text = '',
   className = '',
   animateBy = 'letters',
@@ -70,3 +70,4 @@ export default function BlurText({
     </p>
   );
 }
+export default memo(BlurText);
