@@ -1,9 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import GlassSurface from './components/GlassSurface';
-import TechText from './components/TechText';
-import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
-import RotatingText from './components/RotatingText';
 import GlassIcons from './components/GlassIcons';
 import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
@@ -13,7 +10,7 @@ import { portfolio, skills, skillWall, areas, projects } from './data/content';
 
 const Carousel = lazy(() => import('./components/Carousel'));
 const CircularCarousel = lazy(() => import('./components/CircularCarousel'));
-const PatternWaves = lazy(() => import('./components/PatternWaves'));
+const RotatingText = lazy(() => import('./components/RotatingText'));
 
 const nav = [
   { label: 'Sobre', id: 'sobre' },
@@ -31,24 +28,12 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
-  const [ambientReady, setAmbientReady] = useState(false);
   const [experienceReady, setExperienceReady] = useState(false);
   const [stackReady, setStackReady] = useState(false);
   const experienceSectionRef = useRef(null);
   const stackSectionRef = useRef(null);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
-  useEffect(() => {
-    let timeoutId;
-    let idleId;
-    const enableAmbient = () => setAmbientReady(true);
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(enableAmbient, { timeout: 1400 });
-      return () => window.cancelIdleCallback?.(idleId);
-    }
-    timeoutId = window.setTimeout(enableAmbient, 650);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
   useEffect(() => {
     const experienceNode = experienceSectionRef.current;
     const stackNode = stackSectionRef.current;
@@ -88,22 +73,7 @@ export default function App() {
 
   return (
     <div className={`app`} data-theme={theme}>
-      <div className="ambient-background" aria-hidden="true">
-        {ambientReady && <Suspense fallback={null}><PatternWaves
-          className="site-pattern-waves"
-          color={theme === 'dark' ? '#8abaff' : '#477db8'}
-          spacing={11}
-          opacity={theme === 'dark' ? 0.58 : 0.52}
-          speed={0}
-          depth={0.9}
-          backgroundColor="rgba(0, 0, 0, 0)"
-          preset="silk"
-          pattern="dot"
-          wave="silk"
-          interactive={false}
-          intro={true}
-        /></Suspense>}
-      </div>
+      <div className="ambient-background" aria-hidden="true" />
       <header className="navbar">
         <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.42} className="navbar-glass">
           <div className="navbar-inner">
@@ -154,7 +124,7 @@ export default function App() {
         <section id="top" className="hero section-shell">
           <div className="hero-content hero-grid hero-refresh"><div className="hero-copy">
             <p className="hero-kicker">OLÁ, EU SOU</p>
-            <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><BlurText text="MIGUEL" className="hero-blur-name" animateBy="letters" effect="blur" direction="top" staggerFrom="start" trigger="load" delay={75} stepDuration={0.55} blur={10} distance={28} /></div><div className="hero-tech-line"><TechText text="MARCHIORI" fontFamily="Michroma" fontWeight={800} fontSize={190} letterSpacing={-0.055} color="currentColor" accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div></div><p className="hero-role">Programador Fullstack</p>
+            <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><span className="hero-blur-name">MIGUEL</span></div><div className="hero-tech-line"><span className="hero-marchiori-static">MARCHIORI</span></div></div><p className="hero-role">Programador Fullstack</p>
             <p className="hero-bio">Sou programador full stack e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica. Programar é minha paixão.</p>
             <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
             </div>
@@ -189,7 +159,7 @@ export default function App() {
         <section id="atuacao" className="experience section-shell section-pad" ref={experienceSectionRef}>
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
-            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
+            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span>{experienceReady ? <Suspense fallback={<span className="robotics-title-fallback">FTC</span>}><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></Suspense> : <span className="robotics-title-fallback">FTC</span>}</h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
           {experienceReady ? <Suspense fallback={<div aria-hidden="true" style={{ minHeight: 350 }} />}><Carousel
