@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 
 import './TechText.css';
 
@@ -99,7 +99,7 @@ const TechText = ({
       guides
     };
     wakeRef.current();
-  });
+  }, [text, fontFamily, fontWeight, fontSize, letterSpacing, color, accentColor, align, reach, softness, dashLength, dashGap, strokeWidth, lineStyle, reveal, specks, selection, labels, draggable, bounce, sweep, speed, clickKick, intro, introDuration, guides]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -991,4 +991,4 @@ const TechText = ({
   );
 };
 
-export default TechText;
+export default memo(TechText);
