@@ -46,5 +46,3 @@ Os arquivos gerados ficam na pasta `dist/`.
 ## Publicação
 
 O site é publicado no GitHub Pages. O workflow em `.github/workflows/deploy.yml` instala as dependências, executa `npm run build:pages` e publica a pasta `dist/` quando há atualização na branch `main`. Também é possível iniciar a publicação manualmente pela aba **Actions** do GitHub.
-
-O repositório inclui configuração para Netlify em `netlify.toml`; nesse provedor, o comando de build é `npm run build` e a pasta publicada é `dist`.
