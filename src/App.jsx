@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import GlassSurface from './components/GlassSurface';
 import TechText from './components/TechText';
 import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
 import RotatingText from './components/RotatingText';
-import Carousel from './components/Carousel';
-import DriftWall from './components/DriftWall';
-import CircularCarousel from './components/CircularCarousel';
-import FolderFloat from './components/FolderFloat';
 import GlassIcons from './components/GlassIcons';
-import PatternWaves from './components/PatternWaves';
 import {
   SiGithub, SiInstagram, SiWhatsapp, SiPython, SiHtml5, SiPhp, SiOpenjdk
 } from 'react-icons/si';
 import { FaLinkedinIn, FaCss3Alt } from 'react-icons/fa6';
 import { portfolio, skills, skillWall, areas, projects } from './data/content';
+
+const Carousel = lazy(() => import('./components/Carousel'));
+const CircularCarousel = lazy(() => import('./components/CircularCarousel'));
+const PatternWaves = lazy(() => import('./components/PatternWaves'));
 
 const nav = [
   { label: 'Sobre', id: 'sobre' },
@@ -32,8 +31,44 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
+  const [ambientReady, setAmbientReady] = useState(false);
+  const [experienceReady, setExperienceReady] = useState(false);
+  const [stackReady, setStackReady] = useState(false);
+  const experienceSectionRef = useRef(null);
+  const stackSectionRef = useRef(null);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
+  useEffect(() => {
+    let timeoutId;
+    let idleId;
+    const enableAmbient = () => setAmbientReady(true);
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(enableAmbient, { timeout: 1400 });
+      return () => window.cancelIdleCallback?.(idleId);
+    }
+    timeoutId = window.setTimeout(enableAmbient, 650);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+  useEffect(() => {
+    const experienceNode = experienceSectionRef.current;
+    const stackNode = stackSectionRef.current;
+    if (!('IntersectionObserver' in window)) {
+      setExperienceReady(true);
+      setStackReady(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        if (entry.target === experienceNode) setExperienceReady(true);
+        if (entry.target === stackNode) setStackReady(true);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '450px 0px', threshold: 0.01 });
+    if (experienceNode) observer.observe(experienceNode);
+    if (stackNode) observer.observe(stackNode);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     if (!menu || !window.matchMedia('(max-width: 700px)').matches) return undefined;
     const previousOverflow = document.body.style.overflow;
@@ -54,7 +89,7 @@ export default function App() {
   return (
     <div className={`app`} data-theme={theme}>
       <div className="ambient-background" aria-hidden="true">
-        <PatternWaves
+        {ambientReady && <Suspense fallback={null}><PatternWaves
           className="site-pattern-waves"
           color={theme === 'dark' ? '#8abaff' : '#477db8'}
           spacing={11}
@@ -67,7 +102,7 @@ export default function App() {
           wave="silk"
           interactive={false}
           intro={true}
-        />
+        /></Suspense>}
       </div>
       <header className="navbar">
         <GlassSurface width="100%" height="66px" borderRadius={22} backgroundOpacity={0.42} className="navbar-glass">
@@ -151,13 +186,13 @@ export default function App() {
           </div>
         </section>
 
-        <section id="atuacao" className="experience section-shell section-pad">
+        <section id="atuacao" className="experience section-shell section-pad" ref={experienceSectionRef}>
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
             <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={['FTC', 'OBR', 'FLL']} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
-          <Carousel
+          {experienceReady ? <Suspense fallback={<div aria-hidden="true" style={{ minHeight: 350 }} />}><Carousel
             className="robotics-experience-carousel"
             items={[
               {
@@ -197,17 +232,17 @@ export default function App() {
             arrows={true}
             loop={true}
             theme={theme}
-          />
+          /></Suspense> : <div aria-hidden="true" style={{ minHeight: 350 }} />}
         </section>
 
-        <section id="stack" className="stack-section section-shell section-pad">
+        <section id="stack" className="stack-section section-shell section-pad" ref={stackSectionRef}>
           <div className="section-kicker">03 / STACK</div>
           <div className="stack-carousel-heading">
             <h2>Minhas <em>línguas de programação.</em></h2>
             <p>Linguagens que eu tenho no meu arsenal e pra que uso cada uma</p>
           </div>
           <div className="stack-circular-stage">
-            <CircularCarousel
+            {stackReady ? <Suspense fallback={<div aria-hidden="true" style={{ minHeight: 320 }} />}><CircularCarousel
               items={[
                 { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
                 { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
@@ -236,7 +271,7 @@ export default function App() {
               fadeColor={theme === 'dark' ? '#080d16' : '#ffffff'}
               cornerRadius={20}
               captions={true}
-            />
+            /></Suspense> : <div aria-hidden="true" style={{ minHeight: 320 }} />}
           </div>
         </section>
 
