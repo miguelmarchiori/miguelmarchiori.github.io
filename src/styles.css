@@ -1816,3 +1816,34 @@ footer { clear: both; }
   .app main #contato .contact-open h2 { max-width: none; }
   .contact-links { gap: 6px 22px; }
 }
+
+
+/* ===== Tema claro com mais contraste: fundo azul gelo, cartões com borda e sombra ===== */
+.app[data-theme=light] {
+  background: linear-gradient(180deg, #edf3fb 0%, #e2ebf7 100%) !important;
+  --text: #0c1a30;
+  --muted: #465872;
+}
+.app[data-theme=light] .ambient-background { opacity: .7 !important; }
+.app[data-theme=light] .navbar-glass { box-shadow: 0 14px 34px -20px rgba(15, 50, 100, .45), 0 0 0 1px #c4d3e8 !important; }
+.app[data-theme=light] .projects-list-item,
+.app[data-theme=light] .rb-view,
+.app[data-theme=light] .stack-copy-surface {
+  background: #fff !important;
+  border: 1px solid #c4d3e8 !important;
+  box-shadow: 0 22px 44px -28px rgba(15, 50, 100, .42), 0 1px 2px rgba(15, 50, 100, .08) !important;
+}
+.app[data-theme=light] .hero-avatar-stage { box-shadow: 0 34px 60px -32px rgba(15, 50, 100, .5) !important; }
+.app[data-theme=light] .about-story-photo { border-color: #b9cae1 !important; box-shadow: 0 26px 50px -30px rgba(15, 50, 100, .5) !important; }
+.app[data-theme=light] .section-heading h2,
+.app[data-theme=light] .stack-carousel-heading h2,
+.app[data-theme=light] .about-story-copy h2,
+.app[data-theme=light] .contact h2 { color: #0c1a30 !important; }
+.app[data-theme=light] .section-heading h2 em,
+.app[data-theme=light] .stack-carousel-heading h2 em { color: #0a5ed7 !important; }
+.app[data-theme=light] .primary-btn { background: #0a58c9 !important; border-color: #0a58c9 !important; }
+.app[data-theme=light] .ghost-btn { background: #fff !important; border-color: #b9c9df !important; color: #0c1a30 !important; }
+.app[data-theme=light] .hero-bio,
+.app[data-theme=light] .about-story-copy p,
+.app[data-theme=light] .section-heading p,
+.app[data-theme=light] .stack-carousel-heading p { color: #33465f !important; }

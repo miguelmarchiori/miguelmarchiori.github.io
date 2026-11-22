@@ -82,7 +82,7 @@ export default function App() {
       <div className="ambient-background" aria-hidden="true">
         <PatternWaves
           className="site-pattern-waves"
-          color={theme === 'dark' ? '#8abaff' : '#477db8'}
+          color={theme === 'dark' ? '#8abaff' : '#2a62a8'}
           spacing={11}
           opacity={theme === 'dark' ? 0.58 : 0.52}
           speed={0}
