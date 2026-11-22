@@ -1,27 +1,34 @@
 # Portfólio — Miguel Marchiori
 
-Portfólio pessoal de Miguel Marchiori da Silva Correia, programador júnior e bolsista de iniciação científica na UTFPR. O site reúne sua trajetória em desenvolvimento web, robótica competitiva e automação.
+Portfólio pessoal de Miguel Marchiori da Silva Correia, programador full stack e bolsista de iniciação científica na UTFPR.
 
 **Acesse:** [miguelmarchiori.github.io](https://miguelmarchiori.github.io/)
 
-## Sobre o portfólio
+## O que tem no site
 
-O site apresenta:
+- **Hero:** quem é, o que faz e o botão para falar no WhatsApp.
+- **Sobre mim:** a história, as ferramentas (Python, HTML, CSS, PHP, Java, Git, GitHub) e uma foto que aparece como revelação ao rolar.
+- **Projetos:** a pesquisa com LEGO SPIKE Prime e o site da Agro Pet Rodrigues, com capturas de tela.
+- **Robótica de competição:** o robô, o título regional da OBR e o trabalho com a equipe. As fotos trocam conforme a linha escolhida.
+- **Equipes:** Quarteto Fantástico (OBR), Shield (FLL) e Vanguard FTC, com link para o Instagram de cada uma.
+- **Contato:** WhatsApp, e-mail, GitHub, LinkedIn e Instagram.
 
-- Uma introdução pessoal com links para GitHub e contato.
-- Uma seção sobre a trajetória e o interesse por tecnologia.
-- Experiências em robótica nas modalidades OBR, FLL e FTC.
-- Tecnologias e áreas de atuação, incluindo Python, HTML, CSS, PHP, Java, web design e automação.
-- Projetos, como a pesquisa de robô LEGO SPIKE Prime para a OBR e o site Agro Pet Rodrigues.
-- Opções de tema claro e escuro e layout adaptado para dispositivos móveis.
+O design segue a skill `design-taste-frontend` (pasta `.claude/skills/`): uma tela por seção, grade única, fotos reais, sem efeitos de fundo. O tema é claro, com o azul do portfólio anterior.
 
-## Tecnologias
+## Como o projeto funciona
 
-- React 19 e Vite 8
-- JavaScript e CSS
-- Motion
-- Three.js, React Three Fiber e Drei
-- OGL, Matter.js e React Icons
+O texto e os links ficam em `src/data/content.js`. `src/App.jsx` monta a página em React, mas só durante o build: o Vite troca `<!--app-->` do `index.html` pelo HTML pronto, então o site publicado é HTML puro, sem o React no navegador. Menu, animações de hover e a revelação da foto vêm dos scripts em `public/assets/` (parte da skill, não edite esses arquivos).
+
+```
+index.html            cabeçalho, cores e fontes da página
+src/App.jsx           as seções
+src/data/content.js   textos, links e caminhos das imagens
+src/styles.css        o pouco de CSS que é só desta página
+vite.config.js        plugin que gera o HTML no build
+public/assets/        fotos, logotipos, capturas e arquivos da skill
+```
+
+Para trocar uma foto, coloque o arquivo em `public/assets/fotos/` e mude o caminho em `content.js`. Fotos acima de 520px de largura precisam de uma cópia `nome-480.webp` com 480px, usada no celular.
 
 ## Executar localmente
 
@@ -31,8 +38,6 @@ O site apresenta:
 npm install
 npm run dev
 ```
-
-O Vite inicia o servidor local e informa o endereço para abrir no navegador.
 
 Para gerar e visualizar a versão de produção:
 

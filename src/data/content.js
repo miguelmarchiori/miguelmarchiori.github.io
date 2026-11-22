@@ -1,92 +1,135 @@
-import { SiPython, SiHtml5, SiPhp, SiOpenjdk } from 'react-icons/si';
-import { FaCss3Alt } from 'react-icons/fa6';
+// Todo o texto e todos os links do portfólio ficam aqui.
+// Para trocar uma foto, coloque o arquivo em public/assets/fotos e mude o caminho abaixo.
 
-export const portfolio = {
-  name: 'Miguel Marchiori da Silva Correia',
-  shortName: 'Miguel Marchiori',
-  role: 'Programador Júnior',
-  location: 'Brasil',
-  availability: 'Web design · robótica · automação',
-  headline: 'Transformo ideias em código, protótipos e soluções práticas.',
-  bio: 'Sou programador em formação e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação, com experiência em Python, HTML, CSS e PHP e evolução contínua em Java. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica e atuo como programador principal em equipes de competição. Programar é minha paixão.',
+// Uma imagem com tamanho natural; acima de 520px de largura ganha uma versão de 480px para o celular.
+const pic = (src, width, height) => ({
+  src,
+  width,
+  height,
+  srcSet: width > 520 ? `${src.replace('.webp', '-480.webp')} 480w, ${src} ${width}w` : undefined
+});
+
+export const person = {
+  name: 'Miguel Marchiori',
+  fullName: 'Miguel Marchiori da Silva Correia',
   email: 'marchioritimoteo@gmail.com',
+  whatsapp: 'https://wa.me/5543988337338',
   github: 'https://github.com/miguelmarchiori',
   linkedin: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
-  instagram: 'https://instagram.com/mg_marchiori',
-  whatsapp: 'https://wa.me/5543988337338',
-  phone: '+55 (43) 98833-7338',
-  cv: 'https://www.linkedin.com/in/miguel-marchiori-da-silva-correia-a4753442b/',
-  stats: [
-    { value: '03', label: 'modalidades de robótica' },
-    { value: '01', label: 'campeonato regional OBR' },
-    { value: '05+', label: 'linguagens / tecnologias' }
+  instagram: 'https://instagram.com/mg_marchiori'
+};
+
+export const mainAction = 'Falar no WhatsApp';
+
+export const hero = {
+  kicker: 'Bolsista de iniciação científica na UTFPR',
+  title: 'Programador full stack de sites e robôs',
+  lead: 'Faço sites em HTML, CSS e PHP e programo robôs em Python. Campeão regional da OBR no Norte do Paraná e programador principal em 3 equipes.',
+  photo: pic('/assets/fotos/miguel-equipe.webp', 820, 778),
+  photoAlt: 'Miguel sorrindo de uniforme da equipe, mostrando quatro dedos'
+};
+
+export const about = {
+  title: 'Sobre mim',
+  text: 'Tenho interesse por tecnologia desde cedo e gosto de ver ideias saírem do papel, num site, num código ou num robô. A robótica me ensinou a trabalhar em equipe e a resolver problemas sob pressão. Hoje estudo Java e web design e quero cursar engenharia da computação.',
+  photo: pic('/assets/fotos/miguel-programando.webp', 1000, 1501),
+  photoAlt: 'Miguel de uniforme da equipe programando no notebook durante uma competição'
+};
+
+export const tools = [
+  { name: 'Python', icon: '/assets/icons/python.svg' },
+  { name: 'HTML5', icon: '/assets/icons/html-5.svg' },
+  { name: 'CSS', icon: '/assets/icons/css.svg' },
+  { name: 'PHP', icon: '/assets/icons/php.svg' },
+  { name: 'Java', icon: '/assets/icons/java.svg' },
+  { name: 'Git', icon: '/assets/icons/git-icon.svg' },
+  { name: 'GitHub', icon: '/assets/icons/github.svg', ink: true }
+];
+
+export const projects = {
+  title: 'Projetos',
+  lead: 'Uma pesquisa de iniciação científica e um site para um cliente real.',
+  items: [
+    {
+      name: 'Robô autônomo em Python',
+      text: 'Pesquisa com LEGO SPIKE Prime para a categoria Resgate da OBR, com sete meses de desenvolvimento.',
+      image: pic('/assets/projetos-img/pesquisa-lego-spike.webp', 1280, 768),
+      imageAlt: 'Primeira página do documento da pesquisa, com o resumo do trabalho',
+      href: '/documento-robo-lego-spike-prime.html',
+      action: 'Ler a pesquisa'
+    },
+    {
+      name: 'Site da Agro Pet Rodrigues',
+      text: 'Site institucional de uma loja em Apucarana, com serviços, avaliações e contato pelo WhatsApp.',
+      image: pic('/assets/projetos-img/agro-pet-rodrigues.webp', 1280, 768),
+      imageAlt: 'Página inicial do site da Agro Pet Rodrigues',
+      href: 'https://agro-pet-rodrigues.vercel.app',
+      action: 'Visitar o site'
+    }
   ]
 };
 
-export const skills = [
-  { label: 'Python', value: 'Programação' },
-  { label: 'HTML', value: 'Web' },
-  { label: 'CSS', value: 'Web' },
-  { label: 'PHP', value: 'Web' },
-  { label: 'Java', value: 'Aprendendo' },
-  { label: 'Web Design', value: 'Design' },
-  { label: 'Robótica', value: 'Competição' },
-  { label: 'Automação', value: 'Projetos' },
-  { label: 'Git / GitHub', value: 'Ferramentas' }
-];
+export const robotics = {
+  title: 'Robótica de competição',
+  lead: 'Código, sensores e testes até o robô funcionar na pista.',
+  rows: [
+    {
+      key: 'robo',
+      name: 'Robô autônomo',
+      text: 'Python no LEGO SPIKE Prime, com seguidor de linha e sensores de cor.',
+      value: 'Python',
+      photo: pic('/assets/fotos/robo-lego-spike.webp', 480, 640),
+      photoAlt: 'Robô LEGO com sensores, montado sobre uma mesa na quadra da competição'
+    },
+    {
+      key: 'titulo',
+      name: 'Campeão regional',
+      text: 'Norte do Paraná na OBR, com o nono lugar na etapa estadual.',
+      value: 'OBR',
+      photo: pic('/assets/fotos/medalhas-obr.webp', 480, 640),
+      photoAlt: 'Três medalhas douradas da Olimpíada Brasileira de Robótica'
+    },
+    {
+      key: 'equipe',
+      name: 'Código com a equipe',
+      text: 'Testes e ajustes ao lado da pista, com o notebook aberto.',
+      value: 'Equipe',
+      photo: pic('/assets/fotos/equipe-na-pista.webp', 799, 1200),
+      photoAlt: 'Integrantes de uma equipe de robótica sentados no chão, um deles programando no notebook'
+    }
+  ]
+};
 
-export const skillWall = [
-  { title: 'Python', icon: SiPython, accent: '#3776AB' },
-  { title: 'HTML5', icon: SiHtml5, accent: '#E34F26' },
-  { title: 'CSS3', icon: FaCss3Alt, accent: '#1572B6' },
-  { title: 'PHP', icon: SiPhp, accent: '#777BB4' },
-  { title: 'Java', icon: SiOpenjdk, accent: '#E76F00' }
-];
+export const teams = {
+  title: 'Equipes',
+  lead: 'Programador principal em 3 equipes de competição.',
+  items: [
+    {
+      name: 'Quarteto Fantástico',
+      text: 'OBR. Campeão regional do Norte do Paraná e duas vezes na etapa estadual.',
+      logo: pic('/assets/equipes/quarteto-fantastico.webp', 960, 960),
+      logoAlt: 'Logotipo da equipe Quarteto Fantástico',
+      href: 'https://www.instagram.com/quartetofantastico_sesi/'
+    },
+    {
+      name: 'Shield',
+      text: 'FIRST LEGO League. Etapa regional do Paraná, com as soluções da equipe.',
+      logo: pic('/assets/equipes/shield.webp', 320, 320),
+      logoAlt: 'Logotipo da equipe Shield',
+      href: 'https://www.instagram.com/equip_shield/'
+    },
+    {
+      name: 'Vanguard FTC',
+      text: 'FIRST Tech Challenge. Código, automação e integração dos sistemas do robô.',
+      logo: pic('/assets/equipes/vanguard-ftc.webp', 960, 960),
+      logoAlt: 'Logotipo da equipe Vanguard FTC',
+      href: 'https://www.instagram.com/vanguardftc_/'
+    }
+  ]
+};
 
-export const areas = [
-  'Web Design',
-  'Robótica',
-  'Automação',
-  'Programação',
-  'Projetos de competição'
-];
-
-export const projects = [
-  {
-    name: 'Pesquisa LEGO SPIKE Prime — OBR',
-    category: 'Iniciação científica',
-    description: 'Documento completo da pesquisa sobre o desenvolvimento de um robô autônomo em Python com LEGO SPIKE Prime para a categoria Resgate da OBR, com imagens do robô, metodologia, resultados e descrição da máquina de estados.',
-    url: '/documento-robo-lego-spike-prime.html',
-    previewUrl: '/documento-robo-lego-spike-prime.html',
-    type: 'document',
-    technologies: ['Python', 'LEGO SPIKE Prime', 'OBR']
-  },
-  {
-    name: 'Agro Pet Rodrigues',
-    category: 'Desenvolvimento web',
-    description: 'Site institucional para apresentar a empresa, sua identidade e seus serviços em uma presença digital clara e acessível.',
-    url: 'https://agro-pet-rodrigues.vercel.app',
-    technologies: ['Web Design', 'Frontend', 'Responsivo']
-  }
-];
-
-export const experience = [
-  {
-    period: 'OBR · REGIONAL',
-    role: 'Programador principal · Quarteto Fantástico',
-    company: '@quartetofantastico_sesi',
-    description: 'Campeão regional do Norte do Paraná e duas participações na etapa estadual da Olimpíada Brasileira de Robótica.'
-  },
-  {
-    period: 'FLL · REGIONAL',
-    role: 'Programador principal · Shield',
-    company: '@equip_shield · First LEGO League Paraná',
-    description: 'Participação na etapa regional do Paraná, atuando na programação e no desenvolvimento das soluções da equipe.'
-  },
-  {
-    period: 'FTC · EQUIPE',
-    role: 'Programador principal · Vanguard FTC',
-    company: '@vanguardftc_',
-    description: 'Atuação como programador principal na equipe, contribuindo com código, automação e integração dos sistemas do robô.'
-  }
-];
+export const closing = {
+  title: 'Fale comigo sobre um projeto',
+  lead: 'Respondo pelo WhatsApp ou por e-mail.',
+  lede: 'Programador full stack de sites e robôs.'
+};
