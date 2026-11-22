@@ -69,8 +69,8 @@ const GlassIcons = ({
           </>
         );
 
+        const key = item.id ?? `${item.label}-${index}`;
         const common = {
-          key: item.id ?? `${item.label}-${index}`,
           className: `glass-icon ${item.className || ''}`.trim(),
           'aria-label': item.label,
           onClick: item.onClick
@@ -79,6 +79,7 @@ const GlassIcons = ({
         if (item.href) {
           return (
             <a
+              key={key}
               {...common}
               href={item.href}
               target={item.target || '_blank'}
@@ -89,7 +90,7 @@ const GlassIcons = ({
           );
         }
 
-        return <button {...common} type="button">{content}</button>;
+        return <button key={key} {...common} type="button">{content}</button>;
       })}
     </div>
   );
