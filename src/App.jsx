@@ -328,8 +328,8 @@ export default function App() {
               <h2>Vamos fazer um projeto juntos!</h2>
               <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
               <div className="contact-actions">
-                <a className="email-link" href={`mailto:${portfolio.email}`}>{portfolio.email} <span>↗</span></a>
-                <a className="phone-link" href={portfolio.whatsapp} target="_blank" rel="noreferrer">WhatsApp · {portfolio.phone} ↗</a>
+                <a className="primary-btn contact-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp <span>↗</span></a>
+                <a className="ghost-btn contact-btn" href={`mailto:${portfolio.email}`}>Enviar e-mail</a>
               </div>
               <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.42} className="contact-social-surface">
                 <div className="contact-social-content">

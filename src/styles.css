@@ -1843,3 +1843,11 @@ footer { clear: both; }
   .app main #stack.stack-section.section-pad { padding-top: 58px !important; padding-bottom: 8px !important; }
   .app main #projetos.projects-section.section-pad { padding-top: 84px !important; padding-bottom: calc(var(--bar-h) + 8px) !important; }
 }
+
+
+/* Contato: WhatsApp como botão principal e e-mail como botão secundário */
+.contact-actions { gap: 12px; }
+.contact-actions .contact-btn { min-height: 52px; padding: 0 26px; font-size: 15px; }
+@media (max-width: 700px) {
+  .contact-actions .contact-btn { justify-content: center; text-align: center; }
+}
