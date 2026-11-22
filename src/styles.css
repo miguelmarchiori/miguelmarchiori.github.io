@@ -1864,3 +1864,14 @@ footer { clear: both; }
 }
 /* A categoria e as tecnologias ficavam coladas na mesma linha */
 .project-detail-body .project-meta { display: flex; justify-content: space-between; gap: 4px 18px; }
+
+/* Projeto com vídeo vertical: o site ao vivo à esquerda e o vídeo ao lado */
+.project-live-preview.has-video { --pv-h: clamp(320px, 38vw, 430px); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: minmax(0, 1fr); height: var(--pv-h); background: #1d1033; }
+.project-preview-video { display: block; width: calc(var(--pv-h) * 9 / 16); height: 100%; object-fit: cover; background: #1d1033; }
+.project-live-preview.has-video .project-preview-open { right: calc(var(--pv-h) * 9 / 16 + 13px); }
+@media (max-width: 700px) {
+  .project-live-preview.has-video { display: block; height: auto; }
+  .project-live-preview.has-video iframe { display: none; }
+  .project-preview-video { width: min(100%, 280px); height: auto; aspect-ratio: 9 / 16; margin-inline: auto; }
+  .project-live-preview.has-video .project-preview-open { top: 13px; right: 13px; bottom: auto; }
+}

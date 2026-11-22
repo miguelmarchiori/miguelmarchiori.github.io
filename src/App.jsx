@@ -254,7 +254,7 @@ export default function App() {
                     <span>{isPdf || isDocument ? 'PRÉVIA DO DOCUMENTO' : isRepo ? 'REPOSITÓRIO' : 'PRÉVIA DO PROJETO'}</span>
                     <span className="project-detail-number">{String(selectedProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
                   </div>
-                  <div className={`project-live-preview ${isPdf || isDocument ? 'is-document' : ''} ${isRepo ? 'is-repo' : ''}`}>
+                  <div className={`project-live-preview ${isPdf || isDocument ? 'is-document' : ''} ${isRepo ? 'is-repo' : ''} ${project.previewVideo ? 'has-video' : ''}`}>
                     {project.previewImage ? (
                       <img src={project.previewImage} alt={`Prévia de ${project.name}`} loading="lazy" />
                     ) : isRepo ? (
@@ -268,6 +268,9 @@ export default function App() {
                       <iframe src={previewUrl} title={`Prévia do documento ${project.name}`} loading="lazy" />
                     ) : (
                       <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={0} />
+                    )}
+                    {project.previewVideo && (
+                      <video className="project-preview-video" src={project.previewVideo} poster={project.previewPoster} aria-label={project.previewVideoAlt} autoPlay muted loop playsInline preload="auto" />
                     )}
                     <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">{isPdf ? "Abrir PDF" : isDocument ? "Abrir documento" : isRepo ? "Abrir no GitHub" : "Abrir projeto"} <span>↗</span></a>
                   </div>

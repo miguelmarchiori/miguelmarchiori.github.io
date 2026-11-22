@@ -74,6 +74,9 @@ export const projects = [
     description: 'Site da equipe Vanguard para ensinar crianças e adolescentes a passar da programação em blocos para o código de verdade. Tem uma trilha de Python para o LEGO SPIKE Prime e outra de Java para a FTC, missões em que o aluno digita o código para mover um personagem num tabuleiro e um laboratório de Python que roda no próprio navegador.',
     url: 'https://vancode-khaki.vercel.app',
     repoUrl: 'https://github.com/miguelmarchiori/VanguardCodingSite',
+    previewVideo: '/assets/projetos/vancode.mp4',
+    previewPoster: '/assets/projetos/vancode-capa.webp',
+    previewVideoAlt: 'Vídeo de divulgação do VanCode: 62 lições grátis, missões em que se aperta Rodar e Python de verdade sem instalar nada',
     technologies: ['JavaScript', 'Firebase', 'Pyodide']
   },
   {
