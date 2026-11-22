@@ -1817,3 +1817,29 @@ footer { clear: both; }
 .app[data-theme=light] .stack-carousel-heading p, .app[data-theme=light] .contact p { color: #455469; }
 .app[data-theme=light] .primary-btn { background: #1b5fd0; color: #fff; }
 .app[data-theme=light] .primary-btn span { color: #fff; }
+
+
+/* ------------------------------------------------------------------
+   Espaçamento: o mesmo ritmo e a mesma largura em todas as seções (701px ou mais).
+   ------------------------------------------------------------------ */
+@media (min-width: 701px) {
+  :root { --gap-section: clamp(48px, 5.5vw, 80px); }
+  main > .section-shell:not(.hero) { padding-top: var(--gap-section); padding-bottom: var(--gap-section); }
+  .hero { min-height: 0; }
+  .hero-refresh { min-height: min(640px, calc(100svh - 150px)); padding-top: 40px; padding-bottom: 24px; }
+  .circular-carousel { height: 470px; }
+  .app main #stack.stack-section.section-pad, .app main #projetos.projects-section.section-pad { padding-top: var(--gap-section) !important; padding-bottom: var(--gap-section) !important; }
+  .about-story-grid { max-width: none; }
+  .contact { width: min(1220px, calc(100% - 64px)); }
+  .section-heading, .experience-heading, .stack-carousel-heading { margin-bottom: 40px; }
+  footer { margin-top: 0; padding-top: 28px; padding-bottom: 40px; }
+}
+@media (min-width: 1600px) {
+  .contact { width: min(1480px, calc(100% - 160px)); }
+}
+
+/* celular: a pilha de tecnologias e os projetos seguem o mesmo espaçamento das outras seções */
+@media (max-width: 700px) {
+  .app main #stack.stack-section.section-pad { padding-top: 58px !important; padding-bottom: 8px !important; }
+  .app main #projetos.projects-section.section-pad { padding-top: 84px !important; padding-bottom: calc(var(--bar-h) + 8px) !important; }
+}
