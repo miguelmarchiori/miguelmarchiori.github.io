@@ -164,9 +164,9 @@ function Viewer({ team }) {
           {expanded ? 'Fechar' : 'Ver como funciona e o que faço'}
         </button>
         <div id={`rb-more-${team.id}`} className="rb-view__extra" hidden={!expanded}>
-          <h4>Como funciona</h4>
+          <h3>Como funciona</h3>
           <p>{team.how}</p>
-          <h4>O que faço</h4>
+          <h3>O que faço</h3>
           <p>{team.role}</p>
           {team.result && <p className="rb-view__result">{team.result}</p>}
           <div className="rb-view__links">
