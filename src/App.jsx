@@ -20,16 +20,16 @@ const nav = [
   { label: 'Contato', id: 'contato' }
 ];
 const photos = [
-  { src: 'https://i.imgur.com/fVpfF0K.png', alt: 'Miguel Marchiori em uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' },
-  { src: 'https://i.imgur.com/FNGeJbu.png', alt: 'Miguel Marchiori — segunda foto', title: 'Miguel Marchiori', note: 'Programação · robótica' },
-  { src: 'https://i.imgur.com/grpiCo0.png', alt: 'Miguel Marchiori — terceira foto', title: 'Miguel Marchiori', note: 'Programação · robótica' }
+  { src: '/assets/img/miguel-1.webp', alt: 'Miguel Marchiori sorrindo, de camiseta preta', title: 'Miguel Marchiori', note: 'Programação · robótica' },
+  { src: '/assets/img/miguel-2.webp', alt: 'Miguel Marchiori sorrindo, de camisa verde', title: 'Miguel Marchiori', note: 'Programação · robótica' },
+  { src: '/assets/img/miguel-3.webp', alt: 'Miguel Marchiori sorrindo, de uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' }
 ];
 const roboticsModalities = ['FTC', 'OBR', 'FLL'];
 const roboticsTeams = [
   {
     id: 'obr',
     title: 'OBR',
-    image: 'https://i.imgur.com/fnA157h.png',
+    image: '/assets/img/quarteto-fantastico.webp',
     href: 'https://www.instagram.com/quartetofantastico_sesi/',
     eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
     description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.'
@@ -37,7 +37,7 @@ const roboticsTeams = [
   {
     id: 'fll',
     title: 'FLL',
-    image: 'https://i.imgur.com/GOuvQD6.png',
+    image: '/assets/img/shield.webp',
     href: 'https://www.instagram.com/equip_shield/',
     eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
     description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.'
@@ -45,20 +45,20 @@ const roboticsTeams = [
   {
     id: 'ftc',
     title: 'FTC',
-    image: 'https://i.imgur.com/avRl8ae.jpeg',
+    image: '/assets/img/vanguard-ftc.webp',
     href: 'https://www.instagram.com/vanguardftc_/',
     eyebrow: 'VANGUARD FTC',
     description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.'
   }
 ];
 const technologyItems = [
-  { src: 'https://cdn.simpleicons.org/Python/3776AB', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
-  { src: 'https://cdn.simpleicons.org/HTML5/E34F26', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
-  { src: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1920px-CSS3_logo_and_wordmark.svg.png', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
-  { src: 'https://cdn.simpleicons.org/PHP/777BB4', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
-  { src: 'https://cdn.simpleicons.org/OpenJDK/E76F00', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
-  { src: 'https://cdn.simpleicons.org/Git/F05032', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
-  { src: 'https://cdn.simpleicons.org/GitHub/181717', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' }
+  { src: '/assets/tech/python.svg', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
+  { src: '/assets/tech/html5.svg', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
+  { src: '/assets/tech/css3.svg', alt: 'Logo CSS3', title: 'CSS3', subtitle: 'Estilo e interfaces' },
+  { src: '/assets/tech/php.svg', alt: 'Logo PHP', title: 'PHP', subtitle: 'Desenvolvimento web' },
+  { src: '/assets/tech/java.svg', alt: 'Logo Java', title: 'Java', subtitle: 'Em aprendizado' },
+  { src: '/assets/tech/git.svg', alt: 'Logo Git', title: 'Git', subtitle: 'Controle de versão' },
+  { src: '/assets/tech/github.svg', alt: 'Logo GitHub', title: 'GitHub', subtitle: 'Projetos e repositórios' }
 ];
 
 export default function App() {
@@ -200,7 +200,7 @@ export default function App() {
               <p>Eu sou o Miguel, tenho interesse por tecnologia desde cedo e gosto de ver as ideias saírem do papel, seja num site, num código ou num robô. A robótica me levou ao título de campeão regional da OBR e me ensinou a trabalhar em equipe, liderar e resolver problemas sob pressão. Hoje estudo mais sobre programação e web design, quero transformar essa paixão em carreira na engenharia da computação.</p>
             </div>
             <div className="about-story-photo">
-              <img src="https://i.imgur.com/GLGKpVZ.jpeg" alt="Miguel Marchiori" loading="lazy" decoding="async" />
+              <img src="/assets/img/miguel-programando.webp" alt="Miguel Marchiori de uniforme da equipe programando no notebook durante uma competição" width="1000" height="1501" loading="lazy" decoding="async" />
             </div>
           </div>
         </section>
