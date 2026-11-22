@@ -1700,3 +1700,63 @@ footer { clear: both; }
   border-color: rgba(193,216,248,.42) !important;
   color: #ffffff !important;
 }
+
+
+/* ------------------------------------------------------------------
+   Celular: o mesmo comportamento do site novo, com o design de sempre.
+   Uma seção por tela, menu em tela cheia e botão fixo de WhatsApp.
+   ------------------------------------------------------------------ */
+.sheet-cta, .actionbar { display: none; }
+
+@media (max-width: 700px) {
+  :root { --bar-h: calc(76px + env(safe-area-inset-bottom, 0px)); }
+
+  /* menu em tela cheia, com a barra do topo por cima */
+  .navbar-glass { z-index: 60; }
+  .nav-backdrop { display: none; }
+  .nav-links {
+    top: 0; right: 0; left: 0; width: 100%; height: 100dvh;
+    padding: 92px 24px calc(24px + env(safe-area-inset-bottom, 0px));
+    border: 0; border-radius: 0; box-shadow: none; overflow-y: auto;
+    background: rgba(247,246,241,.98);
+    transform: translateY(-12px);
+  }
+  .app[data-theme=dark] .nav-links { background: rgba(7,13,24,.98); }
+  .nav-links.is-open { transform: translateY(0); }
+  .nav-links button { min-height: 60px; padding: 8px 4px; border-bottom: 1px solid rgba(120,150,190,.18); border-radius: 0; font-size: 30px; line-height: 1.2; }
+  .sheet-cta { display: flex; justify-content: center; width: 100%; margin-top: 22px; }
+  .mobile-theme-row { margin-top: 18px; }
+
+  /* botão fixo de WhatsApp */
+  .actionbar {
+    display: block; position: fixed; z-index: 48; left: 0; right: 0; bottom: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(120,150,190,.22);
+    background: rgba(247,246,241,.92);
+    backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    transform: translateY(110%); visibility: hidden;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), visibility .35s;
+  }
+  .app[data-theme=dark] .actionbar { background: rgba(8,16,30,.9); border-top-color: rgba(159,190,230,.22); }
+  .actionbar.is-visible { transform: translateY(0); visibility: visible; }
+  .actionbar .primary-btn { display: flex; justify-content: center; width: 100%; }
+
+  /* uma seção por tela */
+  .hero, .section-shell:not(.hero) {
+    min-height: 100svh; box-sizing: border-box;
+    display: grid; grid-template-columns: minmax(0, 1fr); align-content: center;
+  }
+  .section-shell.section-pad { padding-top: 84px; padding-bottom: calc(var(--bar-h) + 8px); }
+  .contact.section-pad { padding-bottom: 28px; }
+  .hero { padding-top: 78px; }
+  .hero-content { padding: 10px 0 16px; }
+  .hero-refresh { gap: 14px; }
+  .hero-grid { gap: 14px; }
+  .hero-photo-stage { height: clamp(200px, 27svh, 280px); min-height: 0; }
+  .hero-actions { flex-wrap: nowrap; gap: 10px; }
+  .hero-actions > a, .hero-actions > button { flex: 1 1 0; min-width: 0; justify-content: center; padding-inline: 10px; font-size: 13px; }
+  footer { padding-bottom: 28px; }
+
+  /* ícones de contato com o nome inteiro à mostra */
+  .contact-social-content { padding-bottom: 38px !important; }
+}

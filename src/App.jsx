@@ -79,6 +79,26 @@ export default function App() {
     };
   }, [menu]);
 
+  // Botão fixo de WhatsApp no celular: aparece depois que o botão do início sai da tela
+  // e some quando a seção de contato já mostra a mesma ação.
+  const [barOn, setBarOn] = useState(false);
+  useEffect(() => {
+    const heroButton = document.querySelector('.hero-actions .primary-btn');
+    const contact = document.getElementById('contato');
+    if (!heroButton || !contact || !('IntersectionObserver' in window)) return undefined;
+    const seen = { hero: true, contact: false };
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.target === heroButton) seen.hero = entry.isIntersecting;
+        else seen.contact = entry.isIntersecting;
+      });
+      setBarOn(!seen.hero && !seen.contact);
+    }, { threshold: 0.15 });
+    observer.observe(heroButton);
+    observer.observe(contact);
+    return () => observer.disconnect();
+  }, []);
+
   const scrollTo = id => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMenu(false);
@@ -134,6 +154,7 @@ export default function App() {
         {menu && <button className="nav-backdrop" onClick={() => setMenu(false)} aria-label="Fechar menu" />}
         <nav id="primary-navigation" className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
           {nav.map(item => <button key={item.id} onClick={() => scrollTo(item.id)}>{item.label}</button>)}
+          <a className="primary-btn sheet-cta" href={portfolio.whatsapp} target="_blank" rel="noreferrer" onClick={() => setMenu(false)}>Falar no WhatsApp <span>↗</span></a>
           <div className="mobile-theme-row">
             <span>{theme === "dark" ? "Modo escuro" : "Modo claro"}</span>
             <label className="theme-switch theme-switch--mobile" aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}>
@@ -330,6 +351,9 @@ export default function App() {
       </main>
 
       <footer><span>© {new Date().getFullYear()} {portfolio.shortName}</span></footer>
+      <nav className={`actionbar${barOn && !menu ? ' is-visible' : ''}`} aria-label="Ações rápidas" inert={!(barOn && !menu)}>
+        <a className="primary-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp <span>↗</span></a>
+      </nav>
     </div>
   );
 }
