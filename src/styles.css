@@ -1760,3 +1760,60 @@ footer { clear: both; }
   /* ícones de contato com o nome inteiro à mostra */
   .contact-social-content { padding-bottom: 38px !important; }
 }
+
+
+/* ------------------------------------------------------------------
+   PC: leitura, contraste e telas largas.
+   Só a partir de 701px; o celular não muda.
+   ------------------------------------------------------------------ */
+@media (min-width: 701px) {
+  /* nada menor que 12px, e os textos corridos em 14 a 15px */
+  .primary-btn, .ghost-btn { font-size: 14px; white-space: nowrap; }
+  .hero-actions { flex-wrap: wrap; }
+  .section-kicker, .hero-kicker { font-size: 12px; }
+  .hero-bio { font-size: 15px; line-height: 1.75; }
+  .section-heading p, .stack-carousel-heading p, .contact p, .about-story-copy p { font-size: 15px; line-height: 1.75; }
+  .experience-heading p, .robotics-experience-carousel + p { font-size: 15px; }
+  .rb-carousel__description { font-size: 13px; }
+  .rb-carousel__eyebrow { font-size: 11px; }
+  .circular-carousel__details p { font-size: 14px; }
+  .circular-carousel__details-kicker, .contact-social-label, .glass-icon .glass-icon-label, .contact-icons .glass-icon-label { font-size: 12px; }
+  .projects-list-copy small { font-size: 12px; }
+  .project-detail-body p { font-size: 14px; }
+  .project-detail-topbar { font-size: 11px; }
+  .phone-link { font-size: 13px; }
+  footer { font-size: 12px; }
+}
+
+/* e-mail e telefone legíveis no tema escuro */
+.app[data-theme=dark] .email-link { color: #eaf1ff; border-bottom-color: rgba(125,170,235,.45); }
+.app[data-theme=dark] .email-link span { color: #8fb8ff; }
+.app[data-theme=dark] .phone-link { color: #a9bad2; }
+.app[data-theme=dark] .contact-social-label { color: #9fb0c6; }
+
+/* telas largas: o conteúdo cresce junto, em vez de ficar pequeno no meio */
+@media (min-width: 1600px) {
+  .section-shell, .hero, footer { width: min(1480px, calc(100% - 160px)); }
+  .navbar-glass { width: min(1480px, 100%); }
+  .hero-bio { font-size: 17px; }
+  .section-heading p, .stack-carousel-heading p, .contact p, .about-story-copy p, .experience-heading p { font-size: 16px; }
+  .primary-btn, .ghost-btn { font-size: 15px; }
+  .nav-links button { font-size: 14px; }
+}
+
+/* contraste do texto azul e do botão principal no tema escuro */
+.app[data-theme=dark] .primary-btn, .app[data-theme=dark] .primary-btn span { color: #06162b; }
+.app[data-theme=dark] .circular-carousel__details-kicker { color: #86b6ff; }
+.app[data-theme=dark] .hero-kicker { color: #7fb1ff; }
+
+/* contraste no tema claro */
+.app[data-theme=light] footer, .app[data-theme=light] footer span { color: #566476; }
+.app[data-theme=light] .glass-icon-label, .app[data-theme=light] .contact-social-label,
+.app[data-theme=light] .phone-link, .app[data-theme=light] .projects-list-copy small { color: #4f5f73; }
+.app[data-theme=light] .hero-kicker, .app[data-theme=light] .section-kicker, .app[data-theme=light] .hero-role,
+.app[data-theme=light] .circular-carousel__details-kicker { color: #1556b8; }
+.app[data-theme=light] .circular-carousel__details p, .app[data-theme=light] .stack-copy p, .app[data-theme=light] .project-detail-body p { color: #46566b; }
+.app[data-theme=light] .hero-bio, .app[data-theme=light] .about-story-copy p, .app[data-theme=light] .section-heading p,
+.app[data-theme=light] .stack-carousel-heading p, .app[data-theme=light] .contact p { color: #455469; }
+.app[data-theme=light] .primary-btn { background: #1b5fd0; color: #fff; }
+.app[data-theme=light] .primary-btn span { color: #fff; }
