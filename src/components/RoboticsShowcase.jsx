@@ -33,7 +33,7 @@ function Slide({ slide, active, playing, muted, onEnded, onTime, onPick, onToggl
   const className = `rb-view__slide${active ? ' is-on' : ''}`;
   if (slide.type === 'video') {
     return (
-      <div className={`${className}${slide.fit === 'contain' ? ' is-contain' : ''}`} aria-hidden={!active}>
+      <div className={`${className}${slide.fit === 'contain' ? ' is-contain' : ''}`} style={slide.bg ? { background: slide.bg } : undefined} aria-hidden={!active}>
         <video ref={videoRef} src={slide.src} poster={slide.poster} muted playsInline preload="metadata" aria-label={slide.alt} onClick={onToggle} onEnded={onEnded} onTimeUpdate={event => onTime(event.currentTarget.currentTime / (event.currentTarget.duration || 1))} />
         {slide.label && <span className="rb-view__tag"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg> {slide.label}</span>}
       </div>
@@ -65,7 +65,7 @@ function Slide({ slide, active, playing, muted, onEnded, onTime, onPick, onToggl
     );
   }
   return (
-    <div className={className} aria-hidden={!active}>
+    <div className={`${className}${slide.fit === 'contain' ? ' is-contain' : ''}`} style={slide.bg ? { background: slide.bg } : undefined} aria-hidden={!active}>
       <img src={slide.src} alt={slide.alt} style={{ objectPosition: slide.pos }} loading="lazy" decoding="async" />
     </div>
   );
