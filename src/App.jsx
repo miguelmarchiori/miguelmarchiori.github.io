@@ -39,7 +39,6 @@ export default function App() {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
   const [roboticsTeam, setRoboticsTeam] = useState(0);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
-  const lv = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('lv') || undefined : undefined; // protótipo do tema claro (?lv=a|b)
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
     if (!menu || !window.matchMedia('(max-width: 700px)').matches) return undefined;
@@ -79,11 +78,11 @@ export default function App() {
   };
 
   return (
-    <div className={`app`} data-theme={theme} data-lv={theme === 'light' ? lv : undefined}>
+    <div className={`app`} data-theme={theme}>
       <div className="ambient-background" aria-hidden="true">
         <PatternWaves
           className="site-pattern-waves"
-          color={theme === 'dark' ? '#8abaff' : lv ? '#2a62a8' : '#477db8'}
+          color={theme === 'dark' ? '#8abaff' : '#2a62a8'}
           spacing={11}
           opacity={theme === 'dark' ? 0.58 : 0.52}
           speed={0}
