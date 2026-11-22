@@ -6,23 +6,36 @@ const PHOTO_SECONDS = 5;
 const prefersReducedMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 const PlayIcon = () => <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>;
+const SoundIcon = ({ off }) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+    <path d="M4 9.5h3.6L12 6v12l-4.4-3.5H4z" fill="currentColor" />
+    {off ? <path d="M15.5 9.5l5 5m0-5l-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /> : <path d="M15.2 9.2a4 4 0 010 5.6M17.8 6.8a7.4 7.4 0 010 10.4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />}
+  </svg>
+);
 const PauseIcon = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="currentColor" /></svg>;
 
-function Slide({ slide, active, playing, onEnded, onTime, onPick }) {
+function Slide({ slide, active, playing, muted, onEnded, onTime, onPick, onToggle }) {
   const videoRef = useRef(null);
   useEffect(() => {
     const video = videoRef.current;
+    if (video) video.muted = muted;
+  }, [muted]);
+  useEffect(() => {
+    const video = videoRef.current;
     if (!video) return;
-    if (active && playing) video.play().catch(() => {});
-    else video.pause();
+    if (active && playing) {
+      // Se o navegador bloquear o início automático, a rotação segue para o próximo item.
+      video.play().catch(error => { if (error?.name === 'NotAllowedError') onEnded(); });
+    } else video.pause();
     if (!active) video.currentTime = 0;
   }, [active, playing]);
 
   const className = `rb-view__slide${active ? ' is-on' : ''}`;
   if (slide.type === 'video') {
     return (
-      <div className={className} aria-hidden={!active}>
-        <video ref={videoRef} src={slide.src} poster={slide.poster} muted playsInline preload="metadata" aria-label={slide.alt} onEnded={onEnded} onTimeUpdate={event => onTime(event.currentTarget.currentTime / (event.currentTarget.duration || 1))} />
+      <div className={`${className}${slide.fit === 'contain' ? ' is-contain' : ''}`} aria-hidden={!active}>
+        <video ref={videoRef} src={slide.src} poster={slide.poster} muted playsInline preload="metadata" aria-label={slide.alt} onClick={onToggle} onEnded={onEnded} onTimeUpdate={event => onTime(event.currentTarget.currentTime / (event.currentTarget.duration || 1))} />
+        {slide.label && <span className="rb-view__tag"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg> {slide.label}</span>}
       </div>
     );
   }
@@ -63,6 +76,7 @@ function Viewer({ team }) {
   const [index, setIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(() => prefersReducedMotion());
   const [hover, setHover] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [onScreen, setOnScreen] = useState(true);
   const [videoProgress, setVideoProgress] = useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -83,7 +97,8 @@ function Viewer({ team }) {
 
   const count = slides.length;
   const current = slides[index];
-  const playing = !userPaused && !hover && onScreen && !opened;
+  const watchingVideo = current?.type === 'video';
+  const playing = !userPaused && (!hover || watchingVideo) && onScreen && !opened;
   const go = to => { setVideoProgress(0); setOpened(null); setIndex(((to % count) + count) % count); };
   const next = () => go(index + 1);
 
@@ -125,6 +140,8 @@ function Viewer({ team }) {
               slide={opened && position === index ? { ...slide, open: true } : slide}
               active={position === index}
               playing={playing}
+              muted={muted}
+              onToggle={() => setUserPaused(value => !value)}
               onEnded={next}
               onTime={setVideoProgress}
               onPick={() => setOpened(slide.id ?? position)}
@@ -133,6 +150,7 @@ function Viewer({ team }) {
         )}
         {count > 1 && (
           <div className="rb-view__controls">
+            {watchingVideo && <button type="button" onClick={() => setMuted(value => !value)} aria-label={muted ? 'Ligar o som' : 'Desligar o som'}><SoundIcon off={muted} /></button>}
             <button type="button" onClick={() => setUserPaused(value => !value)} aria-label={userPaused ? 'Tocar' : 'Pausar'}>{userPaused ? <PlayIcon /> : <PauseIcon />}</button>
             <button type="button" onClick={next} aria-label="Próximo item">›</button>
           </div>

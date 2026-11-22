@@ -72,7 +72,7 @@ export const robotics = [
       { type: 'photo', src: foto('ftc-1'), alt: 'Dois integrantes da Vanguard FTC de óculos de proteção, cada um com um controle na mão, ao lado do campo', pos: '50% 16%' },
       { type: 'photo', src: foto('ftc-2'), alt: 'Integrante da Vanguard FTC de costas, com o uniforme do nome Marchiori e o número 11', pos: '50% 43%' },
       { type: 'photo', src: foto('ftc-3'), alt: 'Integrantes da Vanguard FTC de óculos de proteção e uniforme, em pé, ao lado do campo', pos: '50% 6%' },
-      { type: 'link', href: 'https://www.instagram.com/p/Dfr2JhkMBZ4/', poster: foto('ftc-3'), pos: '50% 6%', label: 'Ver vídeo no Instagram', alt: 'Capa do vídeo da Vanguard FTC no Instagram' }
+      { type: 'video', src: '/assets/robotica/ftc-video.mp4', poster: foto('ftc-video-capa'), fit: 'contain', label: 'Vídeo', alt: 'Vídeo de uma partida da FTC, com os robôs no campo e a plateia ao redor' }
     ]
   }
 ];
