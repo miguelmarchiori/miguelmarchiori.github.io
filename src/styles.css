@@ -1847,3 +1847,20 @@ footer { clear: both; }
 .app[data-theme=light] .about-story-copy p,
 .app[data-theme=light] .section-heading p,
 .app[data-theme=light] .stack-carousel-heading p { color: #33465f !important; }
+
+
+/* Projetos: repositório de código (sem site para mostrar) e links lado a lado */
+.project-live-preview.is-repo { height: auto; min-height: clamp(230px, 31vw, 360px); background: #0e1a2c; }
+.project-repo-preview { display: flex; flex-direction: column; justify-content: center; gap: 16px; min-height: inherit; padding: clamp(20px, 3vw, 32px) clamp(18px, 3vw, 32px) 68px; color: #dbe6f6; }
+.project-repo-path { margin: 0; color: #8fa6c4; font: 600 13px var(--mono); }
+.project-repo-preview ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.project-repo-preview li { display: grid; grid-template-columns: minmax(0, max-content) 1fr; gap: 4px 20px; align-items: baseline; padding: 12px 14px; border: 1px solid rgba(159, 190, 230, .2); border-radius: 12px; background: rgba(255, 255, 255, .04); }
+.project-repo-preview code { color: #7fd8ff; font: 600 14px var(--mono); overflow-wrap: anywhere; }
+.project-repo-preview li span { color: #a9bbd2; font-size: 13px; line-height: 1.5; }
+.project-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 15px; }
+.app main #projetos .project-detail-body .project-links .project-link { margin-top: 0; }
+@media (max-width: 700px) {
+  .project-repo-preview li { grid-template-columns: minmax(0, 1fr); }
+}
+/* A categoria e as tecnologias ficavam coladas na mesma linha */
+.project-detail-body .project-meta { display: flex; justify-content: space-between; gap: 4px 18px; }
