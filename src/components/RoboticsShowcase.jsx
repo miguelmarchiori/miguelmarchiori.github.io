@@ -5,9 +5,9 @@ import './RoboticsShowcase.css';
 const PHOTO_SECONDS = 5;
 
 const PlayIcon = () => <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>;
-const PauseIcon = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="currentColor" /></svg>;
+const usingKeyboard = element => { try { return element.matches(':focus-visible'); } catch { return false; } };
 
-function Slide({ slide, active, near, playing, onEnded, onTime, onPick, onToggle }) {
+function Slide({ slide, active, near, playing, onEnded, onTime, onPick }) {
   const videoRef = useRef(null);
   useEffect(() => {
     // Os vídeos não têm som. Sem áudio e mudo, o navegador deixa começar sozinho.
@@ -31,7 +31,7 @@ function Slide({ slide, active, near, playing, onEnded, onTime, onPick, onToggle
   if (slide.type === 'video') {
     return (
       <div className={`${className}${slide.fit === 'contain' ? ' is-contain' : ''}`} style={slide.bg ? { background: slide.bg } : undefined} aria-hidden={!active}>
-        <video ref={videoRef} src={slide.src} poster={slide.poster} muted playsInline preload={near ? 'auto' : 'metadata'} aria-label={slide.alt} onClick={onToggle} onEnded={onEnded} onTimeUpdate={event => onTime(event.currentTarget.currentTime / (event.currentTarget.duration || 1))} />
+        <video ref={videoRef} src={slide.src} poster={slide.poster} muted playsInline preload={near ? 'auto' : 'metadata'} aria-label={slide.alt} onEnded={onEnded} onTimeUpdate={event => onTime(event.currentTarget.currentTime / (event.currentTarget.duration || 1))} />
       </div>
     );
   }
@@ -70,8 +70,8 @@ function Slide({ slide, active, near, playing, onEnded, onTime, onPick, onToggle
 function Viewer({ team }) {
   const slides = team.slides;
   const [index, setIndex] = useState(0);
-  const [userPaused, setUserPaused] = useState(false);
   const [hover, setHover] = useState(false);
+  const [keyboardFocus, setKeyboardFocus] = useState(false);
   const [onScreen, setOnScreen] = useState(true);
   const [videoProgress, setVideoProgress] = useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -93,12 +93,13 @@ function Viewer({ team }) {
   const count = slides.length;
   const current = slides[index];
   const watchingVideo = current?.type === 'video';
-  const playing = !userPaused && (!hover || watchingVideo) && onScreen && !opened;
+  // Para quem navega pelo teclado, a rotação para enquanto o foco está no visor.
+  const playing = (!hover || watchingVideo) && !keyboardFocus && onScreen && !opened;
   const go = to => { setVideoProgress(0); setOpened(null); setIndex(((to % count) + count) % count); };
   const next = () => go(index + 1);
 
   return (
-    <div className="rb-view" ref={rootRef} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <div className="rb-view" ref={rootRef} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onFocus={event => setKeyboardFocus(usingKeyboard(event.target))} onBlur={() => setKeyboardFocus(false)}>
       {count > 1 && (
         <div className="rb-view__bars">
           {slides.map((slide, position) => {
@@ -136,7 +137,6 @@ function Viewer({ team }) {
               active={position === index}
               near={position === index || position === (index + 1) % count}
               playing={playing}
-              onToggle={() => setUserPaused(value => !value)}
               onEnded={next}
               onTime={setVideoProgress}
               onPick={() => setOpened(slide.id ?? position)}
@@ -145,7 +145,6 @@ function Viewer({ team }) {
         )}
         {count > 1 && (
           <div className="rb-view__controls">
-            <button type="button" onClick={() => setUserPaused(value => !value)} aria-label={userPaused ? 'Tocar' : 'Pausar'}>{userPaused ? <PlayIcon /> : <PauseIcon />}</button>
             <button type="button" onClick={next} aria-label="Próximo item">›</button>
           </div>
         )}
