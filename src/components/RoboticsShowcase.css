@@ -51,6 +51,8 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .rb-view__slide { transition: none; }
+  /* A barra de tempo das fotos é quem passa para o próximo item: ela precisa durar os 5 s mesmo aqui. */
+  .rb-view__bar b.is-timed { animation-duration: 5s !important; }
 }
 
 /* tema claro: painel branco com texto escuro */
