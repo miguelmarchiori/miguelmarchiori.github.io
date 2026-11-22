@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import './Carousel.css';
 
 const wrap = (index, count) => ((index % count) + count) % count;
@@ -16,10 +16,12 @@ function Carousel({
   initialIndex = 0,
   theme = 'dark',
   className = '',
-  style
+  style,
+  onActiveChange
 }) {
   const [active, setActive] = useState(() => Math.max(0, Math.min(initialIndex, items.length - 1)));
   const [dragStart, setDragStart] = useState(null);
+  useEffect(() => { onActiveChange?.(active); }, [active, onActiveChange]);
   const cardWidth = typeof baseWidth === 'number' ? baseWidth : (parseFloat(baseWidth) || 340);
   if (!items.length) return null;
 

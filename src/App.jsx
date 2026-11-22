@@ -3,8 +3,8 @@ import GlassSurface from './components/GlassSurface';
 import TechText from './components/TechText';
 import BlurText from './components/BlurText';
 import SplitFlapText from './components/SplitFlapText';
-import RotatingText from './components/RotatingText';
-import Carousel from './components/Carousel';
+import RoboticsShowcase from './components/RoboticsShowcase';
+import { robotics } from './data/robotics';
 import CircularCarousel from './components/CircularCarousel';
 import GlassIcons from './components/GlassIcons';
 import PatternWaves from './components/PatternWaves';
@@ -24,33 +24,6 @@ const photos = [
   { src: '/assets/img/miguel-2.webp', alt: 'Miguel Marchiori sorrindo, de camisa verde', title: 'Miguel Marchiori', note: 'Programação · robótica' },
   { src: '/assets/img/miguel-3.webp', alt: 'Miguel Marchiori sorrindo, de uniforme da equipe de robótica', title: 'Miguel Marchiori', note: 'Programação · robótica' }
 ];
-const roboticsModalities = ['FTC', 'OBR', 'FLL'];
-const roboticsTeams = [
-  {
-    id: 'obr',
-    title: 'OBR',
-    image: '/assets/img/quarteto-fantastico.webp',
-    href: 'https://www.instagram.com/quartetofantastico_sesi/',
-    eyebrow: 'CAMPEÃO REGIONAL · NORTE DO PARANÁ',
-    description: 'Programador principal do Quarteto Fantástico. Duas participações na etapa estadual da Olimpíada Brasileira de Robótica.'
-  },
-  {
-    id: 'fll',
-    title: 'FLL',
-    image: '/assets/img/shield.webp',
-    href: 'https://www.instagram.com/equip_shield/',
-    eyebrow: 'FIRST LEGO LEAGUE · PARANÁ',
-    description: 'Programador principal da equipe Shield, participando da etapa regional e desenvolvendo soluções com a equipe.'
-  },
-  {
-    id: 'ftc',
-    title: 'FTC',
-    image: '/assets/img/vanguard-ftc.webp',
-    href: 'https://www.instagram.com/vanguardftc_/',
-    eyebrow: 'VANGUARD FTC',
-    description: 'Programador principal, contribuindo com código, automação e integração dos sistemas do robô.'
-  }
-];
 const technologyItems = [
   { src: '/assets/tech/python.svg', alt: 'Logo Python', title: 'Python', subtitle: 'Programação e automação' },
   { src: '/assets/tech/html5.svg', alt: 'Logo HTML5', title: 'HTML5', subtitle: 'Estrutura web' },
@@ -65,6 +38,7 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
+  const [roboticsTeam, setRoboticsTeam] = useState(0);
   const [theme, setTheme] = useState(() => { try { return window.localStorage.getItem('portfolio-theme-v2') || 'dark'; } catch { return 'dark'; } });
   useEffect(() => { try { window.localStorage.setItem('portfolio-theme-v2', theme); } catch {} }, [theme]);
   useEffect(() => {
@@ -208,22 +182,10 @@ export default function App() {
         <section id="atuacao" className="experience section-shell section-pad">
           <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
-            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><RotatingText texts={roboticsModalities} effect="flip" direction="up" highlight={true} highlightColor="#1672e8" staggerFrom="last" staggerDuration={0.018} rotationInterval={2400} pauseOnHover={true} /></h2>
+            <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><span className="robotics-pill" key={robotics[roboticsTeam].id}>{robotics[roboticsTeam].short}</span></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
           </div>
-          <Carousel
-            className="robotics-experience-carousel"
-            items={roboticsTeams}
-            baseWidth={390}
-            aspectRatio={1.12}
-            gap={20}
-            radius={24}
-            effect="tilt"
-            indicator="dots"
-            arrows={true}
-            loop={true}
-            theme={theme}
-          />
+          <RoboticsShowcase teams={robotics} theme={theme} onTeamChange={setRoboticsTeam} />
         </section>
 
         <section id="stack" className="stack-section section-shell section-pad">
