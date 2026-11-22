@@ -1816,3 +1816,54 @@ footer { clear: both; }
   .app main #contato .contact-open h2 { max-width: none; }
   .contact-links { gap: 6px 22px; }
 }
+
+
+/* ===== PROTÓTIPO: tema claro com mais contraste (?lv=a ou ?lv=b) ===== */
+.app[data-theme=light][data-lv] {
+  background: linear-gradient(180deg, #edf3fb 0%, #e2ebf7 100%) !important;
+  --text: #0c1a30;
+  --muted: #465872;
+}
+.app[data-theme=light][data-lv] .ambient-background { opacity: .7 !important; }
+.app[data-theme=light][data-lv] .navbar-glass { box-shadow: 0 14px 34px -20px rgba(15, 50, 100, .45), 0 0 0 1px #c4d3e8 !important; }
+.app[data-theme=light][data-lv] .projects-list-item,
+.app[data-theme=light][data-lv] .rb-view,
+.app[data-theme=light][data-lv] .stack-copy-surface {
+  background: #fff !important;
+  border: 1px solid #c4d3e8 !important;
+  box-shadow: 0 22px 44px -28px rgba(15, 50, 100, .42), 0 1px 2px rgba(15, 50, 100, .08) !important;
+}
+.app[data-theme=light][data-lv] .hero-avatar-stage { box-shadow: 0 34px 60px -32px rgba(15, 50, 100, .5) !important; }
+.app[data-theme=light][data-lv] .about-story-photo { border-color: #b9cae1 !important; box-shadow: 0 26px 50px -30px rgba(15, 50, 100, .5) !important; }
+.app[data-theme=light][data-lv] .section-heading h2,
+.app[data-theme=light][data-lv] .stack-carousel-heading h2,
+.app[data-theme=light][data-lv] .about-story-copy h2,
+.app[data-theme=light][data-lv] .contact h2 { color: #0c1a30 !important; }
+.app[data-theme=light][data-lv] .section-heading h2 em,
+.app[data-theme=light][data-lv] .stack-carousel-heading h2 em { color: #0a5ed7 !important; }
+.app[data-theme=light][data-lv] .primary-btn { background: #0a58c9 !important; border-color: #0a58c9 !important; }
+.app[data-theme=light][data-lv] .ghost-btn { background: #fff !important; border-color: #b9c9df !important; color: #0c1a30 !important; }
+.app[data-theme=light][data-lv] .hero-bio,
+.app[data-theme=light][data-lv] .about-story-copy p,
+.app[data-theme=light][data-lv] .section-heading p,
+.app[data-theme=light][data-lv] .stack-carousel-heading p { color: #33465f !important; }
+
+/* B: faixas de largura total para dar ritmo à página */
+.app[data-theme=light][data-lv=b] #sobre,
+.app[data-theme=light][data-lv=b] #stack {
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 0 0 100vmax rgba(255, 255, 255, .82);
+  clip-path: inset(0 -100vmax);
+}
+.app[data-theme=light][data-lv=b] #contato {
+  background: #0b1628;
+  box-shadow: 0 0 0 100vmax #0b1628;
+  clip-path: inset(0 -100vmax);
+}
+.app[data-theme=light][data-lv=b] #contato h2 { color: #f3f7ff !important; }
+.app[data-theme=light][data-lv=b] #contato p { color: #b9c7dc !important; }
+.app[data-theme=light][data-lv=b] #contato .contact-open { border-top-color: rgba(159, 190, 230, .28); }
+.app[data-theme=light][data-lv=b] #contato .primary-btn { background: #5ad1ff !important; border-color: #5ad1ff !important; color: #06202e !important; }
+.app[data-theme=light][data-lv=b] #contato .ghost-btn { background: #12233d !important; border-color: #2d4466 !important; color: #e8f0fb !important; }
+.app[data-theme=light][data-lv=b] #contato .contact-links a { color: #c5d3e8; }
+.app[data-theme=light][data-lv=b] #contato .contact-links a:hover { color: #fff; }
