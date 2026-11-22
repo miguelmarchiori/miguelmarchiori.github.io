@@ -6,7 +6,6 @@ import SplitFlapText from './components/SplitFlapText';
 import RoboticsShowcase from './components/RoboticsShowcase';
 import { robotics } from './data/robotics';
 import CircularCarousel from './components/CircularCarousel';
-import GlassIcons from './components/GlassIcons';
 import PatternWaves from './components/PatternWaves';
 import { SiGithub, SiInstagram } from 'react-icons/si';
 import { FaLinkedinIn } from 'react-icons/fa6';
@@ -128,7 +127,7 @@ export default function App() {
         {menu && <button className="nav-backdrop" onClick={() => setMenu(false)} aria-label="Fechar menu" />}
         <nav id="primary-navigation" className={menu ? 'nav-links is-open' : 'nav-links'} aria-label="Navegação principal">
           {nav.map(item => <button key={item.id} onClick={() => scrollTo(item.id)}>{item.label}</button>)}
-          <a className="primary-btn sheet-cta" href={portfolio.whatsapp} target="_blank" rel="noreferrer" onClick={() => setMenu(false)}>Falar no WhatsApp <span>↗</span></a>
+          <a className="primary-btn sheet-cta" href={portfolio.whatsapp} target="_blank" rel="noreferrer" onClick={() => setMenu(false)}>Falar no WhatsApp</a>
           <div className="mobile-theme-row">
             <span>{theme === "dark" ? "Modo escuro" : "Modo claro"}</span>
             <label className="theme-switch theme-switch--mobile" aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}>
@@ -149,7 +148,7 @@ export default function App() {
             <p className="hero-kicker">OLÁ, EU SOU</p>
             <div className="hero-tech-name"><div className="hero-tech-line hero-tech-line-miguel"><BlurText text="MIGUEL" className="hero-blur-name" animateBy="letters" effect="blur" direction="top" staggerFrom="start" trigger="load" delay={75} stepDuration={0.55} blur={10} distance={28} /></div><div className="hero-tech-line"><TechText text="MARCHIORI" fontFamily="Michroma" fontWeight={800} fontSize={190} letterSpacing={-0.055} color={theme === 'dark' ? '#eef4ff' : '#17243a'} accentColor="#1672e8" align="left" reveal="letter" specks={12} labels={false} draggable={false} clickKick intro="type" introDuration={1.4} guides={false} /></div></div><p className="hero-role">Programador Fullstack</p>
             <p className="hero-bio">Sou programador full stack e bolsista de iniciação científica na UTFPR. Desenvolvo projetos de programação web, robótica e automação. Fui campeão regional do Norte do Paraná na Olimpíada Brasileira de Robótica. Programar é minha paixão.</p>
-            <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos <span>↗</span></button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub <span>↗</span></a></div>
+            <div className="hero-actions"><button className="primary-btn" onClick={() => scrollTo("projetos")}>Ver meus projetos</button><a className="ghost-btn" href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> Meu GitHub</a></div>
             </div>
             <div className="hero-visual hero-avatar-stage hero-photo-stage">
               <span className="avatar-orbit orbit-one" aria-hidden="true" />
@@ -167,7 +166,6 @@ export default function App() {
         </section>
 
         <section id="sobre" className="about section-shell section-pad">
-          <div className="section-kicker">01 / SOBRE MIM</div>
           <div className="about-grid about-story-grid">
             <div className="about-story-copy">
               <h2 className="about-story-title"><SplitFlapText text="COMO COMECEI!" tileColor="#17243a" textColor="#f8fafc" fontSize="clamp(16px, 2.4vw, 30px)" gap={3} tileRadius={5} flipDuration={0.12} stagger={0.045} depth={0.35} /></h2>
@@ -180,7 +178,6 @@ export default function App() {
         </section>
 
         <section id="atuacao" className="experience section-shell section-pad">
-          <div className="section-kicker">02 / NA PRÁTICA</div>
           <div className="section-heading experience-heading">
             <h2 className="robotics-rotating-title"><span className="robotics-title-prefix">Robótica:</span><span className="robotics-pill" key={robotics[roboticsTeam].id}>{robotics[roboticsTeam].short}</span></h2>
             <p>Robótica competitiva é onde junto programação, estratégia e prototipagem. Estas são as equipes e modalidades que fazem parte da minha trajetória.</p>
@@ -189,7 +186,6 @@ export default function App() {
         </section>
 
         <section id="stack" className="stack-section section-shell section-pad">
-          <div className="section-kicker">03 / STACK</div>
           <div className="stack-carousel-heading">
             <h2>Minhas <em>línguas de programação.</em></h2>
             <p>Linguagens que eu tenho no meu arsenal e pra que uso cada uma</p>
@@ -221,7 +217,6 @@ export default function App() {
         </section>
 
         <section id="projetos" className="projects-section section-shell section-pad">
-          <div className="section-kicker">04 / PROJETOS</div>
           <div className="section-heading">
             <h2>Projetos que<br /><em>eu fiz.</em></h2>
             <p>Explore os projetos e veja uma prévia do resultado antes de abrir cada um.</p>
@@ -283,38 +278,25 @@ export default function App() {
 
 
         <section id="contato" className="contact section-shell section-pad">
-          <GlassSurface width="100%" height="auto" borderRadius={32} backgroundOpacity={0.5} className="contact-box">
-            <div className="contact-glow" />
-            <div className="contact-content">
-              <div className="section-kicker">05 / CONTATO</div>
-              <h2>Vamos fazer um projeto juntos!</h2>
-              <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
-              <div className="contact-actions">
-                <a className="primary-btn contact-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp <span>↗</span></a>
-                <a className="ghost-btn contact-btn" href={`mailto:${portfolio.email}`}>Enviar e-mail</a>
-              </div>
-              <GlassSurface width="100%" height="auto" borderRadius={22} backgroundOpacity={0.42} className="contact-social-surface">
-                <div className="contact-social-content">
-                  <span className="contact-social-label">ENCONTRE-ME</span>
-                  <GlassIcons
-                    className="contact-icons"
-                    size={58} gap={22} columns={3} roundness={0.3} plate="tilt" hover="press" labels="always" theme={theme === "dark" ? "dark" : "light"}
-                    items={[
-                      { icon: <SiGithub />, color: '#6574d8', label: 'GitHub', href: portfolio.github },
-                      { icon: <FaLinkedinIn />, color: '#0a66c2', label: 'LinkedIn', href: portfolio.linkedin },
-                      { icon: <SiInstagram />, color: '#e4405f', label: 'Instagram', href: portfolio.instagram }
-                    ]}
-                  />
-                </div>
-              </GlassSurface>
+          <div className="contact-open">
+            <h2>Vamos fazer um projeto juntos!</h2>
+            <p>Para projetos, oportunidades, robótica ou colaboração, o caminho mais rápido é pelo WhatsApp.</p>
+            <div className="contact-actions">
+              <a className="primary-btn contact-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+              <a className="ghost-btn contact-btn" href={`mailto:${portfolio.email}`}>Enviar e-mail</a>
             </div>
-          </GlassSurface>
+            <ul className="contact-links" aria-label="Redes sociais">
+              <li><a href={portfolio.github} target="_blank" rel="noreferrer"><SiGithub aria-hidden="true" /> GitHub</a></li>
+              <li><a href={portfolio.linkedin} target="_blank" rel="noreferrer"><FaLinkedinIn aria-hidden="true" /> LinkedIn</a></li>
+              <li><a href={portfolio.instagram} target="_blank" rel="noreferrer"><SiInstagram aria-hidden="true" /> Instagram</a></li>
+            </ul>
+          </div>
         </section>
       </main>
 
       <footer><span>© {new Date().getFullYear()} {portfolio.shortName}</span></footer>
       <nav className={`actionbar${barOn && !menu ? ' is-visible' : ''}`} aria-label="Ações rápidas" inert={!(barOn && !menu)}>
-        <a className="primary-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp <span>↗</span></a>
+        <a className="primary-btn" href={portfolio.whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp</a>
       </nav>
     </div>
   );
