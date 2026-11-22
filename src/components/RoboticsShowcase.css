@@ -20,6 +20,7 @@
 /* vídeo vertical: aparece inteiro, com faixas escuras dos lados */
 .rb-view__slide.is-contain { background: #05080f; }
 .rb-view__slide.is-contain video { object-fit: contain; cursor: pointer; }
+.rb-view__slide.is-contain > img { object-fit: contain; }
 .rb-view__playcover { position: absolute; inset: 0; display: block; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; }
 .rb-view__disc { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; display: grid; place-items: center; transform: translate(-50%, -50%); border: 1px solid rgba(255, 255, 255, .42); border-radius: 50%; background: rgba(8, 16, 30, .72); color: #fff; }
 .rb-view__tag { position: absolute; left: 14px; bottom: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(8, 16, 30, .84); color: #fff; font: 600 12.5px var(--sans); }

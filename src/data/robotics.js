@@ -12,6 +12,7 @@
 //   { type: 'link', href: 'https://www.instagram.com/p/...', poster: '/assets/robotica/capa.webp', label: 'Ver vídeo no Instagram', alt: '...' }
 
 const foto = nome => `/assets/robotica/${nome}.webp`;
+const video = nome => `/assets/robotica/${nome}.mp4`;
 
 export const robotics = [
   {
@@ -32,8 +33,11 @@ export const robotics = [
       { label: 'Ver o Instagram da equipe', href: 'https://www.instagram.com/quartetofantastico_sesi/' }
     ],
     slides: [
-      { type: 'photo', src: foto('obr-equipe-na-pista'), alt: 'Equipe de robótica sentada no chão ao lado da pista, com um integrante programando no notebook', pos: '50% 30%' },
+      { type: 'photo', src: foto('obr-notebook'), alt: 'Miguel de uniforme programando no notebook, sentado no chão ao lado da pista', pos: '50% 28%' },
+      { type: 'video', src: video('obr-video-jun'), poster: foto('obr-video-jun-capa'), fit: 'contain', label: 'Vídeo', alt: 'Robô LEGO percorrendo a arena de Resgate sobre uma mesa, num ginásio, com pessoas ao redor' },
       { type: 'photo', src: foto('obr-robo-lego-spike'), alt: 'Robô LEGO com sensores montado sobre uma mesa', pos: '50% 45%' },
+      { type: 'photo', src: foto('obr-polaroid'), alt: 'Cartão em formato de polaroid com Miguel de uniforme do Quarteto Fantástico mostrando quatro dedos, com o texto M.M Programador', fit: 'contain', bg: '#f2f0ea' },
+      { type: 'video', src: video('obr-video-ago'), poster: foto('obr-video-ago-capa'), fit: 'contain', label: 'Vídeo', alt: 'Vista de cima do robô LEGO levando uma bolinha azul até o triângulo da arena' },
       { type: 'photo', src: foto('obr-medalhas-obr'), alt: 'Três medalhas douradas da Olimpíada Brasileira de Robótica', pos: '50% 50%' },
       { type: 'photo', src: foto('obr-programando'), alt: 'Miguel de uniforme da equipe programando no notebook durante uma competição', pos: '45% 50%' }
     ]
@@ -72,7 +76,7 @@ export const robotics = [
       { type: 'photo', src: foto('ftc-1'), alt: 'Dois integrantes da Vanguard FTC de óculos de proteção, cada um com um controle na mão, ao lado do campo', pos: '50% 16%' },
       { type: 'photo', src: foto('ftc-2'), alt: 'Integrante da Vanguard FTC de costas, com o uniforme do nome Marchiori e o número 11', pos: '50% 43%' },
       { type: 'photo', src: foto('ftc-3'), alt: 'Integrantes da Vanguard FTC de óculos de proteção e uniforme, em pé, ao lado do campo', pos: '50% 6%' },
-      { type: 'video', src: '/assets/robotica/ftc-video.mp4', poster: foto('ftc-video-capa'), fit: 'contain', label: 'Vídeo', alt: 'Vídeo de uma partida da FTC, com os robôs no campo e a plateia ao redor' }
+      { type: 'video', src: video('ftc-video'), poster: foto('ftc-video-capa'), fit: 'contain', label: 'Vídeo', alt: 'Vídeo de uma partida da FTC, com os robôs no campo e a plateia ao redor' }
     ]
   }
 ];
