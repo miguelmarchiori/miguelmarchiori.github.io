@@ -244,30 +244,41 @@ export default function App() {
             {selectedProjectIndex !== null && projects[selectedProjectIndex] && (() => {
               const project = projects[selectedProjectIndex];
               const isDocument = project.type === 'document';
+              const isRepo = project.type === 'repo';
               const isPdf = project.type === 'pdf' || /\.pdf(?:$|[?#])/i.test(project.previewUrl || project.url || '');
               const previewUrl = project.previewUrl || project.url;
               return (
                 <article className="project-detail">
                   <div className="project-detail-topbar">
                     <div className="project-detail-dots" aria-hidden="true"><i /><i /><i /></div>
-                    <span>{isPdf || isDocument ? 'PRÉVIA DO DOCUMENTO' : 'PRÉVIA DO PROJETO'}</span>
+                    <span>{isPdf || isDocument ? 'PRÉVIA DO DOCUMENTO' : isRepo ? 'REPOSITÓRIO' : 'PRÉVIA DO PROJETO'}</span>
                     <span className="project-detail-number">{String(selectedProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
                   </div>
-                  <div className={`project-live-preview ${isPdf || isDocument ? 'is-document' : ''}`}>
+                  <div className={`project-live-preview ${isPdf || isDocument ? 'is-document' : ''} ${isRepo ? 'is-repo' : ''}`}>
                     {project.previewImage ? (
                       <img src={project.previewImage} alt={`Prévia de ${project.name}`} loading="lazy" />
+                    ) : isRepo ? (
+                      <div className="project-repo-preview">
+                        <p className="project-repo-path">{project.url.replace('https://github.com/', '')}</p>
+                        <ul>
+                          {project.files.map(file => <li key={file.name}><code>{file.name}</code><span>{file.note}</span></li>)}
+                        </ul>
+                      </div>
                     ) : isPdf ? (
                       <iframe src={previewUrl} title={`Prévia do documento ${project.name}`} loading="lazy" />
                     ) : (
                       <iframe src={previewUrl} title={`Prévia do site ${project.name}`} loading="lazy" tabIndex={0} />
                     )}
-                    <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">{isPdf ? "Abrir PDF" : isDocument ? "Abrir documento" : "Abrir projeto"} <span>↗</span></a>
+                    <a className="project-preview-open" href={project.url} target="_blank" rel="noreferrer">{isPdf ? "Abrir PDF" : isDocument ? "Abrir documento" : isRepo ? "Abrir no GitHub" : "Abrir projeto"} <span>↗</span></a>
                   </div>
                   <div className="project-detail-body">
                     <div className="project-meta"><span>{project.category.toUpperCase()}</span><span>{project.technologies.join(' · ')}</span></div>
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
-                    <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{isPdf ? 'Abrir PDF' : isDocument ? 'Abrir documento' : 'Visitar site'} <span>↗</span></a>
+                    <div className="project-links">
+                      <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{isPdf ? 'Abrir PDF' : isDocument ? 'Abrir documento' : isRepo ? 'Ver no GitHub' : 'Visitar site'} <span>↗</span></a>
+                      {project.repoUrl && <a className="project-link" href={project.repoUrl} target="_blank" rel="noreferrer">Ver o código no GitHub <span>↗</span></a>}
+                    </div>
                   </div>
                 </article>
               );

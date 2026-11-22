@@ -67,6 +67,27 @@ export const projects = [
     description: 'Site institucional para apresentar a empresa, sua identidade e seus serviços em uma presença digital clara e acessível.',
     url: 'https://agro-pet-rodrigues.vercel.app',
     technologies: ['Web Design', 'Frontend', 'Responsivo']
+  },
+  {
+    name: 'VanCode',
+    category: 'Desenvolvimento web',
+    description: 'Site da equipe Vanguard para ensinar crianças e adolescentes a passar da programação em blocos para o código de verdade. Tem uma trilha de Python para o LEGO SPIKE Prime e outra de Java para a FTC, missões em que o aluno digita o código para mover um personagem num tabuleiro e um laboratório de Python que roda no próprio navegador.',
+    url: 'https://vancode-khaki.vercel.app',
+    repoUrl: 'https://github.com/miguelmarchiori/VanguardCodingSite',
+    technologies: ['JavaScript', 'Firebase', 'Pyodide']
+  },
+  {
+    name: 'Código do robô da Vanguard FTC',
+    category: 'Robótica',
+    description: 'Código em Java do robô da Vanguard FTC. Reúne o TeleOp, com direção mecanum, modo lento, intake e shooter com força ajustável, o autônomo e um teste que gira cada motor da base separadamente. O README traz os controles, os nomes do hardware e o histórico de versões.',
+    type: 'repo',
+    url: 'https://github.com/Vanguard-FTC/Vanguard-FTC-Programacao',
+    files: [
+      { name: 'VanguardTeleop.java', note: 'TeleOp: direção mecanum, modo lento, intake e shooter' },
+      { name: 'VanguardAuto.java', note: 'Autônomo: liga o shooter e os intakes' },
+      { name: 'VanguardTesteMotores.java', note: 'Gira cada motor da base, um por vez' }
+    ],
+    technologies: ['Java', 'FTC SDK']
   }
 ];
 
